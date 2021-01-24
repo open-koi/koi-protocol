@@ -1,4 +1,26 @@
-## Amplify Smart Contract
+## KOI Smart Contract
+
+Attention Verification Process
+  1. Every 24 hrs, 1000 KOI can be released
+
+  2. Nodes poll the gateways (from the list 
+ in state.gateways 
+
+  3. Nodes track traffic logs locally, and 
+ when they are convinced, can submit a block
+
+  4. Nodes submit blocks / attestations to a 
+ Bundler Node (we need to make an express server)
+
+  5. Bundler Node upload and trigger vote 
+ (Pay AR)
+
+  6. Vote happens -> Nodes check state change
+ proposal and then submit boolean votes to Bundlers
+
+  7. Bundlers compete to find the most votes,
+ And update the state when a verdict is reached
+  and the 1000 KOI are paid.
 
 ### Token Configuration
 
