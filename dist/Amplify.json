@@ -1,10 +1,14 @@
 {
-  "ticker": "AMP",
+  "ticker": "KOI",
   "owner": "dow7mxks0QGGV7zOmHEE1OOi5LyfHpcrDH9n0UPw9eY",
   "balances": {
     "dow7mxks0QGGV7zOmHEE1OOi5LyfHpcrDH9n0UPw9eY": 1000000
   },
   "stakes": {},
   "gateways": {},
-  "votes": {}
+  "votes": {},
+  "registeredRecord":{},
+  "trafficLogs":{},
+  "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
+  
 }
