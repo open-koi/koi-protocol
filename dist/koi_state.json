@@ -6,7 +6,16 @@
   },
   "stakes": {},
   "gateways": {},
-  "votes": {},
+  "votes": [{
+    "id":0,
+    "type": "trafficLogs",
+    "status":"active",
+    "voters": [],
+    "yays": 0,
+    "nays": 0
+ 
+}],
+  "numberOfVotes":0,
   "registeredRecord":{},
   "trafficLogs":{},
   "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
