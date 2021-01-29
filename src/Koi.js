@@ -5,7 +5,7 @@ import { Stake } from './Stake';
 import { Withdraw } from './Withdraw';
 import { Mint } from './Mint';
 import { Vote } from './Vote';
-import { UpdateTrafficLog } from './UpdateTrafficLog';
+import { UpdateTrafficLog } from './updateTrafficLog';
 
 export function handle(state, action) {
   switch (action.input.function) {
