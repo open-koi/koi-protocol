@@ -1,27 +1,29 @@
 ## KOI Smart Contract
 =======
 
+*Note:* be sure to set the path to the key file in bin/deploy.js
+
 Attention Verification Process
-  1. Every 24 hrs, 1000 KOI can be released
+1. Every 24 hrs, 1000 KOI can be released
 
-  2. Nodes poll the gateways (from the list 
- in state.gateways 
+2. Nodes poll the gateways (from the list 
+in state.gateways 
 
-  3. Nodes track traffic logs locally, and 
- when they are convinced, can submit a block
+3. Nodes track traffic logs locally, and 
+when they are convinced, can submit a block
 
-  4. Nodes submit blocks / attestations to a 
- Bundler Node (we need to make an express server)
+4. Nodes submit blocks / attestations to a 
+Bundler Node (we need to make an express server)
 
-  5. Bundler Node upload and trigger vote 
- (Pay AR)
+5. Bundler Node upload and trigger vote 
+(Pay AR)
 
-  6. Vote happens -> Nodes check state change
- proposal and then submit boolean votes to Bundlers
+6. Vote happens -> Nodes check state change
+proposal and then submit boolean votes to Bundlers
 
-  7. Bundlers compete to find the most votes,
- And update the state when a verdict is reached
-  and the 1000 KOI are paid.
+7. Bundlers compete to find the most votes,
+And update the state when a verdict is reached
+and the 1000 KOI are paid.
 
 ### Token Configuration
 
