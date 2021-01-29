@@ -1,6 +1,6 @@
 import { Transfer } from './Transfer';
 import { Account } from './Account';
-import { Gateway } from './Gateway';
+//import { Gateway } from './Gateway';
 import { Stake } from './Stake';
 import { Withdraw } from './Withdraw';
 import { Mint } from './Mint';
@@ -13,8 +13,6 @@ export function handle(state, action) {
       return Transfer(state, action);
     case 'account':
       return Account(state, action);
-    case 'gateway':
-      return Gateway(state, action);
     case 'stake':
       return Stake(state, action);
     case 'withdraw':
@@ -25,8 +23,7 @@ export function handle(state, action) {
        return Vote(state, action);
      case 'UpdateTrafficLog':
        return UpdateTrafficLog(state, action);
-        
-    default:
+       default:
       throw new ContractError(`Invalid function: "${action.input.function}"`)
   }
 }

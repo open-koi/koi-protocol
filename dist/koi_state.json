@@ -1,8 +1,8 @@
 {
   "ticker": "KOI",
-  "owner": "dow7mxks0QGGV7zOmHEE1OOi5LyfHpcrDH9n0UPw9eY",
+  "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "balances": {
-    "dow7mxks0QGGV7zOmHEE1OOi5LyfHpcrDH9n0UPw9eY": 1000000
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000
   },
   "stakes": {},
   "stakeReleaseDate":{},
@@ -12,6 +12,7 @@
     "type": "trafficLogs",
     "status":"active",
     "voters": [],
+    "stakeAmount":200,
     "yays": 0,
     "nays": 0
  
