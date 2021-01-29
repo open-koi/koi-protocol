@@ -1,30 +1,15 @@
 class ContractError {
     constructor (prop) {
-<<<<<<< HEAD
-        console.log('New Contract Error ', prop);
-    }
-} 
-
-
-
-
-
-=======
         console.log('New Contract Error ', prop)
     }
 } 
 
->>>>>>> testing-framework
 module.exports = function Vote(state, action) {
 
     const stakes = state.stakes;
     const input = action.input;
     const caller = action.caller;
     const votes = state.votes;
-<<<<<<< HEAD
-    const numberOfVotes = state.numberOfVotes;
-=======
->>>>>>> testing-framework
 
     const voteId = input.voteId;
     const userVote = input.userVote
