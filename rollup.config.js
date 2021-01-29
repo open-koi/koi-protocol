@@ -4,7 +4,11 @@ import json from '@rollup/plugin-json';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 export default [{
+
+  input: 'src/koi.js',
+
   input: 'src/Koi.js',
+
   output: {
     file: 'dist/koi.js',
     format: 'cjs'
