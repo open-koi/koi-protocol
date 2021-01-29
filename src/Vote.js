@@ -1,9 +1,11 @@
 export function Vote(state, action) {
 
+
     const stakes = state.stakes;
     const input = action.input;
     const caller = action.caller;
     const votes = state.votes;
+    
 
     const voteId = input.voteId;
     const userVote = input.userVote
