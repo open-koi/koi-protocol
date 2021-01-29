@@ -19,10 +19,19 @@ const STATE = {
       "dow7mxks0QGGV7zOmHEE1OOi5LyfHpcrDH9n0UPw9eY": 1000000
     },
     "stakes": {
-      "test1234":200,
+      "test1234":400,
     },
     "gateways": {},
-    "votes": [voteMock],
+    "votes": [{
+      "id":0,
+      "type": "trafficLogs",
+      "status":"active",
+      "voters": [],
+      "stakeAmount":200,
+      "yays": 0,
+      "nays": 0
+   
+  }],
     "numberOfVotes":0,
     "registeredRecord":{},
     "trafficLogs":{},
@@ -52,7 +61,7 @@ async function testCanVote () {
             "voteId" : 0,
             "userVote" : "true"
         },
-        caller : "test12234"
+        caller : "test1234"
     }
     var voting = vote(STATE, action)
 

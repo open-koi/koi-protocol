@@ -1,6 +1,6 @@
 'use strict';
 
-
+Object.defineProperty(exports, '__esModule', { value: true });
 
 function Transfer(state, action) {
     const balances = state.balances;
@@ -159,8 +159,17 @@ function Mint(state, action) {
     return { state }
 }
 
-function Vote(state, action) {
+class ContractError$1 {
+    constructor (prop) {
+        console.log('New Contract Error ', prop);
+    }
+} 
 
+
+
+
+
+var Vote =  function Vote(state, action) {
 
     const stakes = state.stakes;
     const input = action.input;
@@ -168,27 +177,26 @@ function Vote(state, action) {
     const votes = state.votes;
     const numberOfVotes = state.numberOfVotes;
 
-    const voteId = input.voteId;
+     const voteId = input.voteId;
     const userVote = input.userVote;
    
-    
     if(userVote !== "true" && userVote !== "false"){
-        throw new ContractError('Invalid value for "user vote". Must be true or false');
+        throw new ContractError$1('Invalid value for "user vote". Must be true or false');
 
     }
-   // example: you need more than 500KOI to vote
+  
    if(!(caller in stakes)){
 
-    throw new ContractError('caller hasnt staked');
+    throw new ContractError$1('caller hasnt staked');
    }
     
     
 
     if (!Number.isInteger(voteId)) {
-        throw new ContractError('Invalid value for "voting id". Must be an integer');
+        throw new ContractError$1('Invalid value for "voting id". Must be an integer');
     }
     if (voteId > numberOfVotes) {
-        throw new ContractError('voteId doesnt exist');
+        throw new ContractError$1('voteId doesnt exist');
 
     }
 
@@ -201,11 +209,11 @@ function Vote(state, action) {
     const voters = vote.voters;
     if(stakes[caller] < vote.stakeAmount){
 
-        throw new ContractError('staked amount is less than 500');
+        throw new ContractError$1('staked amount is less than 500');
    }
 
     if(voters.includes(caller)){
-        throw new ContractError('caller has alreday voted in this evet');
+        throw new ContractError$1('caller has alreday voted in this evet');
        
     }
 
@@ -227,7 +235,7 @@ function Vote(state, action) {
   return {state};
  
 
-}
+};
 
 function UpdateTrafficLog(state, action) {
    // const trafficLogs = state.trafficLogs;
@@ -303,7 +311,7 @@ function handle(state, action) {
     case 'mint':
       return Mint(state, action);
     case 'vote':
-       return Vote(state, action);
+       return Vote.Vote(state, action);
      case 'UpdateTrafficLog':
        return UpdateTrafficLog(state, action);
        default:
@@ -311,4 +319,4 @@ function handle(state, action) {
   }
 }
 
-
+exports.handle = handle;
