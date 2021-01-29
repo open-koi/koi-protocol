@@ -10,9 +10,9 @@ const arweave = Arweave.init({
     logging: false,
 });
 
-const wallet = JSON.parse(fs.readFileSync('.arweave.creds.json'));
-const src = fs.readFileSync('dist/Amplify.js');
-const state = fs.readFileSync('dist/Amplify.json');
+const wallet = JSON.parse(fs.readFileSync("/media/al/files/koi/Arweave/sec2.json"));
+const src = fs.readFileSync('dist/koi.js');
+const state = fs.readFileSync('dist/koi.json');
 
 async function Deploy() {
     const id = await smartweave.createContract(arweave, wallet, src, state);

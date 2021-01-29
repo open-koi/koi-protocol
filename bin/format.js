@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const CONTRACT_PATH = path.resolve(__dirname, '../dist/Amplify.js')
+const CONTRACT_PATH = path.resolve(__dirname, '../dist/koi.js')
 
 trim(CONTRACT_PATH)
 

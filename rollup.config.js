@@ -4,9 +4,9 @@ import json from '@rollup/plugin-json';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 export default [{
-  input: 'src/Amplify.js',
+  input: 'src/Koi.js',
   output: {
-    file: 'dist/Amplify.js',
+    file: 'dist/koi.js',
     format: 'cjs'
   },
   plugins: [
