@@ -1,14 +1,4 @@
-class ContractError {
-    constructor (prop) {
-        console.log('New Contract Error ', prop);
-    }
-} 
-
-
-
-
-
-module.exports = function Stake(state, action) {
+export function Stake(state, action) {
     const balances = state.balances;
     const stakes = state.stakes;
     const stakeReleaseDate = state.stakeReleaseDate;

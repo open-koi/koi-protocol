@@ -1,15 +1,4 @@
-class ContractError {
-    constructor (prop) {
-        console.log('New Contract Error ', prop);
-    }
-
-} 
-
-
-
-
-
-module.exports = function UpdateTrafficLog(state, action) {
+export function UpdateTrafficLog(state, action) {
    // const trafficLogs = state.trafficLogs;
     const lastUpdatedTime = state.lastUpadatedTrafficlog;
     const numberOfVotes = state.numberOfVotes;
