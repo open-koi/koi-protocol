@@ -161,22 +161,20 @@ function Mint(state, action) {
 
 function Vote(state, action) {
 
-
     const stakes = state.stakes;
     const input = action.input;
     const caller = action.caller;
     const votes = state.votes;
     const numberOfVotes = state.numberOfVotes;
 
-    const voteId = input.voteId;
+     const voteId = input.voteId;
     const userVote = input.userVote;
    
-    
     if(userVote !== "true" && userVote !== "false"){
         throw new ContractError('Invalid value for "user vote". Must be true or false');
 
     }
-   // example: you need more than 500KOI to vote
+  
    if(!(caller in stakes)){
 
     throw new ContractError('caller hasnt staked');
