@@ -6,62 +6,41 @@ export function BatchAction (state, action) {
     const votes = state.votes;
     const validBundlers = state.validBundlers;
 
-    const voteId = input.voteId;
-    const userVote = input.userVote
-   
-    if(userVote !== "true" && userVote !== "false"){
-        throw new ContractError('Invalid value for "user vote". Must be true or false');
+    const batchTxId = action.input.batchFile;
 
+    if( !validBundlers.includes(action.caller) ){
+        throw new ContractError('Only elected bundlers can write batch actions.');
     }
   
-   if(!(caller in stakes)){
-
-    throw new ContractError('caller hasnt staked');
-   }
-    
-    
-
-    if (!Number.isInteger(voteId)) {
-        throw new ContractError('Invalid value for "voting id". Must be an integer');
-    }
-    if (voteId > numberOfVotes) {
-        throw new ContractError('voteId doesnt exist');
-
+    // bundlers must stake
+    if(!(caller in stakes)){
+        throw new ContractError('caller hasnt staked');
     }
 
-      
-    
-    
-    
-    const vote = votes.find(vo => vo.id === voteId);
-
-    const voters = vote.voters;
-    if(stakes[caller] < vote.stakeAmount){
-
-        throw new ContractError('staked amount is less than 500');
-   }
-
-    if(voters.includes(caller)){
-        throw new ContractError('caller has alreday voted in this evet');
-       
+    // make sure the bundler has a minimum stake amount TODO: voting on this is needed
+    if(stakes[caller] < state.minBundlerStake ){
+        throw new ContractError('You must stake at least', state.minBundlerStake, ' submit a vote to lower this number.');
     }
 
-    if(userVote === 'true'){
+    // TODO - check stake expiry and ensure it is longer than 14 days
 
-        vote['yays'] += 1;
-        voters.push(caller);
+    // retrieve the batch file 
+	let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true })
 
+    // if everything passes the sniff test, begin executing each batch in the batch items
+    let newState = state // we will populate newState with the updated system as we execute each action
+    for ( item in batch ) {
+        if ( verifySignature( item.signature, item.senderAddress ) {
+            // this doesn't work but it would be ideal to do it this way:
+            newState = await smartweave.interactWriteDryRun(arweave, arweaveWallet, this.address, item, newState)
+
+        } 
     }
-
-    if(userVote === 'false'){
-
-        vote['nays'] += 1;
-        voters.push(caller);
-
-    }
-
     
-  return {state};
+    // finally, update the state from the temp file
+    state = newState
+
+    return {state};
  
 
 }
