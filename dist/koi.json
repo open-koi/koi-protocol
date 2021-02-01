@@ -8,7 +8,7 @@
   "stakes": {},
   "stakeReleaseDate":{},
   "gateways": {},
-  "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" ],
+  "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
   "votes": [{ 
     "id":0,
     "type": "trafficLogs",

@@ -1,4 +1,14 @@
-export function BatchAction (state, action) {
+class ContractError {
+    constructor (prop) {
+        console.log('New Contract Error ', prop);
+    }
+} 
+
+
+
+
+
+module.exports =  function BatchAction (state, action) {
 
     const stakes = state.stakes;
     const input = action.input;
@@ -25,20 +35,39 @@ export function BatchAction (state, action) {
     // TODO - check stake expiry and ensure it is longer than 14 days
 
     // retrieve the batch file 
-	let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true })
+	let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
 
     // if everything passes the sniff test, begin executing each batch in the batch items
-    let newState = state // we will populate newState with the updated system as we execute each action
-    for ( item in batch ) {
-        if ( verifySignature( item.signature, item.senderAddress ) {
-            // this doesn't work but it would be ideal to do it this way:
-            newState = await smartweave.interactWriteDryRun(arweave, arweaveWallet, this.address, item, newState)
+    //let newState = state // we will populate newState with the updated system as we execute each action
+    
+    const vote = votes.find(vo => vo.id === batch[0].voetId);
 
+    const voters = vote.voters;
+    for ( item in batch ) {
+        if (verifySignature(item.signature, item.senderAddress)){
+            // this doesn't work but it would be ideal to do it this way:
+           // newState = await smartweave.interactWriteDryRun(arweave, arweaveWallet, this.address, item, newState);
+           
+           
+                    if(item.userVote === 'true'){
+
+                            vote['yays'] += 1;
+                            voters.push(item.senderAddress);
+                    
+                        }
+                    
+                        if(item.userVote === 'false'){
+                    
+                            vote['nays'] += 1;
+                            voters.push(item.senderAddress);
+                    
+                        }
+    
         } 
     }
     
     // finally, update the state from the temp file
-    state = newState
+    //state = newState
 
     return {state};
  
