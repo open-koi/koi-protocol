@@ -51,26 +51,27 @@ async function submitVote(){
         
        // const wallet = JSON.parse(fs.readFileSync(''));
       
-       let item = await arBundles.createData({ data: 'somessage'}, keywallet);
+       //let item = await arBundles.createData({ data: 'somessage'}, keywallet);
 
-       console.log(item);
+       //console.log(item);
 
-       let data = await arBundles.sign(item, keywallet);
+       //let data = await arBundles.sign(item, keywallet);
        
-       console.log(data);
+       //console.log(data);
        let datas = [];
-       datas.push(data)
+       //datas.push(data)
 
-       const myBundle = await arBundles.bundleData(datas);
+       //const myBundle = await arBundles.bundleData(datas);
        
        
-       console.log(myBundle);
-       var myJSON = JSON.stringify(myBundle);
+       //console.log(myBundle);
+       let vote = {"vote":{"function":"vote","voteId":1,"userVote":"false"},"senderAddress":"W044ic-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc","signature":"PsrpuxxOoZSFVC1zneEvd_4qQuyMeWqp8dKEmRGGB86JQsASKs4erwl6gqCBcucndUhBWWRNZhleaFkn9kl3vjFMuys8RDmEDkJPqLvzjg"};
+       var myJSON = JSON.stringify(vote);
        console.log(myJSON);
       
          // create transaction
       const myTx = await arweave.createTransaction({ data: myJSON }, keywallet);
-     
+      console.log(myTx);
        //myTx.addTag('Bundle-Format', 'json');
 
        // sign and post transaction 
