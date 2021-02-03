@@ -1,6 +1,4 @@
-const balanceMoch = {
-    "test1234": 500
-}
+
 
 
 const STATE = {
@@ -10,12 +8,14 @@ const STATE = {
       "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000000,
       "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
     },
-    "stakes": {},
+    "stakes": {
+      "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000000,
+    },
     "stakeReleaseDate":{},
     "gateways": {},
     "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
     "votes": [{ 
-      "id":0,
+      "id":1,
       "type": "trafficLogs",
       "status":"active",
       "voters": [],
@@ -50,14 +50,15 @@ async function testBatchAction() {
   // test 3 - write to arweave
   var action = {
       input : {
-          "qty" : 200
+          "batchFile":'KznQBSG-PRPwygFt0E_LfB3hdlqsdmz_O5Q62Nx2rK8'
           
       },
-      caller : "test1234"
+      caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
   }
-  var batching = batchAction(STATE, action)
+  var batching = await batchAction(STATE, action)
 
   console.log('result', batching)
+  console.log('result', batching.state.votes)
  
 
   if ( typeof(batching) === "undefined" || batching === null ) {

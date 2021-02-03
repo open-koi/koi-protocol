@@ -1,14 +1,4 @@
-class ContractError {
-    constructor (prop) {
-        console.log('New Contract Error ', prop);
-    }
-} 
-
-
-
-
-
-module.exports =  function BatchAction (state, action) {
+export async function BatchAction (state, action) {
 
     const stakes = state.stakes;
     const input = action.input;
@@ -35,36 +25,59 @@ module.exports =  function BatchAction (state, action) {
     // TODO - check stake expiry and ensure it is longer than 14 days
 
     // retrieve the batch file 
-	let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
+   // console.log('passed......');
+    let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
+   let line = batch.split('\r\n');
+   //console.log('passed.........');
+   // console.log(batch);
+    //console.log(line);
+   // console.log(line[1]);
+    //var obj = JSON.parse(line[0]);
+   // console.log(obj.vote.voteId);
+    let votesArraya = []
+    line.forEach(element => {
+        var ob = JSON.parse(element);
+        votesArraya.push(ob);
+         
+    });
+    //console.log(votesArraya);
 
     // if everything passes the sniff test, begin executing each batch in the batch items
     //let newState = state // we will populate newState with the updated system as we execute each action
-    
-    const vote = votes.find(vo => vo.id === batch[0].voetId);
-
+    // assume all vote has the same vote.id
+    const vote = votes.find(vo => vo.id === votesArraya[0].vote.voteId);
+    //console.log('passing........1');
+    //console.log(vote);
     const voters = vote.voters;
-    for ( item in batch ) {
-        if (verifySignature(item.signature, item.senderAddress)){
-            // this doesn't work but it would be ideal to do it this way:
-           // newState = await smartweave.interactWriteDryRun(arweave, arweaveWallet, this.address, item, newState);
-           
-           
-                    if(item.userVote === 'true'){
+   // console.log('passing........2');
+    //let item;
+    votesArraya.forEach(element => {
+        if(element.vote.userVote === 'true'){
 
-                            vote['yays'] += 1;
-                            voters.push(item.senderAddress);
-                    
-                        }
-                    
-                        if(item.userVote === 'false'){
-                    
-                            vote['nays'] += 1;
-                            voters.push(item.senderAddress);
-                    
-                        }
+            vote['yays'] += 1;
+            voters.push(element.senderAddress);
     
-        } 
-    }
+        }
+    
+        if(element.vote.userVote === 'false'){
+    
+            vote['nays'] += 1;
+            voters.push(element.senderAddress);
+    
+        }
+
+
+        
+
+    });
+
+    // for (item in votesArraya) {
+        
+    //     //if (verifySignature(item.signature, item.senderAddress)){
+    //         // this doesn't work but it would be ideal to do it this way:
+    //        // newState = await smartweave.interactWriteDryRun(arweave, arweaveWallet, this.address, item, newState);
+                        
+    // }
     
     // finally, update the state from the temp file
     //state = newState
