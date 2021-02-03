@@ -396,7 +396,7 @@ async function handle(state, action) {
      case 'UpdateTrafficLog':
        return UpdateTrafficLog(state, action);
        default:
-      throw new ContractError(`Invalid function: "${action.input.function}"`)
+      throw new ContractError(`Invalid function: "${action.input.function}"`);
   }
 }
 
