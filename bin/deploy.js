@@ -14,8 +14,8 @@ const keyW = { "kty": "RSA", "n": "r5lY-xcJVXBT2kRheAxMBWK5oauRaK44ksJBdOZ1hvOT3
 
 
 const wallet = JSON.parse(fs.readFileSync('dist/keywallet.json'));
-const src = fs.readFileSync('dist/koi.js');
-const state = fs.readFileSync('dist/koi.json');
+const src = fs.readFileSync('dist/Koi.js');
+const state = fs.readFileSync('dist/Koi.json');
 
 async function Deploy() {
     const id = await smartweave.createContract(arweave, wallet, src, state);
