@@ -2,13 +2,18 @@
   "ticker": "KOI",
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "balances": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
   },
-  "stakes": {},
+  "stakes": {
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
+  },
   "stakeReleaseDate":{},
   "gateways": {},
-  "votes": [{
-    "id":0,
+  "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
+  "votes": [{ 
+    "id":1,
     "type": "trafficLogs",
     "status":"active",
     "voters": [],

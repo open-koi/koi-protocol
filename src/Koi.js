@@ -6,8 +6,9 @@ import { Withdraw } from './Withdraw';
 import { Mint } from './Mint';
 import { Vote } from './Vote';
 import { UpdateTrafficLog } from './updateTrafficLog';
+import { BatchAction } from './BatchAction';
 
-export function handle(state, action) {
+export async function handle(state, action) {
   switch (action.input.function) {
     case 'transfer':
       return Transfer(state, action);
@@ -21,6 +22,8 @@ export function handle(state, action) {
       return Mint(state, action);
     case 'vote':
        return Vote(state, action);
+    case 'batchAction':
+       return await BatchAction(state, action);
      case 'UpdateTrafficLog':
        return UpdateTrafficLog(state, action);
        default:

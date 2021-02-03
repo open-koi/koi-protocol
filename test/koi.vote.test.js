@@ -10,8 +10,6 @@ const voteMock = {
    
   }
 
-  
-
 const STATE = {
     "ticker": "KOI",
     "owner": "dow7mxks0QGGV7zOmHEE1OOi5LyfHpcrDH9n0UPw9eY",
@@ -30,14 +28,12 @@ const STATE = {
       "stakeAmount":200,
       "yays": 0,
       "nays": 0
-   
-  }],
-    "numberOfVotes":0,
-    "registeredRecord":{},
-    "trafficLogs":{},
-    "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
-    
-  }
+    }],
+      "numberOfVotes":0,
+      "registeredRecord":{},
+      "trafficLogs":{},
+      "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
+    }
 
 const vote       = require('../src/Vote.js');
 
