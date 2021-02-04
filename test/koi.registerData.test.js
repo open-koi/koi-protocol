@@ -1,6 +1,3 @@
-
-
-
 const STATE = {
     "ticker": "KOI",
     "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
@@ -15,7 +12,7 @@ const STATE = {
     "gateways": {},
     "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
     "votes": [{ 
-      "id":1,
+      "id":0,
       "type": "trafficLogs",
       "status":"active",
       "voters": [],
@@ -31,14 +28,14 @@ const STATE = {
     
   }
 
-const batchAction       = require('../src/BatchAction.js');
+const resgisterData    = require('../src/RegisterData.js');
 
 start();
 
 async function start () {
 
   try {
-      await testBatchAction()
+      await testRegisterData()
   
   } catch ( err ) {
       throw Error (err)
@@ -46,7 +43,7 @@ async function start () {
 
 }
 
-async function testBatchAction() {
+async function testRegisterData() {
   // test 3 - write to arweave
   var action = {
       input : {
@@ -55,13 +52,13 @@ async function testBatchAction() {
       },
       caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
   }
-  var batching = await batchAction(STATE, action)
+  var resgistering = await resgisterData(STATE, action)
 
-  console.log('result', batching)
-  console.log('result', batching.state.votes)
+  console.log('result', resgistering)
+  console.log('result', resgistering.state)
  
 
-  if ( typeof(batching) === "undefined" || batching === null ) {
+  if ( typeof(resgistering) === "undefined" || resgistering === null ) {
       throw Error ('Failed while attempting to stake')
   }
 

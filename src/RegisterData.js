@@ -1,20 +1,38 @@
-export async function RegisterData(state, action) {
-    const registeredRecords = state.registeredRecords;
+class ContractError {
+    constructor (prop) {
+        console.log('New Contract Error ', prop);
+    }
+} 
+
+
+
+
+
+module.exports = function RegisterData(state, action) {
+    const registeredRecords = state.registeredRecord;
     const input = action.input;
     const caller = action.caller;
+    const balances = state.balances;
+    
+
 
     const txId = input.txId;
-
+    
+    // check is txid is valid 
     if (!txId) {
         throw new ContractError('No txid specified');
     }
     
-    const transaction =  await SmartWeave.unsafeClient.transactions.get(txId);
-    
-    if(!transaction){
-        throw new ContractError('Tx doesnt exist on Arweave');
-    }
 
+    if(balances[caller] < 1){
+
+        throw new ContractError('you need min 1 KOI to register data');
+
+    }
+    
+    
+    // burn 1 koi per registeration 
+    balances[caller] -= 1;
     registeredRecords[txId] = caller;
 
     return { state }

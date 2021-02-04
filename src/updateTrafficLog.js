@@ -1,22 +1,58 @@
-export function UpdateTrafficLog(state, action) {
+const Arweave = require ('arweave/node')
+
+
+const arweave = Arweave.init({
+    
+    host: 'arweave.net',// Hostname or IP address for a Arweave host
+    port: 443,          // Port
+    protocol: 'https',  // Network protocol http or https
+    timeout: 10000
+
+});
+
+
+class ContractError {
+    constructor (prop) {
+        console.log('New Contract Error ', prop);
+    }
+} 
+
+
+
+
+
+module.exports = async function UpdateTrafficLog(state, action) {
+    console.log('passing....1');
    // const trafficLogs = state.trafficLogs;
     const lastUpdatedTime = state.lastUpadatedTrafficlog;
     const numberOfVotes = state.numberOfVotes;
     const votes = state.votes;
+
+
     const input = action.input;
-    const caller = action.caller;
+    const batchTxId = input.batchTxId;
+    
+
 
      let dateDiff = _dateDiff();
 
     if(dateDiff < 24){
          
-        throw new ContractError('trafficlog is less 24 hours old, It cannot be updated');
+        throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
     }
 
     if (dateDiff > 24) {
-
-        
-        state.trafficLogs =  input.newTrafficLogs;
+         console.log('passing....');
+        let batch = await arweave.transactions.getData(batchTxId, { decode: true, string: true });
+        console.log(batch);
+        let logs = batch.split('\r\n');
+        let logsArraya = []
+    logs.forEach(element => {
+        var ob = JSON.parse(element);
+        logsArraya.push(ob);
+         
+    });
+        state.trafficLogs =  logsArraya;
        
         state.lastUpadatedTrafficlog = new Date().toString();
         
@@ -35,7 +71,7 @@ export function UpdateTrafficLog(state, action) {
      
           };
           console.log("date pass......1");
-       votes[caller] = vote;
+       votes.push(vote);
        state.numberOfVotes += 1;
 
         

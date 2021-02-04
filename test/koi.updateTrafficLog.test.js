@@ -1,6 +1,3 @@
-
-
-
 const STATE = {
     "ticker": "KOI",
     "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
@@ -15,7 +12,7 @@ const STATE = {
     "gateways": {},
     "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
     "votes": [{ 
-      "id":1,
+      "id":0,
       "type": "trafficLogs",
       "status":"active",
       "voters": [],
@@ -31,14 +28,14 @@ const STATE = {
     
   }
 
-const batchAction       = require('../src/BatchAction.js');
+const  UpdatetrafficLog   = require('../src/updateTrafficLog.js');
 
 start();
 
 async function start () {
 
   try {
-      await testBatchAction()
+      await testUpdatetrafficLog()
   
   } catch ( err ) {
       throw Error (err)
@@ -46,23 +43,23 @@ async function start () {
 
 }
 
-async function testBatchAction() {
-  // test 3 - write to arweave
+async function testUpdatetrafficLog() {
+  
   var action = {
-      input : {
-          "txId":'KznQBSG-PRPwygFt0E_LfB3hdlqsdmz_O5Q62Nx2rK8'
-          
-      },
-      caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
-  }
-  var batching = await batchAction(STATE, action)
+    input : {
+        "batchTxId": 'cMvQyn19sQRYf_dIZQJxJ-DyGpuLyKV0vGxQUS70cSo'
+        
+    },
+    caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
+}
+  var updating = await UpdatetrafficLog(STATE, action)
 
-  console.log('result', batching)
-  console.log('result', batching.state.votes)
+  //console.log('result', updating)
+  console.log('result', updating.state)
  
 
-  if ( typeof(batching) === "undefined" || batching === null ) {
-      throw Error ('Failed while attempting to stake')
+  if ( typeof(updating) === "undefined" || updating === null ) {
+      throw Error ('Failed while attempting to update')
   }
 
 }
