@@ -26,6 +26,7 @@
   "registeredRecord":{
     "abc-def-123": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
   },
+  "minBundlerStake": 100,
   "trafficLogs":[],
   "rewardHistory":[],
   "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
