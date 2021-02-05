@@ -40,7 +40,9 @@ const STATE = {
   { ip: '602749270', ArId: 'jshdhsdjdjj38828828' },
   { ip: '127001710', ArId: 'jshdhsdjdjj38828828' } ],
   "rewardHistory":[],
-  "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
+  "lastUpadatedTrafficlog":"January 25, 2021 23:15:30",
+  "lastDistributionTime": "January 25, 2021 23:15:30",
+  "rewardDistributed": false
   
 }
 
@@ -64,7 +66,7 @@ async function testDistributeRewards() {
   // test 3 - write to arweave
   var action = {
       input : {
-          "txId":'KznQBSG-PRPwygFt0E_LfB3hdlqsdmz_O5Q62Nx2rK8'
+          
           
       },
       caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
@@ -72,7 +74,7 @@ async function testDistributeRewards() {
   var batching = await distributeRewards(STATE, action)
 
   console.log('result', batching)
-  console.log('result', batching.state.votes)
+  console.log('result', batching.state.rewardHistory)
  
 
   if ( typeof(batching) === "undefined" || batching === null ) {

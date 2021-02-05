@@ -18,6 +18,7 @@ module.exports = function DistributeRewards (state, action) {
     const registeredRecord = state.registeredRecord;
     const rewardHistory = state.rewardHistory;
     const balances = state.balances;
+    const lastDistributionTime = state.lastDistributionTime;
 
     
    if( !validBundlers.includes(action.caller) ){
@@ -38,6 +39,20 @@ module.exports = function DistributeRewards (state, action) {
     let totalDataRe = 0;
 
   // match traffic log with registered data and create a summary log
+
+  let dateDiff = _dateDiff();
+
+    if(dateDiff < 24){
+         
+        throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
+    }
+    
+
+    if(state.rewardDistributed === true){
+         
+        throw new ContractError('it is already distributed, check the rewards history ');
+    }
+
     trafficLogs.forEach(element => {
         if(element.ArId in registeredRecord){
             totalDataRe += 1;
@@ -64,6 +79,10 @@ module.exports = function DistributeRewards (state, action) {
        balances[registeredRecord[log]] += logSummary[log]*rewardPerAttention;
 
     }
+        // set false for next distribution 
+        //console.log('passingg........');
+       state.rewardDistributed = false;
+      state.lastDistributionTime = new Date().toString();
     // report of the distrubtion 
     let distributionReport = {
         'logsSummary':logSummary,
@@ -75,7 +94,22 @@ module.exports = function DistributeRewards (state, action) {
       // update the report in state
       rewardHistory.push(distributionReport);
 
+      //console.log('passingg........');
+      
+
        return {state};
+
+
+       function _dateDiff (){
+     
+       
+        let lastUpdate = new Date(lastDistributionTime);
+        let nowDate = new Date();
+        let dateDiff =  nowDate.getTime() - lastUpdate.getTime();
+       let hours = Math.round(dateDiff / (1000*60*60));
+        //console.log(hours);
+        return hours;
+    }
  
 
 }

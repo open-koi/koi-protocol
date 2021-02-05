@@ -29,6 +29,8 @@
   "minBundlerStake": 100,
   "trafficLogs":[],
   "rewardHistory":[],
-  "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
+  "lastUpadatedTrafficlog":"January 25, 2021 23:15:30",
+  "lastDistributionTime": "January 25, 2021 23:15:30",
+  "rewardDistributed": false
   
 }

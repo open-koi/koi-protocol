@@ -41,10 +41,18 @@ module.exports = async function UpdateTrafficLog(state, action) {
         throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
     }
 
-    if (dateDiff > 24) {
-         console.log('passing....');
+    if(state.rewardDistributed === false){
+     
+        throw new ContractError('Rewards need to be distributed before updating ');
+    }
+
+     
+        // console.log('passing....');
         let batch = await arweave.transactions.getData(batchTxId, { decode: true, string: true });
-        console.log(batch);
+        
+        
+
+       // console.log(batch);
         let logs = batch.split('\r\n');
         let logsArraya = []
     logs.forEach(element => {
@@ -70,12 +78,14 @@ module.exports = async function UpdateTrafficLog(state, action) {
             "nays": 0
      
           };
-          console.log("date pass......1");
+          //console.log("date pass......1");
        votes.push(vote);
        state.numberOfVotes += 1;
+     
+     // set false so the rewards for this trafficlogs can be distributed 
 
-        
-    }
+       state.rewardDistributed = false;
+    
 
     function _dateDiff (){
      
@@ -84,7 +94,7 @@ module.exports = async function UpdateTrafficLog(state, action) {
         let nowDate = new Date();
         let dateDiff =  nowDate.getTime() - lastUpdate.getTime();
        let hours = Math.round(dateDiff / (1000*60*60));
-        console.log(hours);
+       // console.log(hours);
         return hours;
     }
     

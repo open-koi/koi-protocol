@@ -1,4 +1,28 @@
-export async function BatchAction (state, action) {
+const Arweave = require ('arweave/node')
+
+
+const arweave = Arweave.init({
+    
+    host: 'arweave.net',// Hostname or IP address for a Arweave host
+    port: 443,          // Port
+    protocol: 'https',  // Network protocol http or https
+    timeout: 2000
+
+});
+
+
+
+class ContractError {
+    constructor (prop) {
+        console.log('New Contract Error ', prop);
+    }
+} 
+
+
+
+
+
+module.exports = async function BatchAction (state, action) {
 
     const stakes = state.stakes;
     const input = action.input;
@@ -26,7 +50,7 @@ export async function BatchAction (state, action) {
 
     // retrieve the batch file 
    // console.log('passed......');
-    let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
+    let batch = await arweave.transactions.getData(batchTxId, { decode: true, string: true });
    let line = batch.split('\r\n');
    //console.log('passed.........');
    // console.log(batch);
