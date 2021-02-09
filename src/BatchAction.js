@@ -1,28 +1,4 @@
-const Arweave = require ('arweave/node')
-
-
-const arweave = Arweave.init({
-    
-    host: 'arweave.net',// Hostname or IP address for a Arweave host
-    port: 443,          // Port
-    protocol: 'https',  // Network protocol http or https
-    timeout: 2000
-
-});
-
-
-
-class ContractError {
-    constructor (prop) {
-        console.log('New Contract Error ', prop);
-    }
-} 
-
-
-
-
-
-module.exports = async function BatchAction (state, action) {
+export async function BatchAction (state, action) {
 
     const stakes = state.stakes;
     const input = action.input;
@@ -31,6 +7,15 @@ module.exports = async function BatchAction (state, action) {
     const validBundlers = state.validBundlers;
 
     const batchTxId = action.input.batchFile;
+
+    if (!batchTxId) {
+        throw new ContractError('No txId specified');
+    }
+    
+    if (!typeof value === 'string') {
+        throw new ContractError('txId should be string');
+    }
+
 
     if( !validBundlers.includes(action.caller) ){
         throw new ContractError('Only elected bundlers can write batch actions.');
@@ -50,7 +35,7 @@ module.exports = async function BatchAction (state, action) {
 
     // retrieve the batch file 
    // console.log('passed......');
-    let batch = await arweave.transactions.getData(batchTxId, { decode: true, string: true });
+    let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
    let line = batch.split('\r\n');
    //console.log('passed.........');
    // console.log(batch);

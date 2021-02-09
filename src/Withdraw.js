@@ -29,12 +29,8 @@ export function Withdraw(state, action) {
         throw new ContractError('Stake is not ready to be released');
     }
     stakes[caller] -= qty;
+    balances[caller] += qty;
     
-    if (balances[caller]) {
-        balances[caller] += qty;
-    } else {
-        balances[caller] = qty;
-    }
 
     return { state }
 }

@@ -54,6 +54,35 @@ function Account(state, action) {
     return { result: { target, ticker, balance, stake, gateway } }
 }
 
+function Gateway(state, action) {
+    const gateways = state.gateways;
+    const input = action.input;
+    const caller = action.caller;
+    const balances = state.balances;
+
+    const gateway = input.gateway;
+
+    if (!gateway) {
+        throw new ContractError('No gateway specified');
+    }
+
+    if (!gateway.match(/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/gi)) {
+        throw new ContractError('The gateway must be a valid URL or IP');
+    }
+    if(balances[caller] < 1){
+
+        throw new ContractError('you need min 1 KOI to register data');
+
+    }
+    
+    
+    // burn 1 koi per registeration 
+    balances[caller] -= 1;
+    gateways[caller] = gateway;
+
+    return { state }
+}
+
 function Stake(state, action) {
     const balances = state.balances;
     const stakes = state.stakes;
@@ -227,25 +256,46 @@ function Vote(state, action) {
 
 }
 
-function UpdateTrafficLog(state, action) {
+async function UpdateTrafficLog(state, action) {
+    console.log('passing....1');
    // const trafficLogs = state.trafficLogs;
     const lastUpdatedTime = state.lastUpadatedTrafficlog;
     const numberOfVotes = state.numberOfVotes;
     const votes = state.votes;
+
+
     const input = action.input;
-    const caller = action.caller;
+    const batchTxId = input.batchTxId;
+    
+
 
      let dateDiff = _dateDiff();
 
     if(dateDiff < 24){
          
-        throw new ContractError('trafficlog is less 24 hours old, It cannot be updated');
+        throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
     }
 
-    if (dateDiff > 24) {
+    if(state.rewardDistributed === false){
+     
+        throw new ContractError('Rewards need to be distributed before updating ');
+    }
 
+     
+        // console.log('passing....');
+        let batch = SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
         
-        state.trafficLogs =  input.newTrafficLogs;
+        
+
+       // console.log(batch);
+        let logs = batch.split('\r\n');
+        let logsArraya = [];
+    logs.forEach(element => {
+        var ob = JSON.parse(element);
+        logsArraya.push(ob);
+         
+    });
+        state.trafficLogs =  logsArraya;
        
         state.lastUpadatedTrafficlog = new Date().toString();
         
@@ -263,12 +313,14 @@ function UpdateTrafficLog(state, action) {
             "nays": 0
      
           };
-          console.log("date pass......1");
-       votes[caller] = vote;
+          //console.log("date pass......1");
+       votes.push(vote);
        state.numberOfVotes += 1;
+     
+     // set false so the rewards for this trafficlogs can be distributed 
 
-        
-    }
+       state.rewardDistributed = false;
+    
 
     function _dateDiff (){
      
@@ -277,7 +329,7 @@ function UpdateTrafficLog(state, action) {
         let nowDate = new Date();
         let dateDiff =  nowDate.getTime() - lastUpdate.getTime();
        let hours = Math.round(dateDiff / (1000*60*60));
-        console.log(hours);
+       // console.log(hours);
         return hours;
     }
     
@@ -377,6 +429,112 @@ async function BatchAction (state, action) {
 
 }
 
+function DistributeRewards (state, action) {
+
+    const stakes = state.stakes;
+    action.input;
+    const caller = action.caller;
+    const trafficLogs = state.trafficLogs;
+    const validBundlers = state.validBundlers;
+    const registeredRecord = state.registeredRecord;
+    const rewardHistory = state.rewardHistory;
+    const balances = state.balances;
+    const lastDistributionTime = state.lastDistributionTime;
+
+    
+   if( !validBundlers.includes(action.caller) ){
+        throw new ContractError('Only elected bundlers can write batch actions.');
+    }
+  
+    // bundlers must stake
+    if(!(caller in stakes)){
+        throw new ContractError('caller hasnt staked');
+    }
+
+    // make sure the bundler has a minimum stake amount TODO: voting on this is needed
+    if(stakes[caller] < state.minBundlerStake ){
+        throw new ContractError('You must stake at least', state.minBundlerStake, '  to distribute rewards.');
+    }
+
+    let logSummary = {};
+    let totalDataRe = 0;
+
+  // match traffic log with registered data and create a summary log
+
+  let dateDiff = _dateDiff();
+
+    if(dateDiff < 24){
+         
+        throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
+    }
+    
+
+    if(state.rewardDistributed === true){
+         
+        throw new ContractError('it is already distributed, check the rewards history ');
+    }
+
+    trafficLogs.forEach(element => {
+        if(element.ArId in registeredRecord){
+            totalDataRe += 1;
+
+            if(element.ArId in logSummary){
+                logSummary[element.ArId] += 1;
+            }
+    
+            else {
+                logSummary[element.ArId] = 1;
+            }
+
+      }
+});
+    
+  
+  
+  //let rewardPerView = 1000/trafficLogs.length - 1;
+  // koi per attention 
+  let rewardPerAttention = 1000/totalDataRe;
+  // pay the winners 
+  for (const log in logSummary) {
+   
+       balances[registeredRecord[log]] += logSummary[log]*rewardPerAttention;
+
+    }
+        // set false for next distribution 
+        //console.log('passingg........');
+       state.rewardDistributed = false;
+      state.lastDistributionTime = new Date().toString();
+    // report of the distrubtion 
+    let distributionReport = {
+        'logsSummary':logSummary,
+        'distributer': caller,
+        'distributionDate': new Date().toString(),
+        'rewardPerAttention': rewardPerAttention
+
+      };
+      // update the report in state
+      rewardHistory.push(distributionReport);
+
+      //console.log('passingg........');
+      
+
+       return {state};
+
+
+       function _dateDiff (){
+     
+       
+        let lastUpdate = new Date(lastDistributionTime);
+        let nowDate = new Date();
+        let dateDiff =  nowDate.getTime() - lastUpdate.getTime();
+       let hours = Math.round(dateDiff / (1000*60*60));
+        //console.log(hours);
+        return hours;
+    }
+ 
+
+}
+
 async function handle(state, action) {
   switch (action.input.function) {
     case 'transfer':
@@ -385,6 +543,8 @@ async function handle(state, action) {
       return Account(state, action);
     case 'stake':
       return Stake(state, action);
+      case 'gateway':
+        return Gateway(state, action);
     case 'withdraw':
       return Withdraw(state, action);
     case 'mint':
@@ -393,10 +553,12 @@ async function handle(state, action) {
        return Vote(state, action);
     case 'batchAction':
        return await BatchAction(state, action);
-     case 'UpdateTrafficLog':
-       return UpdateTrafficLog(state, action);
+    case 'UpdateTrafficLog':
+       return await UpdateTrafficLog(state, action);
+    case 'distributeRewards':
+       return DistributeRewards(state, action);
        default:
-      throw new ContractError(`Invalid function: "${action.input.function}"`);
+      throw new ContractError(`Invalid function: "${action.input.function}"`)
   }
 }
 

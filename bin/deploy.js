@@ -3,7 +3,7 @@ const smartweave = require('smartweave');
 const Arweave = require('arweave');
 
 const arweave = Arweave.init({
-    host: 'arweave.dev',
+    host: 'arweave.net',
     port: 443,
     protocol: 'https',
     timeout: 20000,

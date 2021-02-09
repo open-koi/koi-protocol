@@ -1,27 +1,4 @@
-const Arweave = require ('arweave/node')
-
-
-const arweave = Arweave.init({
-    
-    host: 'arweave.net',// Hostname or IP address for a Arweave host
-    port: 443,          // Port
-    protocol: 'https',  // Network protocol http or https
-    timeout: 10000
-
-});
-
-
-class ContractError {
-    constructor (prop) {
-        console.log('New Contract Error ', prop);
-    }
-} 
-
-
-
-
-
-module.exports = async function UpdateTrafficLog(state, action) {
+export async function UpdateTrafficLog(state, action) {
     console.log('passing....1');
    // const trafficLogs = state.trafficLogs;
     const lastUpdatedTime = state.lastUpadatedTrafficlog;
@@ -43,12 +20,12 @@ module.exports = async function UpdateTrafficLog(state, action) {
 
     if(state.rewardDistributed === false){
      
-        throw new ContractError('Rewards need to be distributed before updating ');
+        throw new ContractError('Rewards need to be distributed before updating');
     }
 
      
         // console.log('passing....');
-        let batch = await arweave.transactions.getData(batchTxId, { decode: true, string: true });
+        let batch = SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
         
         
 
