@@ -1,32 +1,51 @@
+const Arweave = require('arweave');
+
+const arweave = Arweave.init({
+    host: 'arweave.net',
+    port: 443,
+    protocol: 'https',
+    timeout: 20000,
+    logging: false,
+});
+
+
 const STATE = {
-    "ticker": "KOI",
-    "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
-    "balances": {
-      "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000000,
-      "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
-    },
-    "stakes": {
-      "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000000,
-    },
-    "stakeReleaseDate":{},
-    "gateways": {},
-    "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
-    "votes": [{ 
-      "id":0,
-      "type": "trafficLogs",
-      "status":"active",
-      "voters": [],
-      "stakeAmount":200,
-      "yays": 0,
-      "nays": 0
-   
-  }],
-    "numberOfVotes":0,
-    "registeredRecord":{},
-    "trafficLogs":{},
-    "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
-    
-  }
+  "ticker": "KOI",
+  "name":"Koi",
+  "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+  "balances": {
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 8000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
+  },
+  "stakes": {
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
+  },
+  "stakedDate":{},
+  "gateways": {},
+  "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
+  "votes": [{ 
+    "id":0,
+    "type": "trafficLogs",
+    "status":"active",
+    "voters": [],
+    "stakeAmount":200,
+    "yays": 0,
+    "nays": 0
+ 
+}],
+  "numberOfVotes":0,
+  "registeredRecord":{
+    "abc-def-123": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
+  },
+  "minBundlerStake": 100,
+  "trafficLogs":[],
+  "rewardHistory":[],
+  "lastUpadatedTrafficlog":"January 25, 2021 23:15:30",
+  "lastDistributionTime": "January 25, 2021 23:15:30",
+  "rewardDistributed":true
+  
+}
 
 const  UpdatetrafficLog   = require('../src/updateTrafficLog.js');
 

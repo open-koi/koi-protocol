@@ -8,11 +8,16 @@ export function DistributeRewards (state, action) {
     const registeredRecord = state.registeredRecord;
     const rewardHistory = state.rewardHistory;
     const balances = state.balances;
-    const lastDistributionTime = state.lastDistributionTime;
+   
 
+   
+   
+   
+   
+    
     
    if( !validBundlers.includes(action.caller) ){
-        throw new ContractError('Only elected bundlers can write batch actions.');
+        throw new ContractError('Only selected bundlers can write batch actions.');
     }
   
     // bundlers must stake
@@ -25,18 +30,30 @@ export function DistributeRewards (state, action) {
         throw new ContractError('You must stake at least', state.minBundlerStake, '  to distribute rewards.');
     }
 
-    let logSummary = {};
+
+    const diff = SmartWeave.block.height - state.lastUpdatedTrafficlog;
+     
+    if(diff < 5){
+      
+     throw new ContractError('trafficlog is less than 24 hours old, votes from bundler cannt be submited');
+
+    }
+
+    const vote = state.votes.find(vo => vo.id === state.numberOfVotes);
+
+     if(vote.active === true){
+        
+        throw new ContractError('vote has to be closed first');
+           
+      }
+
+
+    const logSummary = {};
     let totalDataRe = 0;
 
   // match traffic log with registered data and create a summary log
 
-  let dateDiff = _dateDiff();
-
-    if(dateDiff < 24){
-         
-        throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
-    }
-    
+  
 
     if(state.rewardDistributed === true){
          
@@ -60,46 +77,36 @@ export function DistributeRewards (state, action) {
     
   
   
-  //let rewardPerView = 1000/trafficLogs.length - 1;
-  // koi per attention 
-  let rewardPerAttention = 1000/totalDataRe;
+  
+  const rewardPerAttention = 1000/totalDataRe;
   // pay the winners 
   for (const log in logSummary) {
    
        balances[registeredRecord[log]] += logSummary[log]*rewardPerAttention;
 
     }
-        // set false for next distribution 
-        //console.log('passingg........');
-       state.rewardDistributed = false;
-      state.lastDistributionTime = new Date().toString();
+        
+       
+      
     // report of the distrubtion 
-    let distributionReport = {
+    const distributionReport = {
         'logsSummary':logSummary,
         'distributer': caller,
-        'distributionDate': new Date().toString(),
+        'distributionBlock': SmartWeave.block.height,
         'rewardPerAttention': rewardPerAttention
 
       };
       // update the report in state
       rewardHistory.push(distributionReport);
+      state.rewardDistributed = true;
 
-      //console.log('passingg........');
+     
       
 
        return {state};
 
 
-       function _dateDiff (){
-     
        
-        let lastUpdate = new Date(lastDistributionTime);
-        let nowDate = new Date();
-        let dateDiff =  nowDate.getTime() - lastUpdate.getTime();
-       let hours = Math.round(dateDiff / (1000*60*60));
-        //console.log(hours);
-        return hours;
-    }
  
 
 }

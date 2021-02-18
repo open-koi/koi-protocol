@@ -1,7 +1,7 @@
 export function Stake(state, action) {
     const balances = state.balances;
     const stakes = state.stakes;
-    const stakeReleaseDate = state.stakeReleaseDate;
+    const stakedDate = state.stakedDate;
     const input = action.input;
 
     const caller = action.caller;
@@ -23,9 +23,8 @@ export function Stake(state, action) {
     }
 
     balances[caller] -= qty;
-    let date = new Date().toString();
-    console.log(date);
-    stakeReleaseDate[caller] = date;
+    
+    state.stakedDate[caller] =  new Date().toString();
     
     if (stakes[caller]) {
         stakes[caller] += qty;

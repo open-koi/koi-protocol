@@ -156,10 +156,7 @@ const STATE = {
   async function testDistributeRewards(state) {
     
     var action = {
-        input : {
-            
-            
-        },
+        input : {},
         caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
     }
     var distributing = await distributeRewards(state, action)

@@ -1,5 +1,6 @@
 {
   "ticker": "KOI",
+  "name":"Koi",
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "balances": {
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 8000,
@@ -9,27 +10,18 @@
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000,
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
   },
-  "stakeReleaseDate":{},
+  "stakedDate":{},
   "gateways": {},
   "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
-  "votes": [{ 
-    "id":1,
-    "type": "trafficLogs",
-    "status":"active",
-    "voters": [],
-    "stakeAmount":200,
-    "yays": 0,
-    "nays": 0
- 
-}],
-  "numberOfVotes":0,
+  "votes": [],
+  "numberOfVotes": -1,
   "registeredRecord":{
-    "abc-def-123": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
+    "abc-def-123": "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc"
   },
   "minBundlerStake": 100,
   "trafficLogs":[],
   "rewardHistory":[],
-  "lastUpadatedTrafficlog":"January 25, 2021 23:15:30",
+  "lastUpdatedTrafficlog": 628836,  
   "lastDistributionTime": "January 25, 2021 23:15:30",
   "rewardDistributed":true
   

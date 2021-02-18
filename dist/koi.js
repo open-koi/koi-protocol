@@ -86,7 +86,7 @@ function Gateway(state, action) {
 function Stake(state, action) {
     const balances = state.balances;
     const stakes = state.stakes;
-    const stakeReleaseDate = state.stakeReleaseDate;
+    state.stakedDate;
     const input = action.input;
 
     const caller = action.caller;
@@ -108,9 +108,8 @@ function Stake(state, action) {
     }
 
     balances[caller] -= qty;
-    let date = new Date().toString();
-    console.log(date);
-    stakeReleaseDate[caller] = date;
+    
+    state.stakedDate[caller] =  new Date().toString();
     
     if (stakes[caller]) {
         stakes[caller] += qty;
@@ -152,12 +151,8 @@ function Withdraw(state, action) {
         throw new ContractError('Stake is not ready to be released');
     }
     stakes[caller] -= qty;
+    balances[caller] += qty;
     
-    if (balances[caller]) {
-        balances[caller] += qty;
-    } else {
-        balances[caller] = qty;
-    }
 
     return { state }
 }
@@ -183,7 +178,13 @@ function Mint(state, action) {
         throw new ContractError('Only the owner can mint new tokens');
     }
 
-    balances[target] += qty;
+    
+
+    if (balances[target]) {
+        balances[target] += qty;
+    } else {
+        balances[target] = qty;
+    }
 
     return { state }
 }
@@ -257,9 +258,8 @@ function Vote(state, action) {
 }
 
 async function UpdateTrafficLog(state, action) {
-    console.log('passing....1');
-   // const trafficLogs = state.trafficLogs;
-    const lastUpdatedTime = state.lastUpadatedTrafficlog;
+   
+    
     const numberOfVotes = state.numberOfVotes;
     const votes = state.votes;
 
@@ -269,71 +269,137 @@ async function UpdateTrafficLog(state, action) {
     
 
 
-     let dateDiff = _dateDiff();
+    
+         const diff = SmartWeave.block.height - state.lastUpdatedTrafficlog;
 
-    if(dateDiff < 24){
-         
-        throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
-    }
+         if(diff < 5){
 
-    if(state.rewardDistributed === false){
+              throw new ContractError('Trafficlog is still fresh. pls vote');
+          
+            }
+    
+    
+    
+    
+                if(state.rewardDistributed === false){
+                
+                    throw new ContractError('Rewards need to be distributed before updating');
+                }
+   
+       
+
      
-        throw new ContractError('Rewards need to be distributed before updating ');
-    }
-
-     
-        // console.log('passing....');
-        let batch = SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
         
+        const batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
         
-
-       // console.log(batch);
-        let logs = batch.split('\r\n');
-        let logsArraya = [];
-    logs.forEach(element => {
-        var ob = JSON.parse(element);
+       
+       
+        const logs = batch.split('\r\n');
+        const logsArraya = [];
+        logs.forEach(element => {
+        const ob = JSON.parse(element);
         logsArraya.push(ob);
          
-    });
-        state.trafficLogs =  logsArraya;
+        });
+        state.trafficLogs = logsArraya;
        
-        state.lastUpadatedTrafficlog = new Date().toString();
+        state.lastUpdatedTrafficlog = SmartWeave.block.height;
         
-        let stakeAmount = input.stakeAmount;
+        const stakeAmount = input.stakeAmount;
        
 
-         let vote = {
+         const vote = {
              
              "id": numberOfVotes + 1,
             "type": "trafficLogs",
-            "status":"active",
+            "active": true,
             "voters": [],
             "stakeAmount":stakeAmount,
             "yays": 0,
             "nays": 0
      
           };
-          //console.log("date pass......1");
+          
        votes.push(vote);
        state.numberOfVotes += 1;
      
-     // set false so the rewards for this trafficlogs can be distributed 
-
+  
        state.rewardDistributed = false;
     
+   
+    
 
-    function _dateDiff (){
+    return { state }
+
+
+}
+
+async function RegisterData(state, action) {
+    const registeredRecords = state.registeredRecord;
+    const input = action.input;
+    const caller = action.caller;
+    const balances = state.balances;
+    
+
+
+    const txId = input.txId;
+    
+    // check is txid is valid 
+    if (!txId) {
+        throw new ContractError('No txid specified');
+    }
+
+    
+    
+
+    if(balances[caller] < 1){
+
+        throw new ContractError('you need min 1 KOI to register data');
+
+    }
+
+
+    let transaction = await SmartWeave.unsafeClient.transactions.get(txId);
+
+    if(!transaction){
+
+        throw new ContractError('Transaction not found');
+    }
+
+
+    let owner = transaction.owner;
+
+    let ownerAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(owner);
+
      
-       
-        let lastUpdate = new Date(lastUpdatedTime);
-        let nowDate = new Date();
-        let dateDiff =  nowDate.getTime() - lastUpdate.getTime();
-       let hours = Math.round(dateDiff / (1000*60*60));
-       // console.log(hours);
-        return hours;
+    if(txId in registeredRecords){
+          
+           if(registeredRecords[txId] === ownerAddress){
+            throw new ContractError('Transaction/content have been registered already under its owner wallet');  
+
+            }else if(ownerAddress === caller){
+                // here content is registered by it owner
+                registeredRecords[txId] = caller;
+                 
+            }else {
+
+                throw new ContractError('Transaction/content have been registered already under someone wallet');
+
+            }
+
+       }else {
+      // you can register on your name till the owner takes from you. 
+        registeredRecords[txId] = caller;
     }
     
     
+    
+    
+
+     // burn 1 koi per registeration 
+    balances[caller] -= 1;
+    
+
 
     return { state }
 
@@ -350,6 +416,38 @@ async function BatchAction (state, action) {
 
     const batchTxId = action.input.batchFile;
 
+    if (!batchTxId) {
+        throw new ContractError('No txId specified');
+    }
+   
+
+    const vote = votes.find(vo => vo.id === state.numberOfVotes);
+
+     if(vote.active === false){
+        
+        throw new ContractError('it is already submmited ;)');
+           
+      }
+  
+    const diff = SmartWeave.block.height - state.lastUpdatedTrafficlog;
+     
+    if(diff < 5){
+      
+     throw new ContractError('trafficlog is less than 24 hours old, votes from bundler cannt be submited');
+
+    }
+
+
+    
+       
+
+
+    
+    if (!typeof value === 'string') {
+        throw new ContractError('txId should be string');
+    }
+
+
     if( !validBundlers.includes(action.caller) ){
         throw new ContractError('Only elected bundlers can write batch actions.');
     }
@@ -363,36 +461,24 @@ async function BatchAction (state, action) {
     if(stakes[caller] < state.minBundlerStake ){
         throw new ContractError('You must stake at least', state.minBundlerStake, ' submit a vote to lower this number.');
     }
+    
 
-    // TODO - check stake expiry and ensure it is longer than 14 days
-
-    // retrieve the batch file 
-   // console.log('passed......');
-    let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
-   let line = batch.split('\r\n');
-   //console.log('passed.........');
-   // console.log(batch);
-    //console.log(line);
-   // console.log(line[1]);
-    //var obj = JSON.parse(line[0]);
-   // console.log(obj.vote.voteId);
-    let votesArraya = [];
+    
+    
+    const batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
+    const  line = batch.split('\r\n');
+   
+    const votesArraya = [];
     line.forEach(element => {
         var ob = JSON.parse(element);
         votesArraya.push(ob);
          
     });
-    //console.log(votesArraya);
-
-    // if everything passes the sniff test, begin executing each batch in the batch items
-    //let newState = state // we will populate newState with the updated system as we execute each action
-    // assume all vote has the same vote.id
-    const vote = votes.find(vo => vo.id === votesArraya[0].vote.voteId);
-    //console.log('passing........1');
-    //console.log(vote);
+    
+   
+   
     const voters = vote.voters;
-   // console.log('passing........2');
-    //let item;
+   
     votesArraya.forEach(element => {
         if(element.vote.userVote === 'true'){
 
@@ -408,23 +494,13 @@ async function BatchAction (state, action) {
     
         }
 
+   });
 
-        
+      vote.active = false;
 
-    });
-
-    // for (item in votesArraya) {
-        
-    //     //if (verifySignature(item.signature, item.senderAddress)){
-    //         // this doesn't work but it would be ideal to do it this way:
-    //        // newState = await smartweave.interactWriteDryRun(arweave, arweaveWallet, this.address, item, newState);
-                        
-    // }
     
-    // finally, update the state from the temp file
-    //state = newState
 
-    return {state};
+      return {state};
  
 
 }
@@ -439,11 +515,16 @@ function DistributeRewards (state, action) {
     const registeredRecord = state.registeredRecord;
     const rewardHistory = state.rewardHistory;
     const balances = state.balances;
-    const lastDistributionTime = state.lastDistributionTime;
+   
 
+   
+   
+   
+   
+    
     
    if( !validBundlers.includes(action.caller) ){
-        throw new ContractError('Only elected bundlers can write batch actions.');
+        throw new ContractError('Only selected bundlers can write batch actions.');
     }
   
     // bundlers must stake
@@ -456,18 +537,30 @@ function DistributeRewards (state, action) {
         throw new ContractError('You must stake at least', state.minBundlerStake, '  to distribute rewards.');
     }
 
-    let logSummary = {};
+
+    const diff = SmartWeave.block.height - state.lastUpdatedTrafficlog;
+     
+    if(diff < 5){
+      
+     throw new ContractError('trafficlog is less than 24 hours old, votes from bundler cannt be submited');
+
+    }
+
+    const vote = state.votes.find(vo => vo.id === state.numberOfVotes);
+
+     if(vote.active === true){
+        
+        throw new ContractError('vote has to be closed first');
+           
+      }
+
+
+    const logSummary = {};
     let totalDataRe = 0;
 
   // match traffic log with registered data and create a summary log
 
-  let dateDiff = _dateDiff();
-
-    if(dateDiff < 24){
-         
-        throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
-    }
-    
+  
 
     if(state.rewardDistributed === true){
          
@@ -491,46 +584,36 @@ function DistributeRewards (state, action) {
     
   
   
-  //let rewardPerView = 1000/trafficLogs.length - 1;
-  // koi per attention 
-  let rewardPerAttention = 1000/totalDataRe;
+  
+  const rewardPerAttention = 1000/totalDataRe;
   // pay the winners 
   for (const log in logSummary) {
    
        balances[registeredRecord[log]] += logSummary[log]*rewardPerAttention;
 
     }
-        // set false for next distribution 
-        //console.log('passingg........');
-       state.rewardDistributed = false;
-      state.lastDistributionTime = new Date().toString();
+        
+       
+      
     // report of the distrubtion 
-    let distributionReport = {
+    const distributionReport = {
         'logsSummary':logSummary,
         'distributer': caller,
-        'distributionDate': new Date().toString(),
+        'distributionBlock': SmartWeave.block.height,
         'rewardPerAttention': rewardPerAttention
 
       };
       // update the report in state
       rewardHistory.push(distributionReport);
+      state.rewardDistributed = true;
 
-      //console.log('passingg........');
+     
       
 
        return {state};
 
 
-       function _dateDiff (){
-     
        
-        let lastUpdate = new Date(lastDistributionTime);
-        let nowDate = new Date();
-        let dateDiff =  nowDate.getTime() - lastUpdate.getTime();
-       let hours = Math.round(dateDiff / (1000*60*60));
-        //console.log(hours);
-        return hours;
-    }
  
 
 }
@@ -553,10 +636,12 @@ async function handle(state, action) {
        return Vote(state, action);
     case 'batchAction':
        return await BatchAction(state, action);
-    case 'UpdateTrafficLog':
+    case 'updateTrafficLogs':
        return await UpdateTrafficLog(state, action);
     case 'distributeRewards':
        return DistributeRewards(state, action);
+    case 'registerData':
+        return await RegisterData(state, action);
        default:
       throw new ContractError(`Invalid function: "${action.input.function}"`)
   }

@@ -1,7 +1,6 @@
 export async function UpdateTrafficLog(state, action) {
-    console.log('passing....1');
-   // const trafficLogs = state.trafficLogs;
-    const lastUpdatedTime = state.lastUpadatedTrafficlog;
+   
+    
     const numberOfVotes = state.numberOfVotes;
     const votes = state.votes;
 
@@ -11,70 +10,64 @@ export async function UpdateTrafficLog(state, action) {
     
 
 
-     let dateDiff = _dateDiff();
+    
+         const diff = SmartWeave.block.height - state.lastUpdatedTrafficlog;
 
-    if(dateDiff < 24){
-         
-        throw new ContractError('trafficlog is less than 24 hours old, It cannot be updated');
-    }
+         if(diff < 5){
 
-    if(state.rewardDistributed === false){
+              throw new ContractError('Trafficlog is still fresh. pls vote');
+          
+            }
+    
+    
+    
+    
+                if(state.rewardDistributed === false){
+                
+                    throw new ContractError('Rewards need to be distributed before updating');
+                }
+   
+       
+
      
-        throw new ContractError('Rewards need to be distributed before updating');
-    }
-
-     
-        // console.log('passing....');
-        let batch = SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
         
+        const batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
         
-
-       // console.log(batch);
-        let logs = batch.split('\r\n');
-        let logsArraya = []
-    logs.forEach(element => {
-        var ob = JSON.parse(element);
+       
+       
+        const logs = batch.split('\r\n');
+        const logsArraya = [];
+        logs.forEach(element => {
+        const ob = JSON.parse(element);
         logsArraya.push(ob);
          
-    });
-        state.trafficLogs =  logsArraya;
+        });
+        state.trafficLogs = logsArraya;
        
-        state.lastUpadatedTrafficlog = new Date().toString();
+        state.lastUpdatedTrafficlog = SmartWeave.block.height;
         
-        let stakeAmount = input.stakeAmount
+        const stakeAmount = input.stakeAmount;
        
 
-         let vote = {
+         const vote = {
              
              "id": numberOfVotes + 1,
             "type": "trafficLogs",
-            "status":"active",
+            "active": true,
             "voters": [],
             "stakeAmount":stakeAmount,
             "yays": 0,
             "nays": 0
      
           };
-          //console.log("date pass......1");
+          
        votes.push(vote);
        state.numberOfVotes += 1;
      
-     // set false so the rewards for this trafficlogs can be distributed 
-
+  
        state.rewardDistributed = false;
     
-
-    function _dateDiff (){
-     
-       
-        let lastUpdate = new Date(lastUpdatedTime);
-        let nowDate = new Date();
-        let dateDiff =  nowDate.getTime() - lastUpdate.getTime();
-       let hours = Math.round(dateDiff / (1000*60*60));
-       // console.log(hours);
-        return hours;
-    }
-    
+   
     
 
     return { state }

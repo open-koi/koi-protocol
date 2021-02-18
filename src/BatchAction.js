@@ -11,6 +11,29 @@ export async function BatchAction (state, action) {
     if (!batchTxId) {
         throw new ContractError('No txId specified');
     }
+   
+
+    const vote = votes.find(vo => vo.id === state.numberOfVotes);
+
+     if(vote.active === false){
+        
+        throw new ContractError('it is already submmited ;)');
+           
+      }
+  
+    const diff = SmartWeave.block.height - state.lastUpdatedTrafficlog;
+     
+    if(diff < 5){
+      
+     throw new ContractError('trafficlog is less than 24 hours old, votes from bundler cannt be submited');
+
+    }
+
+
+    
+       
+
+
     
     if (!typeof value === 'string') {
         throw new ContractError('txId should be string');
@@ -30,36 +53,24 @@ export async function BatchAction (state, action) {
     if(stakes[caller] < state.minBundlerStake ){
         throw new ContractError('You must stake at least', state.minBundlerStake, ' submit a vote to lower this number.');
     }
+    
 
-    // TODO - check stake expiry and ensure it is longer than 14 days
-
-    // retrieve the batch file 
-   // console.log('passed......');
-    let batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
-   let line = batch.split('\r\n');
-   //console.log('passed.........');
-   // console.log(batch);
-    //console.log(line);
-   // console.log(line[1]);
-    //var obj = JSON.parse(line[0]);
-   // console.log(obj.vote.voteId);
-    let votesArraya = []
+    
+    
+    const batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
+    const  line = batch.split('\r\n');
+   
+    const votesArraya = []
     line.forEach(element => {
         var ob = JSON.parse(element);
         votesArraya.push(ob);
          
     });
-    //console.log(votesArraya);
-
-    // if everything passes the sniff test, begin executing each batch in the batch items
-    //let newState = state // we will populate newState with the updated system as we execute each action
-    // assume all vote has the same vote.id
-    const vote = votes.find(vo => vo.id === votesArraya[0].vote.voteId);
-    //console.log('passing........1');
-    //console.log(vote);
+    
+   
+   
     const voters = vote.voters;
-   // console.log('passing........2');
-    //let item;
+   
     votesArraya.forEach(element => {
         if(element.vote.userVote === 'true'){
 
@@ -75,23 +86,13 @@ export async function BatchAction (state, action) {
     
         }
 
+   });
 
-        
+      vote.active = false;
 
-    });
-
-    // for (item in votesArraya) {
-        
-    //     //if (verifySignature(item.signature, item.senderAddress)){
-    //         // this doesn't work but it would be ideal to do it this way:
-    //        // newState = await smartweave.interactWriteDryRun(arweave, arweaveWallet, this.address, item, newState);
-                        
-    // }
     
-    // finally, update the state from the temp file
-    //state = newState
 
-    return {state};
+      return {state};
  
 
 }

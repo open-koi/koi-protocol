@@ -19,7 +19,13 @@ export function Mint(state, action) {
         throw new ContractError('Only the owner can mint new tokens');
     }
 
-    balances[target] += qty;
+    
+
+    if (balances[target]) {
+        balances[target] += qty;
+    } else {
+        balances[target] = qty;
+    }
 
     return { state }
 }

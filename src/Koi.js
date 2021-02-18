@@ -9,7 +9,7 @@ import { UpdateTrafficLog } from './UpdateTrafficLog';
 import { RegisterData } from './RegisterData';
 import { BatchAction } from './BatchAction';
 import { DistributeRewards } from './DistributeRewards.js';
-import { RegisterData } from './RegisterData';
+
 
 
 export async function handle(state, action) {
@@ -30,12 +30,12 @@ export async function handle(state, action) {
        return Vote(state, action);
     case 'batchAction':
        return await BatchAction(state, action);
-    case 'UpdateTrafficLog':
+    case 'updateTrafficLogs':
        return await UpdateTrafficLog(state, action);
     case 'distributeRewards':
        return DistributeRewards(state, action);
     case 'registerData':
-        return RegisterData(state, action);
+        return await RegisterData(state, action);
        default:
       throw new ContractError(`Invalid function: "${action.input.function}"`)
   }
