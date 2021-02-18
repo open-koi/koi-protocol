@@ -48,14 +48,14 @@ export function Vote(state, action) {
 
     if(userVote === 'true'){
 
-        vote['yays'] += 1;
+        vote['yays'] += 1 * stakes[caller];
         voters.push(caller);
 
     }
 
     if(userVote === 'false'){
 
-        vote['nays'] += 1;
+        vote['nays'] += 1 * stakes[caller];
         voters.push(caller);
 
     }
