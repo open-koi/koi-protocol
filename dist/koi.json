@@ -25,28 +25,35 @@
   "votes": [
     {
       "id": 0,
-      "type": "TrafficLogs",
+      "type": "trafficLogs",
       "status": "active/passed",
       "voted": [],
       "stakeAmount": 45,
       "yays": 0,
       "nays": 0,
       "bundlers": {
-        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA":["votes txid 1",["votes txid 2" ]
-      }
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": [
+          "votes txid 1",
+          "votes txid 2"
+        ]
+      },
       "start": 150,
       "end": 820
     }
   ],
   "registeredRecord": {},
   "stateUpdate": {
-    "TrafficLogs": {
+    "trafficLogs": {
+      "open": 100,
+      "close": 820,
+      "partcipatesRate":{},
+      "rewardReport":[],
       "dailyTrafficLog": [
         {
           "block": 100,
           "proposedLogs": [
             {
-              "TLtxId": "ddfdfdf",
+              "TLTxId": "ddfdfdf",
               "owner": "wallet",
               "gateWayId": "",
               "voteId": 0,
@@ -57,9 +64,7 @@
           ],
           "slashClose": 920
         }
-      ],
-      "open": 100,
-      "close": 820
+      ]
     }
   }
 }
