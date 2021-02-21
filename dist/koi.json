@@ -1,28 +1,65 @@
 {
   "ticker": "KOI",
-  "name":"Koi",
+  "name": "Koi",
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "balances": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 8000,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000
   },
   "stakes": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000
   },
-  "stakedDate":{},
-  "gateways": {},
-  "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
-  "votes": [],
-  "numberOfVotes": -1,
-  "registeredRecord":{
-    "abc-def-123": "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc"
+  "stakeReleaseBlock": {},
+  "gateways": {
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": {
+      "url": "openkoi.com",
+      "publicKey": "abc",
+      "rate": 0
+    }
   },
-  "minBundlerStake": 100,
-  "trafficLogs":[],
-  "rewardHistory":[],
-  "lastUpdatedTrafficlog": 628836,  
-  "lastDistributionTime": "January 25, 2021 23:15:30",
-  "rewardDistributed":true
-  
+  "validBundlers": [
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
+  ],
+  "votes": [
+    {
+      "id": 0,
+      "type": "TrafficLogs",
+      "status": "active/passed",
+      "voted": [],
+      "stakeAmount": 45,
+      "yays": 0,
+      "nays": 0,
+      "bundlers": {
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA":["votes txid 1",["votes txid 2" ]
+      }
+      "start": 150,
+      "end": 820
+    }
+  ],
+  "registeredRecord": {},
+  "stateUpdate": {
+    "TrafficLogs": {
+      "dailyTrafficLog": [
+        {
+          "block": 100,
+          "proposedLogs": [
+            {
+              "TLtxId": "ddfdfdf",
+              "owner": "wallet",
+              "gateWayId": "",
+              "voteId": 0,
+              "blockHeight": 150,
+              "rank": 0,
+              "won": "no"
+            }
+          ],
+          "slashClose": 920
+        }
+      ],
+      "open": 100,
+      "close": 820
+    }
+  }
 }
