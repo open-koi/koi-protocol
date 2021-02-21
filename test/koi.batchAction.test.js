@@ -2,34 +2,75 @@
 
 
 const STATE = {
-    "ticker": "KOI",
-    "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
-    "balances": {
-      "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000000,
-      "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc" : 10000
-    },
-    "stakes": {
-      "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" : 1000000,
-    },
-    "stakeReleaseDate":{},
-    "gateways": {},
-    "validBundlers" : [ "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc", "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA" ],
-    "votes": [{ 
-      "id":1,
+  "ticker": "KOI",
+  "name": "Koi",
+  "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+  "balances": {
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000
+  },
+  "stakes": {
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000
+  },
+  "stakeReleaseBlock": {},
+  "gateways": {
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": {
+      "url": "openkoi.com",
+      "publicKey": "abc",
+      "rate": 0
+    }
+  },
+  "validBundlers": [
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
+  ],
+  "votes": [
+    {
+      "id": 0,
       "type": "trafficLogs",
-      "status":"active",
-      "voters": [],
-      "stakeAmount":200,
+      "status": "active/passed",
+      "voted": [],
+      "stakeAmount": 45,
       "yays": 0,
-      "nays": 0
-   
-  }],
-    "numberOfVotes":0,
-    "registeredRecord":{},
-    "trafficLogs":{},
-    "lastUpadatedTrafficlog":"January 25, 2021 23:15:30"
-    
+      "nays": 0,
+      "bundlers": {
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": [
+          "votes txid 1",
+          "votes txid 2"
+        ]
+      },
+      "start": 150,
+      "end": 820
+    }
+  ],
+  "registeredRecord": {},
+  "stateUpdate": {
+    "trafficLogs": {
+      "open": 100,
+      "close": 820,
+      "partcipatesRate":{},
+      "rewardReport":[],
+      "dailyTrafficLog": [
+        {
+          "block": 100,
+          "proposedLogs": [
+            {
+              "TLTxId": "ddfdfdf",
+              "owner": "wallet",
+              "gateWayId": "",
+              "voteId": 0,
+              "blockHeight": 150,
+              "rank": 0,
+              "won": "no"
+            }
+          ],
+          "slashClose": 920
+        }
+      ]
+    }
   }
+}
 
 const batchAction       = require('../src/BatchAction.js');
 
@@ -50,7 +91,9 @@ async function testBatchAction() {
   // test 3 - write to arweave
   var action = {
       input : {
-          "txId":'KznQBSG-PRPwygFt0E_LfB3hdlqsdmz_O5Q62Nx2rK8'
+          "batchFile":'KznQBSG-PRPwygFt0E_LfB3hdlqsdmz_O5Q62Nx2rK8',
+          "voteId":0
+
           
       },
       caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
