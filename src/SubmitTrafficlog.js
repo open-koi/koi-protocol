@@ -6,7 +6,6 @@ export function SubmitTrafficLog(state, action) {
     const batchTxId = input.batchTxId;
     const gateWayUrl = input.gateWayUrl;
     const stakeAmount = input.stakeAmount
-
     if (!batchTxId) {
         throw new ContractError('No batchTxId specified');
     }
@@ -39,8 +38,7 @@ export function SubmitTrafficLog(state, action) {
         "gateWayId": gateWayUrl,
         "voteId": state.votes.length,
         "blockHeight":SmartWeave.block.height,
-        "rank": 0,
-        "won": "no"
+        "won": false
     };
 
     const currentDailyTrafficlogs = trafficLogs.dailyTrafficLog[trafficLogs.dailyTrafficLog.length - 1];

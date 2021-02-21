@@ -2,9 +2,11 @@
   "ticker": "KOI",
   "name": "Koi",
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+  "treasury": "0A00000000000000000000000000000000000000",
   "balances": {
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000,
+    "0A00000000000000000000000000000000000000": 0
   },
   "stakes": {
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
@@ -58,12 +60,11 @@
               "gateWayId": "",
               "voteId": 0,
               "blockHeight": 150,
-              "rank": 0,
-              "won": "no"
+              "won": false
             }
           ],
           "slashClose": 920
-        }
+        }    
       ]
     }
   }
