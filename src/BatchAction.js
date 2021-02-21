@@ -14,7 +14,7 @@ export async function BatchAction(state, action) {
         throw new ContractError('No voteId specified');
     }
     if (SmartWeave.block.height > vote.end) {
-        throw new ContractError('it is already submmited ;)');
+        throw new ContractError('it is closed');
     }
     if (!typeof batchTxId === 'string') {
         throw new ContractError('batchTxId should be string');
