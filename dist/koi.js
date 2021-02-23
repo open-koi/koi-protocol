@@ -59,26 +59,35 @@ function Gateway(state, action) {
     const input = action.input;
     const caller = action.caller;
     const balances = state.balances;
+    const url = input.url;
+    const publicKey = input.publicKey;
 
-    const gateway = input.gateway;
 
-    if (!gateway) {
+    if (!url) {
         throw new ContractError('No gateway specified');
     }
 
-    if (!gateway.match(/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/gi)) {
+    if (!publicKey) {
+        throw new ContractError('No publicKey specified');
+    }
+
+    if (!url.match(/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/gi)) {
         throw new ContractError('The gateway must be a valid URL or IP');
     }
-    if(balances[caller] < 1){
+    if (balances[caller] < 1) {
 
-        throw new ContractError('you need min 1 KOI to register data');
+        throw new ContractError('you need min 1 KOI to register gateway');
 
     }
-    
-    
-    // burn 1 koi per registeration 
+
+
+    // burn 1 koi per registration 
     balances[caller] -= 1;
-    gateways[caller] = gateway;
+    gateways[caller] = {
+        "url": url,
+        "publicKey": publicKey,
+        "rate": 0
+    };
 
     return { state }
 }
@@ -406,102 +415,57 @@ async function RegisterData(state, action) {
 
 }
 
-async function BatchAction (state, action) {
-
+async function BatchAction(state, action) {
     const stakes = state.stakes;
-    action.input;
+    const input = action.input;
     const caller = action.caller;
     const votes = state.votes;
     const validBundlers = state.validBundlers;
-
-    const batchTxId = action.input.batchFile;
-
+    const batchTxId = input.batchFile;
+    const voteId = input.voteId;
+    const vote = votes[voteId];
     if (!batchTxId) {
         throw new ContractError('No txId specified');
     }
-   
-
-    const vote = votes.find(vo => vo.id === state.numberOfVotes);
-
-     if(vote.active === false){
-        
-        throw new ContractError('it is already submmited ;)');
-           
-      }
-  
-    const diff = SmartWeave.block.height - state.lastUpdatedTrafficlog;
-     
-    if(diff < 5){
-      
-     throw new ContractError('trafficlog is less than 24 hours old, votes from bundler cannt be submited');
-
+    if (!voteId) {
+        throw new ContractError('No voteId specified');
     }
-
-
-    
-       
-
-
-    
-    if (!typeof value === 'string') {
-        throw new ContractError('txId should be string');
+    if (SmartWeave.block.height > vote.end) {
+        throw new ContractError('it is closed');
     }
-
-
-    if( !validBundlers.includes(action.caller) ){
-        throw new ContractError('Only elected bundlers can write batch actions.');
+    if (!typeof batchTxId === 'string') {
+        throw new ContractError('batchTxId should be string');
     }
-  
-    // bundlers must stake
-    if(!(caller in stakes)){
+    if (!validBundlers.includes(action.caller)) {
+        throw new ContractError('Only selected bundlers can write batch actions.');
+    }
+    if (!(caller in stakes)) {
         throw new ContractError('caller hasnt staked');
     }
-
-    // make sure the bundler has a minimum stake amount TODO: voting on this is needed
-    if(stakes[caller] < state.minBundlerStake ){
+    if (stakes[caller] < state.minBundlerStake) {
         throw new ContractError('You must stake at least', state.minBundlerStake, ' submit a vote to lower this number.');
     }
-    
-
-    
-    
     const batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
-    const  line = batch.split('\r\n');
-   
-    const votesArraya = [];
+    const line = batch.split('\r\n');
     line.forEach(element => {
-        var ob = JSON.parse(element);
-        votesArraya.push(ob);
-         
+        var voteObj = JSON.parse(element);
+        if (voteObj.vote.voteId === voteId && !vote.voted.includes(voteObj.senderAddress)) {
+            if (voteObj.vote.userVote === 'true') {
+                vote['yays'] += 1;
+                voters.push(voteObj.senderAddress);
+            }
+            if (voteObj.vote.userVote === 'false') {
+                vote['nays'] += 1;
+                voters.push(voteObj.senderAddress);
+            }
+        }
     });
-    
-   
-   
-    const voters = vote.voters;
-   
-    votesArraya.forEach(element => {
-        if(element.vote.userVote === 'true'){
+    if (!caller in vote.bundlers) {
+        vote.bundlers[caller] = [];
+    }
+    vote.bundlers[caller].push(batchTxId);
 
-            vote['yays'] += 1;
-            voters.push(element.senderAddress);
-    
-        }
-    
-        if(element.vote.userVote === 'false'){
-    
-            vote['nays'] += 1;
-            voters.push(element.senderAddress);
-    
-        }
-
-   });
-
-      vote.active = false;
-
-    
-
-      return {state};
- 
+    return { state };
 
 }
 
@@ -618,6 +582,33 @@ function DistributeRewards (state, action) {
 
 }
 
+async function ProposeSlash(state, action) {
+const reciept = action.input.reciept;
+action.caller;
+//const payload = reciept.vote;
+//const vote = payload.vote;
+/*
+if (!reciept) {
+    throw new ContractError('No reciept specified');
+}
+*/
+
+ 
+  const dataInstring = JSON.stringify(reciept.vote);
+  
+  const  dataIn8Array = await SmartWeave.arweave.utils.stringToBuffer(dataInstring);
+ 
+  const signatureIn8Array = await SmartWeave.arweave.utils.b64UrlToBuffer(reciept.signature);
+ 
+  const isValid = await SmartWeave.arweave.crypto.verify(reciept.owner,dataIn8Array,signatureIn8Array);
+ 
+  state.testSlash = isValid;
+
+
+     
+return {state}
+}
+
 async function handle(state, action) {
   switch (action.input.function) {
     case 'transfer':
@@ -642,6 +633,8 @@ async function handle(state, action) {
        return DistributeRewards(state, action);
     case 'registerData':
         return await RegisterData(state, action);
+    case 'proposeSlash':
+        return await ProposeSlash(state, action);
        default:
       throw new ContractError(`Invalid function: "${action.input.function}"`)
   }

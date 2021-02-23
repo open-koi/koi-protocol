@@ -1,4 +1,5 @@
 export function SubmitTrafficLog(state, action) {
+    const caller = action.caller;
     const trafficLogs = state.stateUpdate.trafficLogs;
     const balances = state.balances;
     const caller = action.caller;

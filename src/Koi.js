@@ -9,7 +9,7 @@ import { UpdateTrafficLog } from './UpdateTrafficLog';
 import { RegisterData } from './RegisterData';
 import { BatchAction } from './BatchAction';
 import { DistributeRewards } from './DistributeRewards.js';
-
+import { ProposeSlash } from './ProposeSlash.js';
 
 
 export async function handle(state, action) {
@@ -36,6 +36,8 @@ export async function handle(state, action) {
        return DistributeRewards(state, action);
     case 'registerData':
         return await RegisterData(state, action);
+    case 'proposeSlash':
+        return await ProposeSlash(state, action);
        default:
       throw new ContractError(`Invalid function: "${action.input.function}"`)
   }
