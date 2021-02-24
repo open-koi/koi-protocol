@@ -18,56 +18,54 @@ export function DistributeRewards(state, action) {
     if (stakes[caller] < state.minBundlerStake) {
         throw new ContractError('You must stake at least', state.minBundlerStake, '  to distribute rewards.');
     }
-    const diff = SmartWeave.block.height - state.lastUpdatedTrafficlog;
-    if (diff < 5) {
-
-        throw new ContractError('trafficlog is less than 24 hours old, votes from bundler cannt be submited');
-
-    }
-    const vote = state.votes.find(vo => vo.id === state.numberOfVotes);
+    //const vote = state.votes.find(vo => vo.id === state.numberOfVotes);
     if (vote.active === true) {
-
         throw new ContractError('vote has to be closed first');
-
     }
-    const logSummary = {};
-    let totalDataRe = 0;
     // match traffic log with registered data and create a summary log
     if (state.rewardDistributed === true) {
-
         throw new ContractError('it is already distributed, check the rewards history ');
     }
 
-    trafficLogs.forEach(element => {
-        if (element.ArId in registeredRecord) {
-            totalDataRe += 1;
+    const logSummary = {};
+    let totalDataRe = 0;
+    const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
+    const proposedLogs = currentTrafficLogs.proposedLogs
+    proposedLogs.forEach(prp => {
+        if (prp.won === true) {
+            const batch = await SmartWeave.unsafeClient.transactions.getData(prp.TLTxId, { decode: true, string: true });
+            const logs = batch.split('\r\n');
+            const logsArraya = [];
+            logs.forEach(element => {
+                const ob = JSON.parse(element);
+                logsArraya.push(ob);
+            });
 
-            if (element.ArId in logSummary) {
-                logSummary[element.ArId] += 1;
-            }
+            logsArraya, forEach(element => {
 
-            else {
-                logSummary[element.ArId] = 1;
-            }
+                if (element.ArId in registeredRecord) {
+                    totalDataRe += 1;
 
+                    if (element.ArId in logSummary) {
+                        logSummary[element.ArId] += 1;
+                    }
+
+                    else {
+                        logSummary[element.ArId] = 1;
+                    }
+                }
+            });
         }
     });
-
-
-
 
     const rewardPerAttention = 1000 / totalDataRe;
     // pay the winners 
     for (const log in logSummary) {
-
         balances[registeredRecord[log]] += logSummary[log] * rewardPerAttention;
-
     }
-
-
-
     // report of the distrubtion 
     const distributionReport = {
+        'dailyTrafficBlock':trafficLogs.open,
         'logsSummary': logSummary,
         'distributer': caller,
         'distributionBlock': SmartWeave.block.height,
@@ -75,16 +73,12 @@ export function DistributeRewards(state, action) {
 
     };
     // update the report in state
-    rewardHistory.push(distributionReport);
-    state.rewardDistributed = true;
+    trafficLogs.rewardHistory.push(distributionReport);
+   //state.rewardDistributed = true;
 
 
 
 
     return { state };
-
-
-
-
 
 }
