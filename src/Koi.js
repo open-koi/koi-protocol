@@ -8,8 +8,10 @@ import { Vote } from './Vote';
 import { UpdateTrafficLog } from './UpdateTrafficLog';
 import { RegisterData } from './RegisterData';
 import { BatchAction } from './BatchAction';
-import { DistributeRewards } from './DistributeRewards.js';
+import { SubmitTrafficLog} from './SubmitTrafficlog.js';
+import {RankProposal} from './RankProposal.js';
 import { ProposeSlash } from './ProposeSlash.js';
+import { DistributeRewards } from './DistributeRewards.js';
 
 
 export async function handle(state, action) {
@@ -30,8 +32,12 @@ export async function handle(state, action) {
        return Vote(state, action);
     case 'batchAction':
        return await BatchAction(state, action);
+    case 'submitTrafficLog':
+       return SubmitTrafficLog(state, action);
     case 'updateTrafficLogs':
        return await UpdateTrafficLog(state, action);
+    case 'rankProposal':
+        return RankProposal(state, action);
     case 'distributeRewards':
        return DistributeRewards(state, action);
     case 'registerData':
