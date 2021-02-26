@@ -39,7 +39,7 @@ export async function handle(state, action) {
     case 'rankProposal':
         return RankProposal(state, action);
     case 'distributeRewards':
-       return DistributeRewards(state, action);
+       return await DistributeRewards(state, action);
     case 'registerData':
         return await RegisterData(state, action);
     case 'proposeSlash':

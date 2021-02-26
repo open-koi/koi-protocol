@@ -1,4 +1,4 @@
-export function DistributeRewards(state, action) {
+export async function DistributeRewards(state, action) {
     const stakes = state.stakes;
     const input = action.input;
     const caller = action.caller;
@@ -31,7 +31,7 @@ export function DistributeRewards(state, action) {
     let totalDataRe = 0;
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
     const proposedLogs = currentTrafficLogs.proposedLogs
-    proposedLogs.forEach(prp => {
+    proposedLogs.forEach(async prp => {
         if (prp.won === true) {
             const batch = await SmartWeave.unsafeClient.transactions.getData(prp.TLTxId, { decode: true, string: true });
             const logs = batch.split('\r\n');
@@ -41,7 +41,7 @@ export function DistributeRewards(state, action) {
                 logsArraya.push(ob);
             });
 
-            logsArraya, forEach(element => {
+            logsArraya.forEach(element => {
 
                 if (element.ArId in registeredRecord) {
                     totalDataRe += 1;
