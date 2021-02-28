@@ -11,7 +11,9 @@
   "dependencies": {
     "arweave": "^1.9.1",
     "arweave-bundles": "^1.0.0",
-    "smartweave": "^0.4.0"
+    "fs": "0.0.1-security",
+    "jsonfile": "^6.1.0",
+    "smartweave": "^0.4.25"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
