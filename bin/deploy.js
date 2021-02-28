@@ -16,6 +16,9 @@ const arweave = Arweave.init({
 const wallet = JSON.parse(fs.readFileSync('dist/keywallet.json'));
 const src = fs.readFileSync('dist/Koi.js');
 const state = fs.readFileSync('dist/Koi.json');
+//or from current state 
+const currentContractId = "contract id comes here";
+const currentState = smartweave.readContract(arweave,currentContractId);
 
 async function Deploy() {
     const id = await smartweave.createContract(arweave, wallet, src, state);
