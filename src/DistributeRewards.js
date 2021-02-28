@@ -1,16 +1,23 @@
 export async function DistributeRewards(state, action) {
     const stakes = state.stakes;
-    const input = action.input;
-    const caller = action.caller;
     const trafficLogs = state.trafficLogs;
     const validBundlers = state.validBundlers;
     const registeredRecord = state.registeredRecord;
-    const rewardHistory = state.rewardHistory;
     const balances = state.balances;
+    const caller = action.caller;
+
+
+    if (SmartWeave.block.heigh < trafficLogs.close) {
+        throw new ContractError('voting process is ongoing');
+    }
+    const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
+    if (currentTrafficLogs.isDistributed === true) {
+        throw new ContractError('Reward is distributed');
+    }
     if (!validBundlers.includes(action.caller)) {
         throw new ContractError('Only selected bundlers can write batch actions.');
     }
-    // bundlers must stake
+    // bundlers or Node must stake
     if (!(caller in stakes)) {
         throw new ContractError('caller hasnt staked');
     }
@@ -18,7 +25,7 @@ export async function DistributeRewards(state, action) {
     if (stakes[caller] < state.minBundlerStake) {
         throw new ContractError('You must stake at least', state.minBundlerStake, '  to distribute rewards.');
     }
-    //const vote = state.votes.find(vo => vo.id === state.numberOfVotes);
+
     if (vote.active === true) {
         throw new ContractError('vote has to be closed first');
     }
@@ -29,7 +36,6 @@ export async function DistributeRewards(state, action) {
 
     const logSummary = {};
     let totalDataRe = 0;
-    const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
     const proposedLogs = currentTrafficLogs.proposedLogs
     proposedLogs.forEach(async prp => {
         if (prp.won === true) {
@@ -65,7 +71,7 @@ export async function DistributeRewards(state, action) {
     }
     // report of the distrubtion 
     const distributionReport = {
-        'dailyTrafficBlock':trafficLogs.open,
+        'dailyTrafficBlock': trafficLogs.open,
         'logsSummary': logSummary,
         'distributer': caller,
         'distributionBlock': SmartWeave.block.height,
@@ -73,9 +79,21 @@ export async function DistributeRewards(state, action) {
 
     };
     // update the report in state
-    trafficLogs.rewardHistory.push(distributionReport);
-   //state.rewardDistributed = true;
+    trafficLogs.rewardReport.push(distributionReport);
 
+    currentTrafficLogs.isDistributed = true;
+    trafficLogs.open = SmartWeave.block.heigh;
+    trafficLogs.close = SmartWeave.block.heigh + 720;
+
+    // next dialytrafficlog submmision 
+    const newDialyTL = {
+        "block": trafficLogs.open,
+        "proposedLogs": [],
+        "isRanked": false,
+        "isDistributed": false
+
+    }
+    trafficLogs.dailyTrafficLog.push(newDialyTL);
 
 
 

@@ -32,16 +32,23 @@ export async function BatchAction(state, action) {
     const line = batch.split('\r\n');
     line.forEach(element => {
         var voteObj = JSON.parse(element);
-        if (voteObj.vote.voteId === voteId && !vote.voted.includes(voteObj.senderAddress)) {
-            if (voteObj.vote.userVote === 'true') {
-                vote['yays'] += 1;
-                voters.push(voteObj.senderAddress);
-            }
-            if (voteObj.vote.userVote === 'false') {
-                vote['nays'] += 1;
-                voters.push(voteObj.senderAddress);
+        const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(element);
+        const rawSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(voteObj.signature);
+        const isVoteValid = await SmartWeave.arweave.crypto.verify(voteObj.owner, voteBuffer, rawSignature);
+        if (isVoteValid) {
+
+            if (voteObj.vote.voteId === voteId && !vote.voted.includes(voteObj.senderAddress)) {
+                if (voteObj.vote.userVote === 'true') {
+                    vote['yays'] += 1;
+                    voters.push(voteObj.senderAddress);
+                }
+                if (voteObj.vote.userVote === 'false') {
+                    vote['nays'] += 1;
+                    voters.push(voteObj.senderAddress);
+                }
             }
         }
+
     });
     if (!caller in vote.bundlers) {
         vote.bundlers[caller] = [];

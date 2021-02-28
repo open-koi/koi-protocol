@@ -6,6 +6,7 @@ export function Vote(state, action) {
     const numberOfVotes = state.numberOfVotes;
     const voteId = input.voteId;
     const userVote = input.userVote
+
     if (userVote !== "true" && userVote !== "false") {
         throw new ContractError('Invalid value for "user vote". Must be true or false');
 

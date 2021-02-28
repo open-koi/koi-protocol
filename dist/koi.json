@@ -12,7 +12,9 @@
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000
   },
-  "stakeReleaseBlock": {},
+  "stakeReleaseBlock": {
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 80000
+  },
   "gateways": {
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": {
       "url": "openkoi.com",
@@ -46,26 +48,31 @@
   "registeredRecord": {},
   "stateUpdate": {
     "trafficLogs": {
-      "open": 100,
-      "close": 820,
+      "open": 1,
+      "close": 720,
       "partcipatesRate":{},
       "rewardReport":[],
       "dailyTrafficLog": [
         {
-          "block": 100,
+          "block": 1,
           "proposedLogs": [
             {
               "TLTxId": "ddfdfdf",
               "owner": "wallet",
-              "gateWayId": "",
+              "gateWayId": "openkoi.com",
               "voteId": 0,
               "blockHeight": 150,
               "won": false
+              
             }
           ],
-          "slashClose": 920
+          "isRanked": false,
+          "isDistributed": false
         }    
       ]
+
+
     }
   }
 }
+

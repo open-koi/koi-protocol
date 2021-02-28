@@ -1,10 +1,15 @@
 export function RankProposal(state, action) {
     const trafficLogs = state.stateUpdate.trafficLogs;
     const votes = state.votes;
-    if (SmartWeave.block.heigh < trafficLogs.close) {
-        throw new ContractError('voting is ongoing');
+    // between this 100 blcoks proposal should be ranked
+    
+    if ( trafficLogs.close - 200 > SmartWeave.block.heigh && SmartWeave.block.heigh < trafficLogs.close - 100) {
+        throw new ContractError('voting is ongoing or it is already ranked');
     }
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
+    if(currentTrafficLogs.isRanked === false){
+        throw new ContractError('it has already been ranked');
+    }
     const proposedLog = currentTrafficLogs.proposedLogs;
     const proposedGateWays = {};
     proposedLog.forEach(prp => {
@@ -44,6 +49,8 @@ export function RankProposal(state, action) {
 
 
     });
+
+    currentTrafficLogs.isRanked = true;
 
     return { state }
 
