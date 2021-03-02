@@ -3,7 +3,7 @@ export function RankProposal(state, action) {
     const votes = state.votes;
     // between this 100 blcoks proposal should be ranked
 
-    if( trafficLogs.close - 100 > SmartWeave.block.heigh && SmartWeave.block.heigh < trafficLogs.close){
+    if( trafficLogs.close - 100 > SmartWeave.block.height && SmartWeave.block.height < trafficLogs.close){
         throw new ContractError('to early for propose slash or proposing time is passes');
     }
    

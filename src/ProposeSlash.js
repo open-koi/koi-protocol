@@ -7,7 +7,7 @@ export async function ProposeSlash(state, action) {
     const balances = state.balances;
     
      
-    if ( trafficLogs.close - 200 > SmartWeave.block.heigh && SmartWeave.block.heigh < trafficLogs.close - 100) {
+    if ( trafficLogs.close - 200 > SmartWeave.block.height && SmartWeave.block.height < trafficLogs.close - 100) {
         throw new ContractError('voting is ongoing or it is already ranked');
     }
 
