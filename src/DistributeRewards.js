@@ -7,7 +7,7 @@ export async function DistributeRewards(state, action) {
     const caller = action.caller;
 
 
-    if (SmartWeave.block.heigh < trafficLogs.close) {
+    if (SmartWeave.block.height > trafficLogs.close) {
         throw new ContractError('voting process is ongoing');
     }
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
@@ -82,8 +82,8 @@ export async function DistributeRewards(state, action) {
     trafficLogs.rewardReport.push(distributionReport);
 
     currentTrafficLogs.isDistributed = true;
-    trafficLogs.open = SmartWeave.block.heigh;
-    trafficLogs.close = SmartWeave.block.heigh + 720;
+    trafficLogs.open = SmartWeave.block.height;
+    trafficLogs.close = SmartWeave.block.height + 720;
 
     // next dialytrafficlog submmision 
     const newDialyTL = {
