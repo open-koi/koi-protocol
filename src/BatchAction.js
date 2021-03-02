@@ -30,7 +30,7 @@ export async function BatchAction(state, action) {
     }
     const batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
     const line = batch.split('\r\n');
-    line.forEach(element => {
+    line.forEach(async element => {
         var voteObj = JSON.parse(element);
         const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(element);
         const rawSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(voteObj.signature);

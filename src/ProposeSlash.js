@@ -5,9 +5,10 @@ export async function ProposeSlash(state, action) {
     const votes = state.votes;
     const stakes = state.stakes;
     const balances = state.balances;
-
-    if( trafficLogs.close - 100 > SmartWeave.block.heigh && SmartWeave.block.heigh < trafficLogs.close){
-        throw new ContractError('to early for propose slash or proposing time is passes');
+    
+     
+    if ( trafficLogs.close - 200 > SmartWeave.block.heigh && SmartWeave.block.heigh < trafficLogs.close - 100) {
+        throw new ContractError('voting is ongoing or it is already ranked');
     }
 
     if (!reciept) {
