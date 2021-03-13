@@ -1,7 +1,7 @@
 export async function RegisterData(state, action) {
   const registeredRecords = state.registeredRecord;
   const input = action.input;
-  const caller = action.caller;
+  const caller = action.owner || action.caller;
   const balances = state.balances;
   const txId = input.txId;
   // check is txid is valid
