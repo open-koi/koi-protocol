@@ -2,7 +2,7 @@ export async function RegisterData(state, action) {
   const registeredRecords = state.registeredRecord;
   const input = action.input;
   const caller = action.caller;
-  const ownerAddress = input.owner;
+  const address  = input.owner;
   const balances = state.balances;
   const txId = input.txId;
   // check is txid is valid
@@ -34,9 +34,9 @@ export async function RegisterData(state, action) {
       );
     }
   } else {
-    if (owner) {
+    if (address) {
       // you can  register on a given  owner Address
-      registeredRecords[txId] = ownerAddress;
+      registeredRecords[txId] = address;
     } else {
       //  else you can register on your name till the owner takes from you.
       registeredRecords[txId] = caller;
