@@ -1,7 +1,8 @@
 export async function RegisterData(state, action) {
   const registeredRecords = state.registeredRecord;
   const input = action.input;
-  const caller = action.owner || action.caller;
+  const caller = action.caller;
+  const ownerAddress = input.owner;
   const balances = state.balances;
   const txId = input.txId;
   // check is txid is valid
@@ -33,8 +34,13 @@ export async function RegisterData(state, action) {
       );
     }
   } else {
-    // you can register on your name till the owner takes from you.
-    registeredRecords[txId] = caller;
+    if (owner) {
+      // you can  register on a given  owner Address
+      registeredRecords[txId] = ownerAddress;
+    } else {
+      //  else you can register on your name till the owner takes from you.
+      registeredRecords[txId] = caller;
+    }
   }
   // burn 1 koi per registeration
   balances[caller] -= 1;
