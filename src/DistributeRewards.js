@@ -1,6 +1,6 @@
 export async function DistributeRewards(state, action) {
     const stakes = state.stakes;
-    const trafficLogs = state.trafficLogs;
+    const trafficLogs = state.stateUpdate.trafficLogs;
     const validBundlers = state.validBundlers;
     const registeredRecord = state.registeredRecord;
     const balances = state.balances;
@@ -10,6 +10,7 @@ export async function DistributeRewards(state, action) {
     if (SmartWeave.block.heigh < trafficLogs.close) {
         throw new ContractError('voting process is ongoing');
     }
+
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
     if (currentTrafficLogs.isDistributed === true) {
         throw new ContractError('Reward is distributed');
@@ -21,59 +22,50 @@ export async function DistributeRewards(state, action) {
     if (!(caller in stakes)) {
         throw new ContractError('caller hasnt staked');
     }
-    // make sure the bundler has a minimum stake amount TODO: voting on this is needed
-    if (stakes[caller] < state.minBundlerStake) {
-        throw new ContractError('You must stake at least', state.minBundlerStake, '  to distribute rewards.');
-    }
 
-    if (vote.active === true) {
-        throw new ContractError('vote has to be closed first');
-    }
-    // match traffic log with registered data and create a summary log
-    if (state.rewardDistributed === true) {
-        throw new ContractError('it is already distributed, check the rewards history ');
-    }
-
-    const logSummary = {};
+    
+    let logSummary = {};
     let totalDataRe = 0;
     const proposedLogs = currentTrafficLogs.proposedLogs
-    proposedLogs.forEach(async prp => {
-        if (prp.won === true) {
-            const batch = await SmartWeave.unsafeClient.transactions.getData(prp.TLTxId, { decode: true, string: true });
-           // const logs = batch.split('\r\n');
-            const logs = JSON.parse(batch);
-            /*
-            const logsArraya = [];
-            logs.forEach(element => {
-                const ob = JSON.parse(element);
-                logsArraya.push(ob);
-            });
-            */
+    for(var i = 0; i < proposedLogs.length; i++){
+      if (proposedLogs[i].won === true) {
+        const batch = await arweave.transactions.getData(proposedLogs[i].TLTxId, { decode: true, string: true });
+        const logs = JSON.parse(batch);
+       logs.forEach(element => {
+            let contentId = element.url.substring(1);
+            console.log(contentId);
+      if (contentId in registeredRecord) {
+              console.log('eeeeeeeee');
+              console.log(element.addresses.length);
+                totalDataRe += element.addresses.length;
 
-            logs.forEach(element => {
-                let contentId = element.url.substring(1);
-
-                if (contentId in registeredRecord) {
-                    totalDataRe += element.addresses.length;
-
-                    logSummary[contentId] = element.addresses.length;
-                   
-                }
-            });
-        }
-    });
-
+                logSummary[contentId] = element.addresses.length;
+               
+            }
+        });
+}
+    }
+  
     const rewardPerAttention = 1000 / totalDataRe;
     // pay the winners 
     for (const log in logSummary) {
+      console.log('eeeeeeeee1111');
+      if(registeredRecord[log] in balances){
+        console.log('eeeeeeeee2222');
         balances[registeredRecord[log]] += logSummary[log] * rewardPerAttention;
+
+      }else {
+        console.log('eeeeeeeee333');
+        balances[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
+      }
+       
     }
     // report of the distrubtion 
     const distributionReport = {
         'dailyTrafficBlock': trafficLogs.open,
         'logsSummary': logSummary,
         'distributer': caller,
-        'distributionBlock': SmartWeave.block.height,
+       'distributionBlock': SmartWeave.block.height,
         'rewardPerAttention': rewardPerAttention
 
     };
