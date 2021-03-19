@@ -40,25 +40,24 @@ export async function DistributeRewards(state, action) {
     proposedLogs.forEach(async prp => {
         if (prp.won === true) {
             const batch = await SmartWeave.unsafeClient.transactions.getData(prp.TLTxId, { decode: true, string: true });
-            const logs = batch.split('\r\n');
+           // const logs = batch.split('\r\n');
+            const logs = JSON.parse(batch);
+            /*
             const logsArraya = [];
             logs.forEach(element => {
                 const ob = JSON.parse(element);
                 logsArraya.push(ob);
             });
+            */
 
-            logsArraya.forEach(element => {
+            logs.forEach(element => {
+                let contentId = element.url.substring(1);
 
-                if (element.ArId in registeredRecord) {
-                    totalDataRe += 1;
+                if (contentId in registeredRecord) {
+                    totalDataRe += element.addresses.length;
 
-                    if (element.ArId in logSummary) {
-                        logSummary[element.ArId] += 1;
-                    }
-
-                    else {
-                        logSummary[element.ArId] = 1;
-                    }
+                    logSummary[contentId] = element.addresses.length;
+                   
                 }
             });
         }
