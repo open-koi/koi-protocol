@@ -19,12 +19,12 @@ export async function RegisterData(state, action) {
     let ownerAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(owner);
     if (txId in registeredRecords) {
         if (registeredRecords[txId] === ownerAddress) {
-            throw new ContractError('Transaction/content have been registered already under its owner wallet');
+            throw new ContractError('Transaction/content has been registered already under its owner wallet');
         } else if (ownerAddress === caller) {
             // here content is registered by it owner
             registeredRecords[txId] = caller;
         } else {
-            throw new ContractError('Transaction/content have been registered already under someone wallet');
+            throw new ContractError('Transaction/content has been registered already under someone wallet');
         }
     } else {
         // you can register on your name till the owner takes from you. 

@@ -5,10 +5,9 @@ export async function ProposeSlash(state, action) {
     const votes = state.votes;
     const stakes = state.stakes;
     const balances = state.balances;
+    const trafficLogs = state.stateUpdate.trafficLogs;
 
-    if( trafficLogs.close - 100 > SmartWeave.block.heigh && SmartWeave.block.heigh < trafficLogs.close){
-        throw new ContractError('to early for propose slash or proposing time is passes');
-    }
+    if (trafficLogs.close - 200 > SmartWeave.block.height && SmartWeave.block.height < trafficLogs.close - 100)
 
     if (!reciept) {
         throw new ContractError('No reciept specified');

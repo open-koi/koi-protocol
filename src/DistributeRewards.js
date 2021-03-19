@@ -7,7 +7,7 @@ export async function DistributeRewards(state, action) {
     const caller = action.caller;
 
 
-    if (SmartWeave.block.heigh < trafficLogs.close) {
+    if (SmartWeave.block.heigh > trafficLogs.close) {
         throw new ContractError('voting process is ongoing');
     }
 

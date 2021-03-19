@@ -3,9 +3,7 @@ export function RankProposal(state, action) {
     const votes = state.votes;
     // between this 100 blcoks proposal should be ranked
     
-    if ( trafficLogs.close - 200 > SmartWeave.block.heigh && SmartWeave.block.heigh < trafficLogs.close - 100) {
-        throw new ContractError('voting is ongoing or it is already ranked');
-    }
+    if (trafficLogs.close - 100 > SmartWeave.block.height && SmartWeave.block.height < trafficLogs.close) 
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
     if(currentTrafficLogs.isRanked === false){
         throw new ContractError('it has already been ranked');
