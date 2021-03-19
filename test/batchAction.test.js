@@ -42,6 +42,23 @@ const STATE = {
       },
       "start": 150,
       "end": 820
+    },
+    {
+      "id": 1,
+      "type": "trafficLogs",
+      "status": "active/passed",
+      "voted": [],
+      "stakeAmount": 45,
+      "yays": 0,
+      "nays": 0,
+      "bundlers": {
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": [
+          "votes txid 1",
+          "votes txid 2"
+        ]
+      },
+      "start": 150,
+      "end": 820
     }
   ],
   "registeredRecord": {},
@@ -81,7 +98,7 @@ async function start () {
   try {
       await testBatchAction()
   
-  } catch ( err ) {
+  } catch ( err ) {  
       throw Error (err)
   }
 
@@ -92,10 +109,9 @@ async function testBatchAction() {
   var action = {
       input : {
           "batchFile":'KznQBSG-PRPwygFt0E_LfB3hdlqsdmz_O5Q62Nx2rK8',
-          "voteId":0
+          "voteId":1
+        },
 
-          
-      },
       caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
   }
   var batching = await batchAction(STATE, action)

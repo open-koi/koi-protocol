@@ -29,7 +29,7 @@ export async function DistributeRewards(state, action) {
     const proposedLogs = currentTrafficLogs.proposedLogs
     for(var i = 0; i < proposedLogs.length; i++){
       if (proposedLogs[i].won === true) {
-        const batch = await arweave.transactions.getData(proposedLogs[i].TLTxId, { decode: true, string: true });
+        const batch = await SmartWeave.unsafeClient.transactions.getData(proposedLogs[i].TLTxId, { decode: true, string: true });
         const logs = JSON.parse(batch);
        logs.forEach(element => {
             let contentId = element.url.substring(1);
