@@ -3,9 +3,22 @@ export function RankProposal(state, action) {
     const votes = state.votes;
     // between this 100 blcoks proposal should be ranked
     
-    if (trafficLogs.close - 100 > SmartWeave.block.height && SmartWeave.block.height < trafficLogs.close) {
-        throw new ContractError('voting is ongoing');
-    }
+     // between this 100 blcoks proposal should be ranked
+
+  // if (
+  //   trafficLogs.close - 100 > SmartWeave.block.height &&
+  //   SmartWeave.block.height < trafficLogs.close
+  // ) {
+  //   throw new ContractError(
+  //     "to early for propose slash or proposing time is passes"
+  //   );
+  // }
+  if (
+    SmartWeave.block.height > trafficLogs.close  ||
+    SmartWeave.block.height < trafficLogs.close - 5
+  ) {
+    throw new ContractError("Ranking time finished or not Ranking time");
+  }
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
 
     if(currentTrafficLogs.isRanked === false){

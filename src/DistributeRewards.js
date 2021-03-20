@@ -7,7 +7,7 @@ export async function DistributeRewards(state, action) {
     const caller = action.caller;
 
 
-    if (SmartWeave.block.heigh > trafficLogs.close) {
+    if (SmartWeave.block.heigh < trafficLogs.close) {
         throw new ContractError('voting process is ongoing');
     }
 
@@ -49,13 +49,13 @@ export async function DistributeRewards(state, action) {
     const rewardPerAttention = 1000 / totalDataRe;
     // pay the winners 
     for (const log in logSummary) {
-      console.log('eeeeeeeee1111');
+     
       if(registeredRecord[log] in balances){
-        console.log('eeeeeeeee2222');
+       
         balances[registeredRecord[log]] += logSummary[log] * rewardPerAttention;
 
       }else {
-        console.log('eeeeeeeee333');
+      
         balances[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
       }
        

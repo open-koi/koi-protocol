@@ -7,7 +7,18 @@ export async function ProposeSlash(state, action) {
     const balances = state.balances;
     const trafficLogs = state.stateUpdate.trafficLogs;
 
-    if (trafficLogs.close - 200 > SmartWeave.block.height && SmartWeave.block.height < trafficLogs.close - 100)
+    //   if (
+  //     trafficLogs.close - 200 > SmartWeave.block.height &&
+  //     SmartWeave.block.height < trafficLogs.close - 100
+  //   ) {
+  //     throw new ContractError("voting is ongoing or it is already ranked");
+  //   }
+  if (
+    SmartWeave.block.height > trafficLogs.close - 5 ||
+    SmartWeave.block.height < trafficLogs.close - 10
+  ) {
+    throw new ContractError("Slash time not reached or passed");
+  }
 
     if (!reciept) {
         throw new ContractError('No reciept specified');

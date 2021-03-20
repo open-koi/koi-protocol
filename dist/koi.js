@@ -333,8 +333,12 @@ function SubmitTrafficLog(state, action) {
         throw new ContractError('you need min 1 KOI to propose gateway');
     }
   // proposed trafficlogs should be submmited 200 blocks before the closing block.
-  
+  /*
     if( SmartWeave.block.height > trafficLogs.close - 200){
+        throw new ContractError('proposing is closed. wait for another round');
+    }
+*/
+    if( trafficLogs.close - 10 < SmartWeave.block.height){
         throw new ContractError('proposing is closed. wait for another round');
     }
 
@@ -379,9 +383,22 @@ function RankProposal(state, action) {
     const votes = state.votes;
     // between this 100 blcoks proposal should be ranked
     
-    if (trafficLogs.close - 100 > SmartWeave.block.height && SmartWeave.block.height < trafficLogs.close) {
-        throw new ContractError('voting is ongoing');
-    }
+     // between this 100 blcoks proposal should be ranked
+
+  // if (
+  //   trafficLogs.close - 100 > SmartWeave.block.height &&
+  //   SmartWeave.block.height < trafficLogs.close
+  // ) {
+  //   throw new ContractError(
+  //     "to early for propose slash or proposing time is passes"
+  //   );
+  // }
+  if (
+    SmartWeave.block.height > trafficLogs.close  ||
+    SmartWeave.block.height < trafficLogs.close - 5
+  ) {
+    throw new ContractError("Ranking time finished or not Ranking time");
+  }
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
 
     if(currentTrafficLogs.isRanked === false){
@@ -444,7 +461,18 @@ async function ProposeSlash(state, action) {
     const balances = state.balances;
     const trafficLogs = state.stateUpdate.trafficLogs;
 
-    if (trafficLogs.close - 200 > SmartWeave.block.height && SmartWeave.block.height < trafficLogs.close - 100)
+    //   if (
+  //     trafficLogs.close - 200 > SmartWeave.block.height &&
+  //     SmartWeave.block.height < trafficLogs.close - 100
+  //   ) {
+  //     throw new ContractError("voting is ongoing or it is already ranked");
+  //   }
+  if (
+    SmartWeave.block.height > trafficLogs.close - 5 ||
+    SmartWeave.block.height < trafficLogs.close - 10
+  ) {
+    throw new ContractError("Slash time not reached or passed");
+  }
 
     if (!reciept) {
         throw new ContractError('No reciept specified');
@@ -493,7 +521,7 @@ async function DistributeRewards(state, action) {
     const caller = action.caller;
 
 
-    if (SmartWeave.block.heigh > trafficLogs.close) {
+    if (SmartWeave.block.heigh < trafficLogs.close) {
         throw new ContractError('voting process is ongoing');
     }
 
@@ -535,13 +563,13 @@ async function DistributeRewards(state, action) {
     const rewardPerAttention = 1000 / totalDataRe;
     // pay the winners 
     for (const log in logSummary) {
-      console.log('eeeeeeeee1111');
+     
       if(registeredRecord[log] in balances){
-        console.log('eeeeeeeee2222');
+       
         balances[registeredRecord[log]] += logSummary[log] * rewardPerAttention;
 
       }else {
-        console.log('eeeeeeeee333');
+      
         balances[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
       }
        
