@@ -6,6 +6,9 @@ export async function DistributeRewards(state, action) {
   const balances = state.balances;
   const caller = action.caller;
 
+  // if (SmartWeave.block.height > trafficLogs.close) {
+  //   throw new ContractError("voting process is ongoing");
+  // }
   if (SmartWeave.block.height > trafficLogs.close) {
     throw new ContractError("voting process is ongoing");
   }

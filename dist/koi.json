@@ -4,75 +4,58 @@
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "treasury": "0A00000000000000000000000000000000000000",
   "balances": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000,
-    "0A00000000000000000000000000000000000000": 0
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 10,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10,
+    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 10,
+    "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU": 10,
+    "MqKaTw9bV2p6bnkZCKXOF7Rt8TTqU740saOILALB-Q0": 10,
+    "7ZcchrEyaDZO8v0w3sZ780Y2NlbAWGs2kVXP-z5NBss": 10,
+    "cf3iB51tJrVSQ-j-TmcRuMYeuvho6y-7IrQm9O7QKIk": 10
   },
   "stakes": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 10000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000,
+    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 10000
   },
-  "stakeReleaseBlock": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 80000
-  },
-  "gateways": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": {
-      "url": "openkoi.com",
-      "publicKey": "abc",
-      "rate": 0
-    }
-  },
+  "stakeReleaseBlock": {},
+  "gateways": {},
   "validBundlers": [
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"
   ],
-  "votes": [
-    {
-      "id": 0,
-      "type": "trafficLogs",
-      "status": "active/passed",
-      "voted": [],
-      "stakeAmount": 45,
-      "yays": 0,
-      "nays": 0,
-      "bundlers": {
-        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": [
-          "votes txid 1",
-          "votes txid 2"
-        ]
-      },
-      "start": 150,
-      "end": 820
-    }
-  ],
-  "registeredRecord": {},
+  "votes": [],
+  "registeredRecord": {
+    "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU",
+    "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": "MqKaTw9bV2p6bnkZCKXOF7Rt8TTqU740saOILALB-Q0",
+    "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+    "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
+    "qZa1iNiUus-kRbBqwx0UimPNGVtCSZvQAQ9aCvPfHmI": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+    "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": "cf3iB51tJrVSQ-j-TmcRuMYeuvho6y-7IrQm9O7QKIk",
+    "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": "7ZcchrEyaDZO8v0w3sZ780Y2NlbAWGs2kVXP-z5NBss"
+  },
   "stateUpdate": {
     "trafficLogs": {
-      "open": 1,
-      "close": 720,
-      "partcipatesRate":{},
-      "rewardReport":[],
+      "open": 648604,
+      "close": 648616,
+      "partcipatesRate": {},
+      "rewardReport": [
+        {
+          "dailyTrafficBlock": 648480,
+          "logsSummary": {},
+          "distributer": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+          "distributionBlock": 648485,
+          "rewardPerAttention": 0
+        }
+      ],
       "dailyTrafficLog": [
         {
-          "block": 1,
-          "proposedLogs": [
-            {
-              "TLTxId": "ddfdfdf",
-              "owner": "wallet",
-              "gateWayId": "openkoi.com",
-              "voteId": 0,
-              "blockHeight": 150,
-              "won": false
-              
-            }
-          ],
+          "block": 648604,
+          "proposedLogs": [],
           "isRanked": false,
           "isDistributed": false
-        }    
+        }
       ]
-
-
     }
   }
 }
-

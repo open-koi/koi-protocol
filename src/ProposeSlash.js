@@ -6,13 +6,18 @@ export async function ProposeSlash(state, action) {
   const stakes = state.stakes;
   const balances = state.balances;
 
+  //   if (
+  //     trafficLogs.close - 200 > SmartWeave.block.height &&
+  //     SmartWeave.block.height < trafficLogs.close - 100
+  //   ) {
+  //     throw new ContractError("voting is ongoing or it is already ranked");
+  //   }
   if (
-    trafficLogs.close - 200 > SmartWeave.block.height &&
-    SmartWeave.block.height < trafficLogs.close - 100
+    SmartWeave.block.height < trafficLogs.close - 9 &&
+    SmartWeave.block.height > trafficLogs.close - 6
   ) {
-    throw new ContractError("voting is ongoing or it is already ranked");
+    throw new ContractError("Slash time not reached or passed");
   }
-
   if (!reciept) {
     throw new ContractError("No reciept specified");
   }
