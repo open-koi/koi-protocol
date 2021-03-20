@@ -4,13 +4,13 @@
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "treasury": "0A00000000000000000000000000000000000000",
   "balances": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000,
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 100,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 100,
     "0A00000000000000000000000000000000000000": 0
   },
   "stakes": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000000,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1000,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 1000
   },
   "stakeReleaseBlock": {
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 80000
@@ -18,7 +18,6 @@
   "gateways": {
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": {
       "url": "https://arweave.dev/logs",
-      "publicKey": "abc",
       "rate": 0
     }
   },
@@ -26,53 +25,22 @@
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"
   ],
-  "votes": [
-    {
-      "id": 0,
-      "type": "trafficLogs",
-      "status": "active/passed",
-      "voted": [],
-      "stakeAmount": 45,
-      "yays": 0,
-      "nays": 0,
-      "bundlers": {
-        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": [
-          "votes txid 1",
-          "votes txid 2"
-        ]
-      },
-      "start": 150,
-      "end": 820
-    }
-  ],
+  "votes": [],
   "registeredRecord": {},
   "stateUpdate": {
     "trafficLogs": {
-      "open": 1,
-      "close": 720,
-      "partcipatesRate":{},
-      "rewardReport":[],
+      "open": 648528, 
+      "close": 1000000, 
+      "partcipatesRate": {},
+      "rewardReport": [],
       "dailyTrafficLog": [
         {
-          "block": 1,
-          "proposedLogs": [
-            {
-              "TLTxId": "ddfdfdf",
-              "owner": "wallet",
-              "gateWayId": "openkoi.com",
-              "voteId": 0,
-              "blockHeight": 150,
-              "won": false
-              
-            }
-          ],
+          "block":648528, 
+          "proposedLogs": [],
           "isRanked": false,
           "isDistributed": false
-        }    
+        }
       ]
-
-
     }
   }
 }
-

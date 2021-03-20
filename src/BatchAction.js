@@ -39,11 +39,11 @@ export async function BatchAction(state, action) {
         var voteObj = JSON.parse(element);
 
         if (voteObj.vote.voteId === voteId && !vote.voted.includes(voteObj.senderAddress)) {
-            if (voteObj.vote.userVote === 'true') {
+            if (voteObj.vote.userVote === true) {
                 vote['yays'] += 1;
                 vote.voted.push(voteObj.senderAddress);
             }
-            if (voteObj.vote.userVote === 'false') {
+            if (voteObj.vote.userVote === false) {
                 vote['nays'] += 1;
                 vote.voted.push(voteObj.senderAddress);
             }
