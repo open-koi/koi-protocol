@@ -36,13 +36,13 @@
   },
   "stateUpdate": {
     "trafficLogs": {
-      "open": 648723,
-      "close": 648743,
+      "open": 648760,
+      "close": 648780,
       "partcipatesRate": {},
       "rewardReport": [],
       "dailyTrafficLog": [
         {
-          "block": 648723,
+          "block": 648760,
           "proposedLogs": [],
           "isRanked": false,
           "isDistributed": false

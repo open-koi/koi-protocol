@@ -21,7 +21,7 @@ export function RankProposal(state, action) {
   }
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
 
-    if(currentTrafficLogs.isRanked === false){
+    if(currentTrafficLogs.isRanked === true){
         throw new ContractError('it has already been ranked');
     }
     const proposedLog = currentTrafficLogs.proposedLogs;

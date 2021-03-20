@@ -401,7 +401,7 @@ function RankProposal(state, action) {
   }
     const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(trafficlog => trafficlog.block === trafficLogs.open);
 
-    if(currentTrafficLogs.isRanked === false){
+    if(currentTrafficLogs.isRanked === true){
         throw new ContractError('it has already been ranked');
     }
     const proposedLog = currentTrafficLogs.proposedLogs;
@@ -587,8 +587,8 @@ async function DistributeRewards(state, action) {
     trafficLogs.rewardReport.push(distributionReport);
 
     currentTrafficLogs.isDistributed = true;
-    trafficLogs.open = SmartWeave.block.heigh;
-    trafficLogs.close = SmartWeave.block.heigh + 720;
+    trafficLogs.open = SmartWeave.block.height;
+    trafficLogs.close = SmartWeave.block.height + 720;
 
     // next dialytrafficlog submmision 
     const newDialyTL = {
