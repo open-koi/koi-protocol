@@ -4,13 +4,13 @@
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "treasury": "0A00000000000000000000000000000000000000",
   "balances": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 10,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10,
-    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 10,
-    "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU": 10,
-    "MqKaTw9bV2p6bnkZCKXOF7Rt8TTqU740saOILALB-Q0": 10,
-    "7ZcchrEyaDZO8v0w3sZ780Y2NlbAWGs2kVXP-z5NBss": 10,
-    "cf3iB51tJrVSQ-j-TmcRuMYeuvho6y-7IrQm9O7QKIk": 10
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 151.85714285714286,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 152.85714285714286,
+    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 152.85714285714286,
+    "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU": 152.85714285714286,
+    "MqKaTw9bV2p6bnkZCKXOF7Rt8TTqU740saOILALB-Q0": 152.85714285714286,
+    "7ZcchrEyaDZO8v0w3sZ780Y2NlbAWGs2kVXP-z5NBss": 152.85714285714286,
+    "cf3iB51tJrVSQ-j-TmcRuMYeuvho6y-7IrQm9O7QKIk": 152.85714285714286
   },
   "stakes": {
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 10000,
@@ -24,7 +24,23 @@
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
     "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"
   ],
-  "votes": [],
+  "votes": [
+    {
+      "id": 0,
+      "type": "trafficLogs",
+      "status": "active",
+      "voted": [
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"
+      ],
+      "stakeAmount": 2,
+      "yays": 2,
+      "nays": 0,
+      "bundlers": {},
+      "start": 649202,
+      "end": 649211
+    }
+  ],
   "registeredRecord": {
     "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU",
     "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": "MqKaTw9bV2p6bnkZCKXOF7Rt8TTqU740saOILALB-Q0",
@@ -36,17 +52,43 @@
   },
   "stateUpdate": {
     "trafficLogs": {
-      "open": 648760,
-      "close": 648780,
-      "partcipatesRate": {},
-      "rewardReport": [],
+      "open": 649214,
+      "close": 649771,
+      "partcipatesRate": { "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 0 },
+      "rewardReport": [
+        {
+          "dailyTrafficBlock": 649198,
+          "logsSummary": {
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+            "qZa1iNiUus-kRbBqwx0UimPNGVtCSZvQAQ9aCvPfHmI": 1,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1,
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 649214,
+          "rewardPerAttention": 142.85714285714286
+        }
+      ],
       "dailyTrafficLog": [
         {
-          "block": 648760,
-          "proposedLogs": [],
-          "isRanked": false,
-          "isDistributed": false
-        }
+          "block": 649198,
+          "proposedLogs": [
+            {
+              "TLTxId": "W-l-wLYu7A2Z459AJdPnV2KwKCc7-djr2TP94DrmBrg",
+              "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 0,
+              "blockHeight": 649202,
+              "won": true
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        { "block": 649214, "proposedLogs": [], "isRanked": false, "isDistributed": false }
       ]
     }
   }

@@ -24,6 +24,9 @@ export function Vote(state, action) {
     }
     */
     const vote = votes[voteId];
+    if(SmartWeave.block.height > vote.end){
+        throw new ContractError('vote passed');
+    }
     const voted = vote.voted;
     if (stakes[caller] < vote.stakeAmount) {
 

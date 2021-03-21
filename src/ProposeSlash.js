@@ -14,12 +14,11 @@ export async function ProposeSlash(state, action) {
   //     throw new ContractError("voting is ongoing or it is already ranked");
   //   }
   if (
-    SmartWeave.block.height > trafficLogs.close - 5 ||
-    SmartWeave.block.height < trafficLogs.close - 10
+    SmartWeave.block.height > trafficLogs.close - 60 ||
+    SmartWeave.block.height < trafficLogs.close - 140
   ) {
     throw new ContractError("Slash time not reached or passed");
   }
-
     if (!reciept) {
         throw new ContractError('No reciept specified');
     }

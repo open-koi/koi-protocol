@@ -21,9 +21,9 @@ export function SubmitTrafficLog(state, action) {
         throw new ContractError('proposing is closed. wait for another round');
     }
 */
-    if( trafficLogs.close - 10 < SmartWeave.block.height){
-        throw new ContractError('proposing is closed. wait for another round');
-    }
+if (SmartWeave.block.height > trafficLogs.close - 320) {
+    throw new ContractError("proposing is closed. wait for another round");
+  }
 
     const vote = {
         "id": state.votes.length,

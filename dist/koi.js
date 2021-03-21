@@ -188,6 +188,9 @@ function Vote(state, action) {
     }
     */
     const vote = votes[voteId];
+    if(SmartWeave.block.height > vote.end){
+        throw new ContractError('vote passed');
+    }
     const voted = vote.voted;
     if (stakes[caller] < vote.stakeAmount) {
 
@@ -338,9 +341,9 @@ function SubmitTrafficLog(state, action) {
         throw new ContractError('proposing is closed. wait for another round');
     }
 */
-    if( trafficLogs.close - 10 < SmartWeave.block.height){
-        throw new ContractError('proposing is closed. wait for another round');
-    }
+if (SmartWeave.block.height > trafficLogs.close - 320) {
+    throw new ContractError("proposing is closed. wait for another round");
+  }
 
     const vote = {
         "id": state.votes.length,
@@ -394,8 +397,8 @@ function RankProposal(state, action) {
   //   );
   // }
   if (
-    SmartWeave.block.height > trafficLogs.close  ||
-    SmartWeave.block.height < trafficLogs.close - 5
+    SmartWeave.block.height > trafficLogs.close ||
+    SmartWeave.block.height < trafficLogs.close - 60
   ) {
     throw new ContractError("Ranking time finished or not Ranking time");
   }
@@ -468,12 +471,11 @@ async function ProposeSlash(state, action) {
   //     throw new ContractError("voting is ongoing or it is already ranked");
   //   }
   if (
-    SmartWeave.block.height > trafficLogs.close - 5 ||
-    SmartWeave.block.height < trafficLogs.close - 10
+    SmartWeave.block.height > trafficLogs.close - 60 ||
+    SmartWeave.block.height < trafficLogs.close - 140
   ) {
     throw new ContractError("Slash time not reached or passed");
   }
-
     if (!reciept) {
         throw new ContractError('No reciept specified');
     }
@@ -521,7 +523,7 @@ async function DistributeRewards(state, action) {
     const caller = action.caller;
 
 
-    if (SmartWeave.block.heigh < trafficLogs.close) {
+    if (SmartWeave.block.height < trafficLogs.close) {
         throw new ContractError('voting process is ongoing');
     }
 
@@ -588,7 +590,7 @@ async function DistributeRewards(state, action) {
 
     currentTrafficLogs.isDistributed = true;
     trafficLogs.open = SmartWeave.block.height;
-    trafficLogs.close = SmartWeave.block.height + 720;
+    trafficLogs.close = SmartWeave.block.height + 480;
 
     // next dialytrafficlog submmision 
     const newDialyTL = {
