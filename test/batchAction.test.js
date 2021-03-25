@@ -59,6 +59,40 @@ const STATE = {
       },
       "start": 150,
       "end": 820
+    },
+    {
+      "id": 2,
+      "type": "trafficLogs",
+      "status": "active/passed",
+      "voted": [],
+      "stakeAmount": 45,
+      "yays": 0,
+      "nays": 0,
+      "bundlers": {
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": [
+          "votes txid 1",
+          "votes txid 2"
+        ]
+      },
+      "start": 150,
+      "end": 820
+    },
+    {
+      "id": 3,
+      "type": "trafficLogs",
+      "status": "active/passed",
+      "voted": [],
+      "stakeAmount": 45,
+      "yays": 0,
+      "nays": 0,
+      "bundlers": {
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": [
+          "votes txid 1",
+          "votes txid 2"
+        ]
+      },
+      "start": 150,
+      "end": 820
     }
   ],
   "registeredRecord": {},
@@ -108,8 +142,8 @@ async function testBatchAction() {
   // test 3 - write to arweave
   var action = {
       input : {
-          "batchFile":'KznQBSG-PRPwygFt0E_LfB3hdlqsdmz_O5Q62Nx2rK8',
-          "voteId":1
+          "batchFile":'OV-u9ixHLVKNsj7w6azpP2gm2K2ialf1mNYWobatwKk',
+          "voteId":2
         },
 
       caller : "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA"

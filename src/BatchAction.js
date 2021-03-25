@@ -16,11 +16,11 @@ export async function BatchAction(state, action) {
         throw new ContractError('Invalid value for "voting id". Must be an integer');
     }
 
-    
+    /*
     if (SmartWeave.block.height > vote.end) {
         throw new ContractError('it is closed');
     }
-    
+    */
     if (!typeof batchTxId === 'string') {
         throw new ContractError('batchTxId should be string');
     }
@@ -33,17 +33,20 @@ export async function BatchAction(state, action) {
     
     
     const batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, { decode: true, string: true });
-    const line = batch.split('\r\n');
-    console.log(line);
-    line.forEach( element => {
-        var voteObj = JSON.parse(element);
+   
+   // const line = batch.split('\r\n');
+    console.log(batch);
+    const elements = JSON.parse(batch);
+    console.log(elements);
+    elements.forEach( element => {
+        var voteObj = element;
 
         if (voteObj.vote.voteId === voteId && !vote.voted.includes(voteObj.senderAddress)) {
-            if (voteObj.vote.userVote === true) {
+            if (voteObj.vote.userVote === "true") {
                 vote['yays'] += 1;
                 vote.voted.push(voteObj.senderAddress);
             }
-            if (voteObj.vote.userVote === false) {
+            if (voteObj.vote.userVote === "false") {
                 vote['nays'] += 1;
                 vote.voted.push(voteObj.senderAddress);
             }

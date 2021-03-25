@@ -15,7 +15,7 @@ export function RankProposal(state, action) {
   // }
   if (
     SmartWeave.block.height > trafficLogs.close ||
-    SmartWeave.block.height < trafficLogs.close - 60
+    SmartWeave.block.height < trafficLogs.close - 3
   ) {
     throw new ContractError("Ranking time finished or not Ranking time");
   }
