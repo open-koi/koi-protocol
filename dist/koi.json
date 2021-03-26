@@ -1,5 +1,5 @@
 {
-  "ticker": "testContract",
+  "ticker": "TCT",
   "name": "testContract",
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "treasury": "0A00000000000000000000000000000000000000",
@@ -36,20 +36,18 @@
   },
   "stateUpdate": {
     "trafficLogs": {
-      "open": 652068,
-      "close": 652084,
+      "open": 653025,
+      "close": 653100,
       "partcipatesRate": { "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 0 },
       "rewardReport": [],
       "dailyTrafficLog": [
         {
-          "block": 652068,
+          "block": 653025,
           "proposedLogs": [],
           "isRanked": false,
           "isDistributed": false
         }
-        
       ]
     }
   }
 }
-
