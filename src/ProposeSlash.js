@@ -14,8 +14,8 @@ export async function ProposeSlash(state, action) {
   //     throw new ContractError("voting is ongoing or it is already ranked");
   //   }
   if (
-    SmartWeave.block.height > trafficLogs.close - 3 ||
-    SmartWeave.block.height < trafficLogs.close - 6
+    SmartWeave.block.height > trafficLogs.close - 120 ||
+    SmartWeave.block.height < trafficLogs.close - 220
   ) {
     throw new ContractError("Slash time not reached or passed");
   }

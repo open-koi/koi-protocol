@@ -1,8 +1,7 @@
 const fs = require("fs");
 const smartweave = require("smartweave");
 const Arweave = require("arweave");
-// //const TestWeave = require("testweave-sdk");
-//import TestWeave from "testweave-sdk";
+
 const arweave = Arweave.init({
   host: "arweave.net",
   port: 443,
@@ -10,13 +9,6 @@ const arweave = Arweave.init({
   timeout: 20000,
   logging: false,
 });
-// const arweave = Arweave.init({
-//   host: "localhost",
-//   port: 1984,
-//   protocol: "http",
-//   timeout: 20000,
-//   logging: false,
-// });
 
 const wallet = JSON.parse(
   fs.readFileSync(

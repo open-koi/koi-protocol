@@ -259,7 +259,7 @@ async function BatchAction(state, action) {
   const voteId = input.voteId;
   const bundlerAddress = input.bundlerAddress;
   const vote = votes[voteId];
-  console.log(voteId);
+
   if (!batchTxId) {
     throw new ContractError("No txId specified");
   }
@@ -289,26 +289,19 @@ async function BatchAction(state, action) {
     decode: true,
     string: true,
   });
-  //   const batch = await arweave.transactions.getData(batchTxId, {
-  //     decode: true,
-  //     string: true,
-  //   });
 
-  // const line = batch.split('\r\n');
-  console.log(batch);
   const elements = JSON.parse(batch);
-  console.log(elements);
+
   elements.forEach((element) => {
     var voteObj = element;
-    console.log("element", element);
+
     if (
       voteObj.vote.voteId === voteId &&
       !vote.voted.includes(voteObj.senderAddress)
     ) {
-      console.log("hiiiii");
       if (voteObj.vote.userVote == true) {
         vote.yays += 1;
-        console.log(vote.yays);
+
         vote.voted.push(voteObj.senderAddress);
       }
       if (voteObj.vote.userVote == false) {
@@ -325,15 +318,10 @@ async function BatchAction(state, action) {
     // }
   });
   if (!(caller in vote.bundlers)) {
-    console.log("caller", caller);
     vote.bundlers[bundlerAddress] = [];
-    console.log("hellllllo");
-    //console.log(vote.bundler[caller]);
-    console.log("herrrrer");
   }
-  console.log("me Again");
+
   vote.bundlers[bundlerAddress].push(batchTxId);
-  //   console.log(vote.bundler[caller]);
 
   return { state };
 }
@@ -361,7 +349,7 @@ function SubmitTrafficLog(state, action) {
         throw new ContractError('proposing is closed. wait for another round');
     }
 */
-  if (SmartWeave.block.height > trafficLogs.close) {
+  if (SmartWeave.block.height > trafficLogs.close - 13) {
     throw new ContractError("proposing is closed. wait for another round");
   }
 
@@ -474,15 +462,15 @@ function RankProposal(state, action) {
 }
 
 async function ProposeSlash(state, action) {
-    const reciept = action.input.reciept;
-    const payload = reciept.vote;
-    const vote = payload.vote;
-    const votes = state.votes;
-    const stakes = state.stakes;
-    const balances = state.balances;
-    const trafficLogs = state.stateUpdate.trafficLogs;
+  const reciept = action.input.reciept;
+  const payload = reciept.vote;
+  const vote = payload.vote;
+  const votes = state.votes;
+  const stakes = state.stakes;
+  const balances = state.balances;
+  const trafficLogs = state.stateUpdate.trafficLogs;
 
-    //   if (
+  //   if (
   //     trafficLogs.close - 200 > SmartWeave.block.height &&
   //     SmartWeave.block.height < trafficLogs.close - 100
   //   ) {
@@ -494,42 +482,60 @@ async function ProposeSlash(state, action) {
   ) {
     throw new ContractError("Slash time not reached or passed");
   }
-    if (!reciept) {
-        throw new ContractError('No reciept specified');
-    }
+  if (!reciept) {
+    throw new ContractError("No reciept specified");
+  }
 
-    const voterAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(vote.owner);
-    const suspectedVote = votes[vote.voteId];
+  const voterAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(
+    vote.owner
+  );
+  const suspectedVote = votes[vote.voteId];
 
-    if (suspectedVote.includes(voterAddress)) {
-        throw new ContractError('vote is found');
-    }
+  if (suspectedVote.includes(voterAddress)) {
+    throw new ContractError("vote is found");
+  }
 
-    const voteString = JSON.stringify(vote);
-    const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(voteString);
-    const rawSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(vote.signature);
-    const isVoteValid = await SmartWeave.arweave.crypto.verify(vote.owner, voteBuffer, rawSignature);
+  const voteString = JSON.stringify(vote);
+  const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(voteString);
+  const rawSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(
+    vote.signature
+  );
+  const isVoteValid = await SmartWeave.arweave.crypto.verify(
+    vote.owner,
+    voteBuffer,
+    rawSignature
+  );
 
-    if (isVoteValid !== true) {
-        throw new ContractError('vote is not valid');
-    }
+  if (isVoteValid !== true) {
+    throw new ContractError("vote is not valid");
+  }
 
-    const recieptString = JSON.stringify(payload);
-    const recieptBuffer = await SmartWeave.arweave.utils.stringToBuffer(recieptString);
-    const rawRecieptSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(reciept.signature);
-    const isRecieptValid = await SmartWeave.arweave.crypto.verify(reciept.owner, recieptBuffer, rawRecieptSignature);
+  const recieptString = JSON.stringify(payload);
+  const recieptBuffer = await SmartWeave.arweave.utils.stringToBuffer(
+    recieptString
+  );
+  const rawRecieptSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(
+    reciept.signature
+  );
+  const isRecieptValid = await SmartWeave.arweave.crypto.verify(
+    reciept.owner,
+    recieptBuffer,
+    rawRecieptSignature
+  );
 
-    if (isRecieptValid !== true) {
-        throw new ContractError('reciept is not valid');
-    }
+  if (isRecieptValid !== true) {
+    throw new ContractError("reciept is not valid");
+  }
 
-    const bundlerAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(reciept.owner);
-    const bundlerStake = stakes[bundlerAddress];
-    const treasuryAddress = state.treasury;
-    stakes[bundlerAddress] = 0;
-    balances[treasuryAddress] += bundlerStake;
+  const bundlerAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(
+    reciept.owner
+  );
+  const bundlerStake = stakes[bundlerAddress];
+  const treasuryAddress = state.treasury;
+  stakes[bundlerAddress] = 0;
+  balances[treasuryAddress] += bundlerStake;
 
-    return { state }
+  return { state };
 }
 
 async function DistributeRewards(state, action) {

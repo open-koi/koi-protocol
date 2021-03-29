@@ -36,13 +36,13 @@
   },
   "stateUpdate": {
     "trafficLogs": {
-      "open": 653025,
-      "close": 653100,
+      "open": 654353,
+      "close": 654373,
       "partcipatesRate": { "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 0 },
       "rewardReport": [],
       "dailyTrafficLog": [
         {
-          "block": 653025,
+          "block": 654353,
           "proposedLogs": [],
           "isRanked": false,
           "isDistributed": false
