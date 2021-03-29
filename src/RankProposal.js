@@ -1,18 +1,6 @@
 export function RankProposal(state, action) {
   const trafficLogs = state.stateUpdate.trafficLogs;
   const votes = state.votes;
-  // between this 100 blcoks proposal should be ranked
-
-  // between this 100 blcoks proposal should be ranked
-
-  // if (
-  //   trafficLogs.close - 100 > SmartWeave.block.height &&
-  //   SmartWeave.block.height < trafficLogs.close
-  // ) {
-  //   throw new ContractError(
-  //     "to early for propose slash or proposing time is passes"
-  //   );
-  // }
   if (
     SmartWeave.block.height > trafficLogs.close ||
     SmartWeave.block.height < trafficLogs.close - 120

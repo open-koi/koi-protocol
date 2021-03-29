@@ -17,12 +17,7 @@ export function Vote(state, action) {
     if (!Number.isInteger(voteId)) {
         throw new ContractError('Invalid value for "voting id". Must be an integer');
     }
-    /*
-    if (voteId > numberOfVotes) {
-        throw new ContractError('voteId doesnt exist');
-
-    }
-    */
+    
     const vote = votes[voteId];
     if(SmartWeave.block.height > vote.end){
         throw new ContractError('vote passed');

@@ -15,12 +15,7 @@ export function SubmitTrafficLog(state, action) {
   if (balances[caller] < 1) {
     throw new ContractError("you need min 1 KOI to propose gateway");
   }
-  // proposed trafficlogs should be submmited 200 blocks before the closing block.
-  /*
-    if( SmartWeave.block.height > trafficLogs.close - 200){
-        throw new ContractError('proposing is closed. wait for another round');
-    }
-*/
+  
   if (SmartWeave.block.height > trafficLogs.close - 420) {
     throw new ContractError("proposing is closed. wait for another round");
   }
