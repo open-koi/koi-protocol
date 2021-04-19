@@ -12,10 +12,10 @@ export async function RegisterData(state, action) {
   if (balances[caller] < 1) {
     throw new ContractError("you need min 1 KOI to register data");
   }
-  let transaction = await SmartWeave.unsafeClient.transactions.get(txId);
-  if (!transaction) {
-    throw new ContractError("Transaction not found");
-  }
+//   let transaction = await SmartWeave.unsafeClient.transactions.get(txId);
+//   if (!transaction) {
+//     throw new ContractError("Transaction not found");
+//   }
   let owner = transaction.owner;
   let ownerAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(
     owner
