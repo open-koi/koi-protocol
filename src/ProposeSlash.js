@@ -8,8 +8,8 @@ export async function ProposeSlash(state, action) {
   const trafficLogs = state.stateUpdate.trafficLogs;
 
   if (
-    SmartWeave.block.height > trafficLogs.close - 120 ||
-    SmartWeave.block.height < trafficLogs.close - 220
+    SmartWeave.block.height > trafficLogs.close - 75 ||
+    SmartWeave.block.height < trafficLogs.close - 150
   ) {
     throw new ContractError("Slash time not reached or passed");
   }

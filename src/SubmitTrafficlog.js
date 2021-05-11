@@ -12,10 +12,10 @@ export function SubmitTrafficLog(state, action) {
   if (!gateWayUrl) {
     throw new ContractError("No gateWayUrl specified");
   }
-  if (balances[caller] < 1) {
+
+  if (!(caller in balances) || balances[caller] < 1) {
     throw new ContractError("you need min 1 KOI to propose gateway");
   }
-  
   if (SmartWeave.block.height > trafficLogs.close - 420) {
     throw new ContractError("proposing is closed. wait for another round");
   }
@@ -32,6 +32,7 @@ export function SubmitTrafficLog(state, action) {
     start: SmartWeave.block.height,
     end: trafficLogs.close,
   };
+
   const proposedLog = {
     TLTxId: batchTxId,
     owner: caller,

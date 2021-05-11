@@ -1,50 +1,1744 @@
 {
-  "ticker": "TCT",
-  "name": "testContract",
+  "ticker": "KOI",
+  "name": "Koi",
   "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
   "treasury": "0A00000000000000000000000000000000000000",
   "balances": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 151.85714285714286,
-    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 152.85714285714286,
-    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 152.85714285714286,
-    "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU": 152.85714285714286,
-    "MqKaTw9bV2p6bnkZCKXOF7Rt8TTqU740saOILALB-Q0": 152.85714285714286,
-    "7ZcchrEyaDZO8v0w3sZ780Y2NlbAWGs2kVXP-z5NBss": 152.85714285714286,
-    "cf3iB51tJrVSQ-j-TmcRuMYeuvho6y-7IrQm9O7QKIk": 152.85714285714286
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1325.0164277807587,
+    "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 1599.7755485742189,
+    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 697.3226115607715,
+    "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU": 1604.385854532351,
+    "MqKaTw9bV2p6bnkZCKXOF7Rt8TTqU740saOILALB-Q0": 1166.9030396765097,
+    "7ZcchrEyaDZO8v0w3sZ780Y2NlbAWGs2kVXP-z5NBss": 1367.8180137861664,
+    "cf3iB51tJrVSQ-j-TmcRuMYeuvho6y-7IrQm9O7QKIk": 975.9127015122583,
+    "4qVIpEM2jFlfYxU5u8pr0yeO4YWLHB_u2mBSYrIxpwQ": 8,
+    "zFGpdtH0tpXAvG7PDMhq-ExCR_w7c4PYuwmoRZKmMpA": 1471.2363970173399,
+    "jvlgWOVeQwHZIimnswNQUe_CwKnodspFyY5HWc2M1jY": 5,
+    "J3vCwzjmVCuJKde03aI7XCRBsJ-rzSD16L1RelriAIg": 5,
+    "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0": 8.005497605054515,
+    "nSCflVZpmOb57yYu9HxTSRtHRZqQ0MT1TBJnOxwHsxQ": 5,
+    "LRZnB5-GMxnSLkxJHRhGHrBmqaoJdoz_cg1Rlp8KWmM": 5,
+    "AuJgwxZWtwLtQF5vqVn8wuGjLh-Ye6cm5IGFEGLVs5o": 65.02748802527258,
+    "8ZBY3MHW2XWz8qPOi_01Y52ni7TK9dBr1ZqvvunC0bo": 5,
+    "G2p6qraLOEiTzAtFQedhyDt7u9ffUUSUoZmZqlacpRw": 14.005497605054515,
+    "Hr3YbT5_CashBpCf1bwr9CBwqvoHQwxtDRL-rx_Imvw": 24.01099521010903,
+    "YatswUppDKZqIepfL6qTMsaKEYAm-leXnYlkkRIQXm0": 5,
+    "S_DMtHbBGDenr98mGhW7YfyblBa28pfXe_mOfiJ67B8": 5,
+    "F_c1YBhWLXhnJQxMyq3A5mJ9d87iVvjw85aG7Sd_G_Q": 5,
+    "PA9MEbXPq7fjXzlzBZfjY4P1F4EhJ8tPdz8U8zeEfVA": 5,
+    "IsAUH6ruDQgbhr7SvfYUFzQJO-6MGXaRFfJ0FIyHvOQ": 444.64287264065723,
+    "MZN_kcDMHpGKP7JjgJxUuFsxF5l3dd9jOP6HYHChWoI": 16.005497605054515,
+    "T_kwtK6EIrmeljyknG_3AF3ubDk9pCz5YBzuI0Zc2Ng": 5,
+    "oXPkFpvvpI0EDdbBUVz1sOEf8LAcx7pZqTduB70jEvo": 49.02199042021806,
+    "LKsF6amrUTNT80AjTiEJX3lpAu55Lgm3xVKhs9oGXCE": 5,
+    "v6UdZMMY-DLKA20JstyiIRzBZnB2EIZIbJO9U68G20c": 5,
+    "1MDkV06pv8LG-fFVTypMYhzVVwpjalqjXW1ovVmlfIc": 350.14398391745385,
+    "hJIadW2b6-eaW6B0gJLqZqmE2sGfaxkGCpGxkpmKj1Q": 26.01099521010903,
+    "Vt3Ghf4modirbvvk3ffK56ROc-Ts3ilSy_rSfDxK2ko": 5,
+    "NqUg7zqggQnYWr_pcJq38sW_eltdC6LF2U1Rc6DpT9U": 5,
+    "FjA4pYgLA4hdaQT4ltLur8pHAoMo_0hARtfS36cPOSk": 10,
+    "Y5uP96wryXqGRASVcNPgue9fJXb5rvt-YftbDGcn-I8": 16.005497605054515,
+    "Gc45pDVPCgXLJ4pTUxl8YJZQJa_pkm7Q7x27jmaIpeI": 5,
+    "PG1L9xap05bkDSgKSscFRNz-sU4IR9rI9x7tKBNnUVo": 5,
+    "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk": 32.016492815163545,
+    "7SD_OjaVx4Na0bptCMq8DE-VT4Z__Aky5LZ2iWO6D5g": 5,
+    "0qw-tA8H3j7QJyX6togwOG7yfyV9l-gYjoUewJmng_I": 8,
+    "50JVvg84zA2ae-lQ7j9tL_CIXFlNXr2FXjEcDNXfTkc": 5,
+    "IdjiSBr3Zz1NqK858Zx6ahaX9N_VokRY-OrkjFRjqDg": 5,
+    "Z4atFg7tMvjP9sfWEfgaFxk0TKOTfS4dI6NMKZBf2NI": 5,
+    "obZ0Zc9sA6tEYvPTR2IVEGHAxaUitpX-vV2aq_z2fPA": 4.805152979066023,
+    "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U": 84.0384832353816,
+    "_mIXnHjMQvco0tPpdVDuHVvFyicrALbI8aaHRPLNGjY": 149.02199042021812,
+    "owOn0_y5yiaLE2E2VafPAwYyzBDJtm54KGvYAYownKc": 5,
+    "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk": 0,
+    "zRvtEbzH2uwXNCYmyDl7PXXiKr3XOjbCok6eGEKLfoU": 5,
+    "DWEwF4O9FtDYKsTof6ghC9uHymU31y06xbvsfW5ZJFg": 5,
+    "1dOEejObA36nLvi2tp53rJM3oJkKY5eC_u_bvmpnmd4": 5,
+    "vACBPFvIdSoMdjgPpqJq2xa_C9JDGFcpRtCICFjgFAo": 16.005497605054515,
+    "yYVzfbLRPbdZjv1pRQ6WoHpqChkhZFv1trLnoEqcuns": 38.016492815163545,
+    "0nFVWDqcqJD29s7qMjM-gYp4mi-0_290YTOyQREdtdo": 5,
+    "dHyk6-HWMn1wZ0qhGwMEdGbkckGK-KY3Wjt3oIzymeY": 5,
+    "BVQoNrOVj-NfUxCwoxr2aww4C_dbythYqJzLCuAUHc4": 5,
+    "QoXcFlRB8apbqpzL9pEPCBJyBOs4-1KLWuBBcqeeILk": 5,
+    "0POXFLlPCb8ln8mg4HwrqA5q9iJIDcViJ-PtpEgGZVo": 5,
+    "YNXE49gTG2O1gCf_mK6mVnF_eYiupsxvRo5kQWr-0do": 38.016492815163545,
+    "-Qrm40fbwwymcX6EB-P4G_NO9QwynPEVzw2A5ECC0gs": 5,
+    "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w": 37.02199042021806,
+    "3GL466MaY6xACGEnoTa6rdOtQ7iQv4DKhRQVa1ncUAE": 5,
+    "t8i_MHAPl-mwDSthhyBAwGWGrI-_foX5SZV_h9f6Vrc": 38.016492815163545,
+    "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g": 56.8326410043386,
+    "h0zdcklfctYQoKqneI1mvwUfgLja5Ael-0X3ogxzbf4": 60.027488025272575,
+    "_GXJ0i9UlnZTeN6fPerdUv8z5k-kaOetYvJ1SiXhJAo": 16.005497605054515,
+    "VcO3wA82CCHKaOoRGMaEydiXIFq7pqSzNbFYDFWzCiU": 27.01099521010903,
+    "L_i5uUL5jONl1dD5lKsuA435Wp4gPsjhgnlHoG3Fxgw": 5,
+    "4xRC4b2mrSOUDpwXYyMbezzJlqzDDThFxIRm-XLLuIE": 5,
+    "Wjn9zjFWSWOiJ5rDFPlJdcAukGRUjQbdinxFAw-Dj00": 5,
+    "Aiyj8hSBJlthlLcY-JIGKR27r1sWGMnWstgbAGWZsgU": 5,
+    "7BQYCFKFjkn2wOV_VP1bg_uVlpjtzJgvx2Cl05fY1t8": 5,
+    "KgRbW--YzEH8M9WjFAQuqCthVjTkRMey-PetPeUMP2c": 5,
+    "IA0rwlQBxvhQ5MBZ96gLHLup264mmD5YDwtyhYYp1xI": 5,
+    "vqc_Yjgw9NvyV7WxPOz3yJehDGRSTfEZrWOyjA_GYSY": 5,
+    "LNTwbrdw7vm2nBHf7qbEpGplW3m14PeGaYq5ck2cXdc": 5,
+    "UkXmk64rKfouP2Vcz9hGZooKcB3ufA_0SHfXBQpFOd4": 5,
+    "2UvYvCd-e7nueBi7YekcxdJiFUqBEspWth3mEmfJI1A": 5,
+    "VhzCpRp133RWIHrxVRfzggJaYWhJXjWtjSl1-vvIMWI": 5,
+    "FI8y6hw4uVez5SDw-4PQfojiNHqWpaAYr_1z-BKQmZw": 5,
+    "_x2j2MsvnM0jNNWd8aU58zjS1wqZPLJFFD0KD9RYWoo": 5,
+    "3o5qme68I9b374UJmelrSE1d2CFopTWSBq-3vXtlQSM": 5,
+    "baAX4tBuYbgIwp4Ffwdstm51jnHd6Pv35-hvJhzWom4": 16.005497605054515,
+    "pyIANW6lsj0Wvd-z112888xkAm797mN0qydZbfMcn20": 5,
+    "kdYrXRJAgSFJ7P1AitK5ZOnpms0W9lf5kdBssTmjtek": 5,
+    "Bs7fPZoJGZPPgT4jnBKNQHKi5ERO5F0Yz-v8TCtHUzY": 5,
+    "NLK6N9lk7AFf3F-9bv_M-SFEtLFKihB2GXeeFwbpd-8": 5,
+    "EWvfNNx65wbL6bNHKHCSgXk-3kv3UtIWfPTvnSA-6XQ": 5,
+    "bt6DY1R1iIW-dxP_R9r71DTekJHlbiISc4n2mj-kaiw": 5,
+    "bW5pKxUb9u8Y2N5a--HIEqvJTDCjm34k98OGYJZK6zw": 60.027488025272575,
+    "5p0Y3DbfYadQ2hbmZkUfvVKfvPjvgZo80CwLZpGmEOU": 16.005497605054515,
+    "y5c7EbkJCsrl_WUSrjcPNrDXQj4tgrNDh-2hRtgzK_s": 5,
+    "e3loyXSdZK3H5NBC_LoaX5b9glqat_AeFM23gy-YPtw": 5,
+    "cvxP1DnQ_PgbymUDSGPHgB7UjnjaYX3EBMW2fuWwEX0": 5,
+    "NCuNq5wId98DO57FXkK4TqQyz4WkhV4F2Zj6-ne_-Ls": 5,
+    "fcMxhaBLYpFEzS4eWqsazA27IVPh738Kh6d6VXSclcA": 27.01099521010903,
+    "gac2OgkLLNUbeAYAvMFqifaYrqG8J89pQGhi1Hi-o_I": 5,
+    "cmB3r44wI1iiGdm8M1dVTv3LFWT5UkAO5B8L5klyvVE": 60.027488025272575,
+    "j_eOHp5yoSnLsCDE9pp8UtW9PMy6KJphIAHll6RTmik": 3,
+    "EMVdEaeEy7IkWSIA9MjAcramDclaumlVJKHoHd06JC8": 12.005497605054515,
+    "TLzveBksdHu9920L38ybXEncNBwgA5tJxF1FidHlbA8": 4,
+    "CMmgngNwPktJ_PaUdgxIkn6-XvBG5aNFzMvk82LBT1U": 5,
+    "kdFx1vdvFfTYxIs6cW1ILK-sncVm8W795MdlQB2LbDY": 8.830917874396135,
+    "5VQMxb51BFnY1EPK3gbVGIEFmjcdXkQunEi9cQrR5Qk": 5,
+    "6NhwFI2PwjrrUve4qswb4AbFn-V5EqfGQiKqM4dH66k": 2,
+    "pDJw1kcHXGe11GWsVltAzwUqSnUMqChBC4fEA2gsaxc": 5,
+    "k1ep2yJB1R9ZGj-xWEcaNouXtLFyXpQGHwmnRfLRTos": 5,
+    "cNt5kwk7iGdTutyZ7RowAtQwkt9uXyZkuhqXNAE-T0Y": 5,
+    "JvXQQRbP56-u5PhUYXp7U1uldKDsW6Z4QlOOynfGG0A": 5,
+    "YtUapuvpwFFYD7BNxlhx-5XKU91TQX5pgNW2f9l9G_U": 5,
+    "_G2JAfZtjCeO--m_g5-ZzQMFiC_hFEUlFaE1fDOfm34": 5,
+    "k_hbORdnrMR0EBx7XXQDFWt-sXi9nAId8T4KSuy0RkQ": 5,
+    "YGU4oBqrUxPZW4i9br39t7FtIqv6GZ33Q0k2sBdKJuM": 5,
+    "H_46XoCM48FnKr5J6DIRAsLP-6zSncZcD9nmF9SL5yM": 5,
+    "soap_Gw7lx6vkfZPsoXQI4x_ShSjfGc70xjZu1Ry6Mg": 5,
+    "6LL7EU-CIVLSIYajnFelAQi6Uefv4lqrZBcv9bNwxFI": 5,
+    "70sTVhTA5UJD36xqRdNxwyAVwlEV2nFbb0ao-yHjPb8": 5,
+    "6YKepOPCLsPARexsnVVU08a1M_LET-Csf8IBYE9tx14": 5,
+    "fr2EJFgoB_OCKPdUYahQE3WYoDF6Ky2fUyuhKZtdriI": 5,
+    "6VJYLb6lvBISrgRbhd1ODHzJ1xAh3ZA3OdSY20E88Bg": 5,
+    "vwBQGN2_gUZEfs6tWW5XHE0Zen6cZta4Wb1-7N1BEnM": 0,
+    "LwYgx_MuLvXIk69m2VZly-J0a-EMoVYTZZsTvD6nnAE": 5,
+    "qT0ZTH4Iva7fPhy0opSz0FIcsA2haq-YkZxf2myjMd4": 5,
+    "eRF5ovTKNddHLtTxGZqEV4uREqEvoDB8ge7yg3fBZBs": 5,
+    "rOLyEn4gloViiygoIkZMXLdj7gSLq5OFSyifBz0DlYY": 5
   },
   "stakes": {
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 10000,
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000,
-    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 10000
+    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 10389,
+    "zFGpdtH0tpXAvG7PDMhq-ExCR_w7c4PYuwmoRZKmMpA": 49
   },
-  "stakeReleaseBlock": {},
+  "stakeReleaseBlock": {
+    "zFGpdtH0tpXAvG7PDMhq-ExCR_w7c4PYuwmoRZKmMpA": 677545,
+    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 680811
+  },
   "gateways": {},
   "validBundlers": [
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
     "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"
   ],
-  "votes": [],
+  "votes": [
+    {
+      "id": 35,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 1,
+      "nays": 0,
+      "bundlers": {},
+      "start": 683866,
+      "end": 684334
+    },
+    {
+      "id": 34,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 1,
+      "nays": 0,
+      "bundlers": {},
+      "start": 682798,
+      "end": 683511
+    },
+    {
+      "id": 33,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 1,
+      "nays": 0,
+      "bundlers": {},
+      "start": 681944,
+      "end": 682659
+    },
+    {
+      "id": 32,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 1,
+      "nays": 0,
+      "bundlers": {},
+      "start": 681217,
+      "end": 681934
+    },
+    {
+      "id": 31,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 1,
+      "nays": 0,
+      "bundlers": {},
+      "start": 680512,
+      "end": 681202
+    },
+    {
+      "id": 30,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["zFGpdtH0tpXAvG7PDMhq-ExCR_w7c4PYuwmoRZKmMpA"],
+      "stakeAmount": 2,
+      "yays": 1,
+      "nays": 0,
+      "bundlers": {},
+      "start": 679693,
+      "end": 680402
+    },
+    {
+      "id": 29,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk",
+        "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+        "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc"
+      ],
+      "stakeAmount": 2,
+      "yays": 3,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "AB6cdYXyLu-1p942cL5J72VM91KUN2aH5qFu-5Qf7ZY"
+        ]
+      },
+      "start": 678959,
+      "end": 679677
+    },
+    {
+      "id": 28,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk",
+        "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
+        "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U"
+      ],
+      "stakeAmount": 2,
+      "yays": 3,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "nOhFVm2gSFqeTSbTaKwlj2WguoDBwCinhUrolVdR59g"
+        ]
+      },
+      "start": 678234,
+      "end": 678950
+    },
+    {
+      "id": 27,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk",
+        "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+        "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc"
+      ],
+      "stakeAmount": 2,
+      "yays": 4,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "BinyYbJ20zkUYefAMb_aqHIA3mAYoMgWi64exy-JBB8"
+        ]
+      },
+      "start": 677510,
+      "end": 678227
+    },
+    {
+      "id": 26,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 1,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "GCCKqJXoW3yyobDww1tdrMMhQPtdIV-FiaBcXViQtqQ"
+        ]
+      },
+      "start": 676785,
+      "end": 677503
+    },
+    {
+      "id": 25,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 0,
+      "bundlers": {},
+      "start": 674791,
+      "end": 675504
+    },
+    {
+      "id": 24,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "wSDA4cOhAz4tWlhiAFIDBzKqj01CDjr_GcZXd1Nv7E8"
+        ]
+      },
+      "start": 674118,
+      "end": 674780
+    },
+    {
+      "id": 23,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 0,
+      "bundlers": {},
+      "start": 672183,
+      "end": 672898
+    },
+    {
+      "id": 22,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "ZQL5WDhvLXEpQu4z2Zw886K0ZW4EQ46iVHiyH_TjkkE"
+        ]
+      },
+      "start": 671431,
+      "end": 672141
+    },
+    {
+      "id": 21,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "7IPooWif_4InE8Xnq5XgJKKDRYtmGVl-0l7GOjIE5tc"
+        ]
+      },
+      "start": 670621,
+      "end": 671337
+    },
+    {
+      "id": 20,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "qHrmnFNqKRGNFsabn6Ce6ENmel_E1oHpXlcHSzYGbZs"
+        ]
+      },
+      "start": 669525,
+      "end": 670201
+    },
+    {
+      "id": 19,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "nybr_W4E0SWRWFKPqRaoTZ015N59ODWgBBU1AFs5zeo"
+        ]
+      },
+      "start": 668731,
+      "end": 669448
+    },
+    {
+      "id": 18,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 0,
+      "bundlers": {},
+      "start": 667568,
+      "end": 668277
+    },
+    {
+      "id": 17,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "HWCWwWKbs8kdSm3SwHWTOxPFnI9X7qX4tjbI0uDsB0U"
+        ]
+      },
+      "start": 666758,
+      "end": 667358
+    },
+    {
+      "id": 16,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "j85NAXhxosBF529igN4QPM6XGxk2C56SeJJKBlY0EKY"
+        ]
+      },
+      "start": 665936,
+      "end": 666628
+    },
+    {
+      "id": 15,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "oUcD9c2WiyKv-b276IGWOzNMWAYWYy-lZ9pizxjNAT8"
+        ]
+      },
+      "start": 664840,
+      "end": 665550
+    },
+    {
+      "id": 14,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "71jcVZj3TCE__SD1MlzvAx6KgMKq-EcfmgpDNjPPrxk"
+      ],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 2,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "12nthLKsSEfns876SNowuCKfQKVoPhTon_FDeNkweW0"
+        ]
+      },
+      "start": 664126,
+      "end": 664821
+    },
+    {
+      "id": 13,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 1,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "pQFRgaKE-pqNZL0olXIq_Ea3o5Gt5qJWiLtVB7BQP90"
+        ]
+      },
+      "start": 663337,
+      "end": 664042
+    },
+    {
+      "id": 12,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 0,
+      "bundlers": {},
+      "start": 662648,
+      "end": 663319
+    },
+    {
+      "id": 11,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 2,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "VXErIekyBNQJXWyFWQI4QCdhpJ1WubIWXeG50g2JlDk"
+        ]
+      },
+      "start": 661879,
+      "end": 662596
+    },
+    {
+      "id": 10,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 2,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "23cc3emb2OCdDkO5SxJN_p_TORqNcqo1xaQ_0ku_Pn8"
+        ]
+      },
+      "start": 661080,
+      "end": 661795
+    },
+    {
+      "id": 9,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 2,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "H1fivZ6MeegngWahhbikxg5R2Fcw6oDJN50PoCEDGI4"
+        ]
+      },
+      "start": 660255,
+      "end": 660966
+    },
+    {
+      "id": 8,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 0,
+      "nays": 3,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "1djT7T3ZCcoWx6f1ByqVxuwCRS4RpdIeDh6CYOLHnO4"
+        ]
+      },
+      "start": 659499,
+      "end": 660214
+    },
+    {
+      "id": 7,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 2,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "JcQe2TVxK4D6gbM-nythevuQMnqh56ktqCDrUyQ8Gsg"
+        ]
+      },
+      "start": 658809,
+      "end": 659490
+    },
+    {
+      "id": 6,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 2,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "9duSA1dLp5aT4HN4ZOuPAp_cqzPZLJfhSHyaoOCL_MQ"
+        ]
+      },
+      "start": 658115,
+      "end": 658767
+    },
+    {
+      "id": 5,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 2,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "6B_P9sS3SMVWp8Bh31LgYhc7RGEjKZsTrd4yOr8AV9U"
+        ]
+      },
+      "start": 657340,
+      "end": 658044
+    },
+    {
+      "id": 4,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc"
+      ],
+      "stakeAmount": 2,
+      "yays": 2,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "z0nc56fOs2MuXQX09S6P3QDJYiixAJvn3sUF8h3WV3g"
+        ]
+      },
+      "start": 656627,
+      "end": 657321
+    },
+    {
+      "id": 3,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk"
+      ],
+      "stakeAmount": 2,
+      "yays": 3,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "ttCXWW_lKxDPnQi9SFhIzSa4-xzzQwkavhQZfvfg1AQ"
+        ]
+      },
+      "start": 656608,
+      "end": 657321
+    },
+    {
+      "id": 2,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+        "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+        "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc"
+      ],
+      "stakeAmount": 2,
+      "yays": 4,
+      "nays": 0,
+      "bundlers": {
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": [
+          "cJjsEJSx_2t4laa_avyfWHQPmnyBjbid9QdjjRaQqFg"
+        ]
+      },
+      "start": 655884,
+      "end": 656598
+    },
+    {
+      "id": 1,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 2,
+      "nays": 0,
+      "bundlers": {
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": [
+          "QUnGhZQIIZcXK5RFc0KohKWQwtBi3LVNHYhERzAqOtk"
+        ]
+      },
+      "start": 655083,
+      "end": 656226
+    },
+    {
+      "id": 0,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": [
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"
+      ],
+      "stakeAmount": 2,
+      "yays": 2,
+      "nays": 0,
+      "bundlers": {},
+      "start": 649202,
+      "end": 649211
+    }
+  ],
   "registeredRecord": {
     "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU",
     "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": "MqKaTw9bV2p6bnkZCKXOF7Rt8TTqU740saOILALB-Q0",
     "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
     "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
-    "qZa1iNiUus-kRbBqwx0UimPNGVtCSZvQAQ9aCvPfHmI": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
     "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": "cf3iB51tJrVSQ-j-TmcRuMYeuvho6y-7IrQm9O7QKIk",
-    "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": "7ZcchrEyaDZO8v0w3sZ780Y2NlbAWGs2kVXP-z5NBss"
+    "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": "7ZcchrEyaDZO8v0w3sZ780Y2NlbAWGs2kVXP-z5NBss",
+    "cfhKMEd_pCZHHIKeVGZAilnITonqllwkA_yhiF2PaOw": "IsAUH6ruDQgbhr7SvfYUFzQJO-6MGXaRFfJ0FIyHvOQ",
+    "HEcP1vyyHXjLVZ8ote2rphHq7wsvcVPr7RnMyAh2ZJE": "IsAUH6ruDQgbhr7SvfYUFzQJO-6MGXaRFfJ0FIyHvOQ",
+    "_gk1ZNumV6a0vuqhVr5v6w1RYfoi-pArn-JKpU5eWZU": "IsAUH6ruDQgbhr7SvfYUFzQJO-6MGXaRFfJ0FIyHvOQ",
+    "kpaWOQ6Uv8EdgG3acRwyijjTpRXDGF-w_VORPzG-3bQ": "IsAUH6ruDQgbhr7SvfYUFzQJO-6MGXaRFfJ0FIyHvOQ",
+    "k0yTc6j2dpvInkPbCchosKgSTjweC50zyY7W6yvOYLA": "IsAUH6ruDQgbhr7SvfYUFzQJO-6MGXaRFfJ0FIyHvOQ",
+    "EpbbtviT8nqC3aCflyfM5sWf0lAq6YsFW6K48T1tAbU": "zFGpdtH0tpXAvG7PDMhq-ExCR_w7c4PYuwmoRZKmMpA",
+    "IBIaFENxRe7oS_Tzq_dLblNRtcHKkrF1FkbcRYOmDjc": "EMVdEaeEy7IkWSIA9MjAcramDclaumlVJKHoHd06JC8",
+    "-je3T3r6_70-WytZjkvjEtyUxSjPTHnU_m7zZqk2U_k": "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
+    "2E3mq8y4gicRFXaAkcHuIvD-4vER2YrwFUgdLGDKxXM": "MZN_kcDMHpGKP7JjgJxUuFsxF5l3dd9jOP6HYHChWoI",
+    "VkSIo7yXZf9KrohEt_XkMk92RJVKqieiD-cap232ON4": "hJIadW2b6-eaW6B0gJLqZqmE2sGfaxkGCpGxkpmKj1Q",
+    "NI9OY-Rzj4TjS5s4W-DFyRoY2Vz4884OhSYdjFDl1uY": "oXPkFpvvpI0EDdbBUVz1sOEf8LAcx7pZqTduB70jEvo",
+    "qZcd6X49o8zIKBV7S3gT0KA9bvXuk-JpfQAKGm-hmx8": "oXPkFpvvpI0EDdbBUVz1sOEf8LAcx7pZqTduB70jEvo",
+    "_-9TDSVSwC40JXnmn3bk7Ygr0vRdlhACKgqo7siJx2A": "oXPkFpvvpI0EDdbBUVz1sOEf8LAcx7pZqTduB70jEvo",
+    "JDAAXSnZjdiR7UR2hCstjxTKLaPL9tvA0VyZcNvwWas": "G2p6qraLOEiTzAtFQedhyDt7u9ffUUSUoZmZqlacpRw",
+    "1kaCZ5pHikemzIylX1oLLrzRdw4EXA9jdNbUPu1GsTs": "hJIadW2b6-eaW6B0gJLqZqmE2sGfaxkGCpGxkpmKj1Q",
+    "eenOP7xhYJEfSYI42PFYT4OZEOfLrCVGrWaSNB0BOVA": "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+    "0p4Otf4NsT-hCUkfqZ2mY5JpNQSr1ArkiHKQopdJVOw": "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+    "fb_HPpfc3eLgMpsiekLDJm_km6daniJFZU22WI9Y2sU": "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+    "sON3jvxBEhlEdK8Y2ehMKcQwALo2b_ylGclTr7O5OMY": "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+    "rQ03lvHzD8xiM5Ry6VmhnA870MECRQdu9eRLn0ZLu6A": "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+    "Wx8sr4Hyy_fxtrmYX3BoXf5t0LjR69X2oz9dpFNqi5o": "_mIXnHjMQvco0tPpdVDuHVvFyicrALbI8aaHRPLNGjY",
+    "mgd407tgCXvhFZybEWZS_9onHKhQvuxop3jGAxT2M44": "_mIXnHjMQvco0tPpdVDuHVvFyicrALbI8aaHRPLNGjY",
+    "aEFG_mITqv5VtZaytPd73bTdMPoXP7LTFbQJgQnxlz0": "_mIXnHjMQvco0tPpdVDuHVvFyicrALbI8aaHRPLNGjY",
+    "Lq-U5Or1pYKDenO7YbCsTqij6mFBOMIwUmg1_Gm1Gfs": "_mIXnHjMQvco0tPpdVDuHVvFyicrALbI8aaHRPLNGjY",
+    "uCIPz8c2mOB0TDLGHhQd_E9uWooVPePG-ZBWbFhNVXs": "yYVzfbLRPbdZjv1pRQ6WoHpqChkhZFv1trLnoEqcuns",
+    "5rqC_Ae1EcOOQ78ykcY84KYFz7sXIOGJVe304O0c3Yc": "yYVzfbLRPbdZjv1pRQ6WoHpqChkhZFv1trLnoEqcuns",
+    "TQYOJigowfyp9hQR7plQkWvUSlGcXUdOXEZ-UzmDamI": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "pfosim6KzTDwzK34OoscceCTP50FZsLvn7WzTyBhq4E": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "tjrntCq7GrrnYwp7HraTeJSJ0lT3f1ZETb2_fjalTgY": "vACBPFvIdSoMdjgPpqJq2xa_C9JDGFcpRtCICFjgFAo",
+    "ptFf82Otkid_tTWLEap2Za2nSM0QE9tv2RfPiKdbc6I": "obZ0Zc9sA6tEYvPTR2IVEGHAxaUitpX-vV2aq_z2fPA",
+    "0pUEZfwzMZ2_e5NL7HdEtrCpTAr-YSseE2NYuskKEqg": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "w69ZxocCsRPGQEu6G2YrIJXC5SWAK9XIHyLF1-rcEFw": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0",
+    "TA_AjyQuejKb64P1RjW9LpY434UMSeLgZR7hZeGT02A": "Y5uP96wryXqGRASVcNPgue9fJXb5rvt-YftbDGcn-I8",
+    "JonQfcxe4LUozLpyxWj283tRObePzxeHEholF6Q_IWM": "yYVzfbLRPbdZjv1pRQ6WoHpqChkhZFv1trLnoEqcuns",
+    "3t6twl4UVyfgErBEETYRJvVo5CyusykDX2tXIOrEEIk": "t8i_MHAPl-mwDSthhyBAwGWGrI-_foX5SZV_h9f6Vrc",
+    "0QnaVABq-MDxwQXSmBZkQOdGbowf-Y7iM9DcM7rJ5tU": "t8i_MHAPl-mwDSthhyBAwGWGrI-_foX5SZV_h9f6Vrc",
+    "bTBwY92EQypcGYljSTIplg_k1dkNmLdVSfyr9EWxRzM": "t8i_MHAPl-mwDSthhyBAwGWGrI-_foX5SZV_h9f6Vrc",
+    "9LBalFIwg_a3KxPER2bm59X5h0CKFSsDOolU8Lo_hl8": "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU",
+    "-BerQ7D8cBtuepEVUCsxGzDJ5FfGVjMBW0oTDZGA5pM": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "IB0ujCEOdMmDfth1qlbdkkReiqLj3xf6Y74YegN3G4I": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "Fc7xwPOroAfEPPnTKzJvbnlodc0TD8MoHiwm3KQjN2k": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "0qynVB6M4_nhRDJi_drgMgfxv6J01tM5VFyhDR4x040": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "NDX5xbYXa-sNZ88vuGDBjVFeTrPq8XEiOkMRCsutIXA": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "pkfP5BHukZtl6JPvr-hipCRsFLUvG-7FWQjqf5Klw6o": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "xA6s1DnMwWoNXQZy8rEb6IQ6lfBP1WFx5zARuIgBOf8": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "UyZRxzhkLoRdFZZuosNbz95lO3O46XucekhdQB4kGmc": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "WZG35e6v84_xRCOKl9EDQq7PYLWsxtxe-X4c0LeQXoo": "YNXE49gTG2O1gCf_mK6mVnF_eYiupsxvRo5kQWr-0do",
+    "KAwfZIDuPhF-Hp6UbNeL8il6eelCNiaXuI86OD56MZE": "YNXE49gTG2O1gCf_mK6mVnF_eYiupsxvRo5kQWr-0do",
+    "GAHUT6MJ6c-XHQg5c223PRkYW93xtfmavLg-J28dqF4": "YNXE49gTG2O1gCf_mK6mVnF_eYiupsxvRo5kQWr-0do",
+    "oKApZxnZXXB-vSXjlePNGeqRadYKRGuVNIuXHF0Z_ts": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "yC1UySCPo0E_Mn-PSb4oOFZ4xsGNUd3YHebdnLFQV5g": "h0zdcklfctYQoKqneI1mvwUfgLja5Ael-0X3ogxzbf4",
+    "BF8jC5WhdTH10KdLiOlsq_cTjxvMQQLWcdXJMXBxi2Q": "h0zdcklfctYQoKqneI1mvwUfgLja5Ael-0X3ogxzbf4",
+    "4w7Oib5Z9ta0BvpJW2AZUK0J1TkVcGObyoxzPjFrdQc": "h0zdcklfctYQoKqneI1mvwUfgLja5Ael-0X3ogxzbf4",
+    "O4dNGKwe0cpdjTXlBegNZbbxeFzo91cbvFiJryw5BwY": "h0zdcklfctYQoKqneI1mvwUfgLja5Ael-0X3ogxzbf4",
+    "ObVcRY6ttzmdk4Y0P4JtpJan0HaJYD_D6zrMy93D4cM": "h0zdcklfctYQoKqneI1mvwUfgLja5Ael-0X3ogxzbf4",
+    "PV7uDzFzVDwNeJ-aEoQ827cRaKIXmRQ-HsBlZ8kvWd8": "_GXJ0i9UlnZTeN6fPerdUv8z5k-kaOetYvJ1SiXhJAo",
+    "6UNxuDer5j8a3DvEwFPJp2KxkEe-rpWtALSY3Qxectw": "VcO3wA82CCHKaOoRGMaEydiXIFq7pqSzNbFYDFWzCiU",
+    "I80giVIj5nfzF4DnS_s3WCERcaaescOEjMIXT7qryEI": "VcO3wA82CCHKaOoRGMaEydiXIFq7pqSzNbFYDFWzCiU",
+    "vj0d31WrF843sfRH1AnjsPNR0A0uAuSBkikL1e9YlZc": "baAX4tBuYbgIwp4Ffwdstm51jnHd6Pv35-hvJhzWom4",
+    "x8hwRcl8Qv-lWxyCwrgprSKpwOtIjP_AiNdKXHnP-1Y": "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU",
+    "Gi0TE4gOZYA7WHicqHjFyNBHDdlSHy17qHUoN2T47VM": "bW5pKxUb9u8Y2N5a--HIEqvJTDCjm34k98OGYJZK6zw",
+    "IFAKgVcQr2LySQVngSQzig4ii3AwiQvS48XtWM6AR30": "bW5pKxUb9u8Y2N5a--HIEqvJTDCjm34k98OGYJZK6zw",
+    "Inga5Fz-Jf9wP8mh8xSvb2DpeXaIhxbegFPQYzpBr3o": "bW5pKxUb9u8Y2N5a--HIEqvJTDCjm34k98OGYJZK6zw",
+    "hAOczjhrB8GTEagzia0VE2Pz9FJxs50N8jQsVM7pjx4": "bW5pKxUb9u8Y2N5a--HIEqvJTDCjm34k98OGYJZK6zw",
+    "iRLpi0FTbl0M2xgZuCMxNXst_YLL4Hn2DqQwL8u2Uys": "bW5pKxUb9u8Y2N5a--HIEqvJTDCjm34k98OGYJZK6zw",
+    "nzQssOhnwdj0GFEt2UCMFNZxETFpJs0SQLj3p_bOBQw": "1MDkV06pv8LG-fFVTypMYhzVVwpjalqjXW1ovVmlfIc",
+    "qSsFGxzh3i8flMJGLg3Ya8YjfWwWV19wQ-E9sY5KflE": "5p0Y3DbfYadQ2hbmZkUfvVKfvPjvgZo80CwLZpGmEOU",
+    "AzLk25h4pftRiP95Z75J4X93Od7jSVE0i-ZWTr52WT8": "oXPkFpvvpI0EDdbBUVz1sOEf8LAcx7pZqTduB70jEvo",
+    "Vd7_K-FiNrXH_pYl7nT_nY5fLe0kkLlUYyZQoPeIhds": "fcMxhaBLYpFEzS4eWqsazA27IVPh738Kh6d6VXSclcA",
+    "sZkT3WpFmqWrHYpjvov2QpzA3vkliNzF4uOX_hIkFWU": "fcMxhaBLYpFEzS4eWqsazA27IVPh738Kh6d6VXSclcA",
+    "Q8C5GMkT1C5hIeOYSCwk5KImorUXjLp1H6KWDr25Xow": "cmB3r44wI1iiGdm8M1dVTv3LFWT5UkAO5B8L5klyvVE",
+    "1CW_jFo7A7TH_ZfEVow2_T3FjAU6nE0oBHI-ta0E9MQ": "cmB3r44wI1iiGdm8M1dVTv3LFWT5UkAO5B8L5klyvVE",
+    "RJcEk3JvhUAu28IpX3Z6w3TkPkBxJl49RzBXkwrU8Mo": "cmB3r44wI1iiGdm8M1dVTv3LFWT5UkAO5B8L5klyvVE",
+    "dA2QDsob5ux3Kgy7X-4uKuQIMvYApbK6bVXwn2QNwkM": "cmB3r44wI1iiGdm8M1dVTv3LFWT5UkAO5B8L5klyvVE",
+    "hksNtuWwGevcro_9jKiCh6_bII_Uj7_zb88Z0eTtKB8": "cmB3r44wI1iiGdm8M1dVTv3LFWT5UkAO5B8L5klyvVE",
+    "OBz8vI_lueJq1dSO9hbQfap82n0Evra017EJ0i1ra3U": "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+    "vl1np1fJ4XjSei2kZzMCxIqguJWxKeoDNIp90e1SszY": "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U",
+    "7Rn3lNq6PCVwbsmG4Sm__qFxWh5pLaMY_3cTks4-HjU": "kdFx1vdvFfTYxIs6cW1ILK-sncVm8W795MdlQB2LbDY",
+    "1884kZhO82o6DWGeDgTQSqWvLSw6dxlxzF8y0HB9ljk": "6NhwFI2PwjrrUve4qswb4AbFn-V5EqfGQiKqM4dH66k",
+    "zmuUdJhvF57OR12k5b1a_CSymOxFXW9mg1ngUO_GpbI": "6NhwFI2PwjrrUve4qswb4AbFn-V5EqfGQiKqM4dH66k",
+    "bwQGzL458Oz2sIDBtSp6l_CLWMA33PR6o6S4jKip9IU": "6NhwFI2PwjrrUve4qswb4AbFn-V5EqfGQiKqM4dH66k",
+    "3E3RVsnfAI0OHhnvFOzJPV-vzLpyOHWPA2CDF0Rx9Rk": "hJIadW2b6-eaW6B0gJLqZqmE2sGfaxkGCpGxkpmKj1Q",
+    "SmV54kJvLQ_lRXaCVlDXx0hmfhN-_-YZP3F31k5a4I4": "j_eOHp5yoSnLsCDE9pp8UtW9PMy6KJphIAHll6RTmik",
+    "pMVhv6IZavohs7KJjtblKM_9GHIAZGz0pVLMdI2HCvk": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "4zO0MI-60Ox6gqdaM1tYh9q9TYsovJJC11RuLcg94S8": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "QihVjYprW9ECNNoXoERq1jMB92jztIXO6s_es6k7ePw": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "xuuwLO5w0lsfAqVFvhJVcRe9SSIwUbblk2zYLip_Zqo": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "YVDgwKSnab56KLPvSYqKP-UwA-wZ-UkgME5zZ-o0WrA": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "JqSiXKgrnErPfl7OqkaNFxDAmB0V0_W9bgXn3g7Czqk": "0zwSxGd8h8ZgkH6GeJSFkcWMdb1ZIA0I7V9SaTvZnHk",
+    "5OYWVLjd3BizLibExWo-eYF38sadhEAh3RTy__DEUjk": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "rQIOvatFYjuvAObuOw9V5EKHRzIw7MH55cxAuygQF90": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "s90KM5TBkYBVjfjVBXlKLHP9UXafjbjRdZ_BzFxeYAc": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "in5BXfdxUyc-v0FU5Xp74de1q4vNIgUkcTxoVJdaYpA": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "o6NB1GLzb14lyIbGyvWa_1ka4IAIRSZY9NlA_co4zkI": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "qs1XsBeEFCo9OYkzIYcjPfCveIEB6JhUAojiwLwIlJc": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "6-m12MxQeK3iOFgmz_14OML2KoTxH3l8KMHTAFdQ3eA": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "lGIzvpsv1hzWh8ueSoZ5kYC9BE4zVEzLGZ73woL87bM": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "v-uP_WAJB1ZzG2dYvFcrK8INf1phk1t2dly6SyQWQoU": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "8RwjkLiuMDEf1QmS9wdBcP1fq91LUkRSs9Ydgc7oNBc": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "l7xgk_SKN2bRuLzO856M_noltKQylgAMboX5t6vuGCs": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "arouvq89Q3x-LieuX_fUD-mVjRG8jA2cMZoLyUSJ338": "TLzveBksdHu9920L38ybXEncNBwgA5tJxF1FidHlbA8",
+    "VDq76puCLkpVfXmS8p4Zco7pTuYlFDb3ZtuLWrLgQMw": "Fa8_9e1DXzGfUw8ARR7ubzOv0IRPX1fDPhAC22Hld5w",
+    "dA68mikqNNon8-3CNIDVT4JLoYciZbohqrswywVA5ho": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "l7Aic4yMlofCfi0CeGWcPQ40r-apZJBzhuK2FnpwgJc": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "HNrcepxA-REdWn6ZIUGiADMPdnkUzn0cqiHHc2RU_CQ": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "sv4QQdlktqnrl9WdnCD28pmUbMtL5_2_CQezrZksur0": "VdXCJdKquMZuGK1W0Yi6zk-8HO-UC85vtMhWUOroY9g",
+    "L7CV6eRTo9jBdJn6D0NeeXSSdTGNJLeZafc8DC-NwqE": "j_eOHp5yoSnLsCDE9pp8UtW9PMy6KJphIAHll6RTmik",
+    "XdBjQkoJ_xqP6GVbZ3srZaSCO2mbTCmnXvOastMEhkE": "vwBQGN2_gUZEfs6tWW5XHE0Zen6cZta4Wb1-7N1BEnM",
+    "tL13sQiJlKeTWd6gDtiMm9TNNxa35pUkhbd8j1A1Xiw": "vwBQGN2_gUZEfs6tWW5XHE0Zen6cZta4Wb1-7N1BEnM",
+    "tNPTMI15m3xeLWvGzRfqndmQH1izg7Ek2RsSlLMY3K4": "vwBQGN2_gUZEfs6tWW5XHE0Zen6cZta4Wb1-7N1BEnM",
+    "gViix8v7agqSBbx12Kz8gCaOiSJBzhImap2fnIB-Ic4": "vwBQGN2_gUZEfs6tWW5XHE0Zen6cZta4Wb1-7N1BEnM",
+    "zOghkAWMrGva3s-iERNEOVRhsNbg6k0fnTNH6h5gpPg": "vwBQGN2_gUZEfs6tWW5XHE0Zen6cZta4Wb1-7N1BEnM",
+    "WvNfwNk8WKwPbpADSIDQS5V-3MiM9p3xHYSQuM4fnRA": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0",
+    "PeCJkXRlDE9i46kWQM0NjIi0jd7myVVwujEcxGqibg0": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0",
+    "aYQG0lLA6i5o3VGWfkIX-ZyZfDNXJWIBA3bhTr8SYMU": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0",
+    "BROHMy6v6bc_Lao2LT1VP0dIxfsbteBCpKyUQG01vVo": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0",
+    "wlIbsGxcfQBdHYPylpm86vLGmFz5H7OMHZs0DvQMNhs": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0",
+    "sotucnPf6t1kCGRzEWxkwKj1W59nmPSlKLSH1Al9lOY": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0",
+    "9XnUHd8fDdC5BQC8Z5ZFMxzAwLS2dQ1igqxPpUSdqEw": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0",
+    "i38Aoq7nGJhz_UKQIqXteMwTslZWwJZDZgUL0QvniT8": "DSQfzhOk75tIqafUIEQ0tF0zzeI-BrfjrrS9CfrFet0"
   },
   "stateUpdate": {
     "trafficLogs": {
-      "open": 654353,
-      "close": 654373,
-      "partcipatesRate": { "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 0 },
-      "rewardReport": [],
+      "open": 683614,
+      "close": 684334,
+      "partcipatesRate": {
+        "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 0,
+        "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 0,
+        "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk": 0
+      },
+      "rewardReport": [
+        {
+          "dailyTrafficBlock": 649198,
+          "logsSummary": {
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1,
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 649214,
+          "rewardPerAttention": 142.85714285714286
+        },
+        {
+          "dailyTrafficBlock": 655826,
+          "logsSummary": {
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 655849,
+          "rewardPerAttention": 142.85714285714286
+        },
+        {
+          "dailyTrafficBlock": 655878,
+          "logsSummary": {
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1,
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 656601,
+          "rewardPerAttention": 142.85714285714286
+        },
+        {
+          "dailyTrafficBlock": 656601,
+          "logsSummary": {
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1,
+
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 657324,
+          "rewardPerAttention": 142.85714285714286
+        },
+        {
+          "dailyTrafficBlock": 657324,
+          "logsSummary": {
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 658047,
+          "rewardPerAttention": 125
+        },
+        {
+          "dailyTrafficBlock": 658047,
+          "logsSummary": {
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 658770,
+          "rewardPerAttention": 125
+        },
+        {
+          "dailyTrafficBlock": 658770,
+          "logsSummary": {
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 659494,
+          "rewardPerAttention": 125
+        },
+        {
+          "dailyTrafficBlock": 659494,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 660246,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 660246,
+          "logsSummary": {
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1,
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1,
+
+            "cfhKMEd_pCZHHIKeVGZAilnITonqllwkA_yhiF2PaOw": 1,
+            "HEcP1vyyHXjLVZ8ote2rphHq7wsvcVPr7RnMyAh2ZJE": 1,
+            "_gk1ZNumV6a0vuqhVr5v6w1RYfoi-pArn-JKpU5eWZU": 1,
+            "kpaWOQ6Uv8EdgG3acRwyijjTpRXDGF-w_VORPzG-3bQ": 1,
+            "k0yTc6j2dpvInkPbCchosKgSTjweC50zyY7W6yvOYLA": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 661075,
+          "rewardPerAttention": 76.92307692307692
+        },
+        {
+          "dailyTrafficBlock": 661075,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 661876,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 661876,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 662599,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 662599,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 663322,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 663322,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 664101,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 664101,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 664830,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 664830,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 665908,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 665908,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 666638,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 666638,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 667557,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 667557,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 668728,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 668728,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 669481,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 669481,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 670617,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 670617,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 671421,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 671421,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 672178,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 672178,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 674060,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 674060,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 674784,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 674784,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 676783,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 676783,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 677507,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 677507,
+          "logsSummary": {
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 1,
+            "cfhKMEd_pCZHHIKeVGZAilnITonqllwkA_yhiF2PaOw": 1,
+            "HEcP1vyyHXjLVZ8ote2rphHq7wsvcVPr7RnMyAh2ZJE": 1,
+            "_gk1ZNumV6a0vuqhVr5v6w1RYfoi-pArn-JKpU5eWZU": 1,
+            "kpaWOQ6Uv8EdgG3acRwyijjTpRXDGF-w_VORPzG-3bQ": 1,
+            "iRLpi0FTbl0M2xgZuCMxNXst_YLL4Hn2DqQwL8u2Uys": 1,
+            "qSsFGxzh3i8flMJGLg3Ya8YjfWwWV19wQ-E9sY5KflE": 1,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 1,
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 1,
+            "k0yTc6j2dpvInkPbCchosKgSTjweC50zyY7W6yvOYLA": 1,
+            "IBIaFENxRe7oS_Tzq_dLblNRtcHKkrF1FkbcRYOmDjc": 1,
+            "-je3T3r6_70-WytZjkvjEtyUxSjPTHnU_m7zZqk2U_k": 1,
+            "2E3mq8y4gicRFXaAkcHuIvD-4vER2YrwFUgdLGDKxXM": 1,
+            "VkSIo7yXZf9KrohEt_XkMk92RJVKqieiD-cap232ON4": 1,
+            "NI9OY-Rzj4TjS5s4W-DFyRoY2Vz4884OhSYdjFDl1uY": 1,
+            "qZcd6X49o8zIKBV7S3gT0KA9bvXuk-JpfQAKGm-hmx8": 1,
+            "_-9TDSVSwC40JXnmn3bk7Ygr0vRdlhACKgqo7siJx2A": 1,
+            "JDAAXSnZjdiR7UR2hCstjxTKLaPL9tvA0VyZcNvwWas": 1,
+            "1kaCZ5pHikemzIylX1oLLrzRdw4EXA9jdNbUPu1GsTs": 1,
+            "eenOP7xhYJEfSYI42PFYT4OZEOfLrCVGrWaSNB0BOVA": 1,
+            "0p4Otf4NsT-hCUkfqZ2mY5JpNQSr1ArkiHKQopdJVOw": 1,
+            "fb_HPpfc3eLgMpsiekLDJm_km6daniJFZU22WI9Y2sU": 1,
+            "sON3jvxBEhlEdK8Y2ehMKcQwALo2b_ylGclTr7O5OMY": 1,
+            "rQ03lvHzD8xiM5Ry6VmhnA870MECRQdu9eRLn0ZLu6A": 1,
+            "Wx8sr4Hyy_fxtrmYX3BoXf5t0LjR69X2oz9dpFNqi5o": 1,
+            "mgd407tgCXvhFZybEWZS_9onHKhQvuxop3jGAxT2M44": 1,
+            "aEFG_mITqv5VtZaytPd73bTdMPoXP7LTFbQJgQnxlz0": 1,
+            "Lq-U5Or1pYKDenO7YbCsTqij6mFBOMIwUmg1_Gm1Gfs": 1,
+            "uCIPz8c2mOB0TDLGHhQd_E9uWooVPePG-ZBWbFhNVXs": 1,
+            "5rqC_Ae1EcOOQ78ykcY84KYFz7sXIOGJVe304O0c3Yc": 1,
+            "TQYOJigowfyp9hQR7plQkWvUSlGcXUdOXEZ-UzmDamI": 1,
+            "pfosim6KzTDwzK34OoscceCTP50FZsLvn7WzTyBhq4E": 1,
+            "tjrntCq7GrrnYwp7HraTeJSJ0lT3f1ZETb2_fjalTgY": 1,
+            "9LBalFIwg_a3KxPER2bm59X5h0CKFSsDOolU8Lo_hl8": 1,
+            "GAHUT6MJ6c-XHQg5c223PRkYW93xtfmavLg-J28dqF4": 1,
+            "Vd7_K-FiNrXH_pYl7nT_nY5fLe0kkLlUYyZQoPeIhds": 1,
+            "sZkT3WpFmqWrHYpjvov2QpzA3vkliNzF4uOX_hIkFWU": 1,
+            "RJcEk3JvhUAu28IpX3Z6w3TkPkBxJl49RzBXkwrU8Mo": 1,
+            "1CW_jFo7A7TH_ZfEVow2_T3FjAU6nE0oBHI-ta0E9MQ": 1,
+            "Q8C5GMkT1C5hIeOYSCwk5KImorUXjLp1H6KWDr25Xow": 1,
+            "0pUEZfwzMZ2_e5NL7HdEtrCpTAr-YSseE2NYuskKEqg": 1,
+            "w69ZxocCsRPGQEu6G2YrIJXC5SWAK9XIHyLF1-rcEFw": 1,
+            "TA_AjyQuejKb64P1RjW9LpY434UMSeLgZR7hZeGT02A": 1,
+            "JonQfcxe4LUozLpyxWj283tRObePzxeHEholF6Q_IWM": 1,
+            "3t6twl4UVyfgErBEETYRJvVo5CyusykDX2tXIOrEEIk": 1,
+            "0QnaVABq-MDxwQXSmBZkQOdGbowf-Y7iM9DcM7rJ5tU": 1,
+            "bTBwY92EQypcGYljSTIplg_k1dkNmLdVSfyr9EWxRzM": 1,
+            "-BerQ7D8cBtuepEVUCsxGzDJ5FfGVjMBW0oTDZGA5pM": 1,
+            "IB0ujCEOdMmDfth1qlbdkkReiqLj3xf6Y74YegN3G4I": 1,
+            "Fc7xwPOroAfEPPnTKzJvbnlodc0TD8MoHiwm3KQjN2k": 1,
+            "0qynVB6M4_nhRDJi_drgMgfxv6J01tM5VFyhDR4x040": 1,
+            "NDX5xbYXa-sNZ88vuGDBjVFeTrPq8XEiOkMRCsutIXA": 1,
+            "pkfP5BHukZtl6JPvr-hipCRsFLUvG-7FWQjqf5Klw6o": 1,
+            "xA6s1DnMwWoNXQZy8rEb6IQ6lfBP1WFx5zARuIgBOf8": 1,
+            "UyZRxzhkLoRdFZZuosNbz95lO3O46XucekhdQB4kGmc": 1,
+            "WZG35e6v84_xRCOKl9EDQq7PYLWsxtxe-X4c0LeQXoo": 1,
+            "KAwfZIDuPhF-Hp6UbNeL8il6eelCNiaXuI86OD56MZE": 1,
+            "oKApZxnZXXB-vSXjlePNGeqRadYKRGuVNIuXHF0Z_ts": 1,
+            "yC1UySCPo0E_Mn-PSb4oOFZ4xsGNUd3YHebdnLFQV5g": 1,
+            "BF8jC5WhdTH10KdLiOlsq_cTjxvMQQLWcdXJMXBxi2Q": 1,
+            "4w7Oib5Z9ta0BvpJW2AZUK0J1TkVcGObyoxzPjFrdQc": 1,
+            "O4dNGKwe0cpdjTXlBegNZbbxeFzo91cbvFiJryw5BwY": 1,
+            "ObVcRY6ttzmdk4Y0P4JtpJan0HaJYD_D6zrMy93D4cM": 1,
+            "PV7uDzFzVDwNeJ-aEoQ827cRaKIXmRQ-HsBlZ8kvWd8": 1,
+            "6UNxuDer5j8a3DvEwFPJp2KxkEe-rpWtALSY3Qxectw": 1,
+            "I80giVIj5nfzF4DnS_s3WCERcaaescOEjMIXT7qryEI": 1,
+            "vj0d31WrF843sfRH1AnjsPNR0A0uAuSBkikL1e9YlZc": 1,
+            "x8hwRcl8Qv-lWxyCwrgprSKpwOtIjP_AiNdKXHnP-1Y": 1,
+            "Gi0TE4gOZYA7WHicqHjFyNBHDdlSHy17qHUoN2T47VM": 1,
+            "IFAKgVcQr2LySQVngSQzig4ii3AwiQvS48XtWM6AR30": 1,
+            "Inga5Fz-Jf9wP8mh8xSvb2DpeXaIhxbegFPQYzpBr3o": 1,
+            "hAOczjhrB8GTEagzia0VE2Pz9FJxs50N8jQsVM7pjx4": 1,
+            "nzQssOhnwdj0GFEt2UCMFNZxETFpJs0SQLj3p_bOBQw": 1,
+            "AzLk25h4pftRiP95Z75J4X93Od7jSVE0i-ZWTr52WT8": 1,
+            "dA2QDsob5ux3Kgy7X-4uKuQIMvYApbK6bVXwn2QNwkM": 1,
+            "hksNtuWwGevcro_9jKiCh6_bII_Uj7_zb88Z0eTtKB8": 1,
+            "OBz8vI_lueJq1dSO9hbQfap82n0Evra017EJ0i1ra3U": 1,
+            "vl1np1fJ4XjSei2kZzMCxIqguJWxKeoDNIp90e1SszY": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 678230,
+          "rewardPerAttention": 6.369426751592357
+        },
+        {
+          "dailyTrafficBlock": 678230,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 678957,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 678957,
+          "logsSummary": {
+            "nzQssOhnwdj0GFEt2UCMFNZxETFpJs0SQLj3p_bOBQw": 1,
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 2,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 679682,
+          "rewardPerAttention": 250
+        },
+        {
+          "dailyTrafficBlock": 679682,
+          "logsSummary": {
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 4,
+
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 1,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 2,
+            "nzQssOhnwdj0GFEt2UCMFNZxETFpJs0SQLj3p_bOBQw": 1
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 680482,
+          "rewardPerAttention": 83.33333333333333
+        },
+        {
+          "dailyTrafficBlock": 680482,
+          "logsSummary": {
+            "EKW3AApL4mdLc6sIhVr3Cn8VN7N9VAQUp2BNALHXFtQ": 32,
+            "KXFrIJ1828MpW8IKsuruH2r5Vp-nBKyX25uXLFdzOq0": 29,
+            "PzNLuVRTpV1tdcS8K9ADCIG6944kka431ShtJYJMZQI": 31,
+            "1UDe0Wqh51-O03efPzoc_HhsUPrmgBR2ziUfaI7CpZk": 30,
+            "cfhKMEd_pCZHHIKeVGZAilnITonqllwkA_yhiF2PaOw": 7,
+            "qSsFGxzh3i8flMJGLg3Ya8YjfWwWV19wQ-E9sY5KflE": 7,
+            "HEcP1vyyHXjLVZ8ote2rphHq7wsvcVPr7RnMyAh2ZJE": 7,
+            "kpaWOQ6Uv8EdgG3acRwyijjTpRXDGF-w_VORPzG-3bQ": 7,
+            "_gk1ZNumV6a0vuqhVr5v6w1RYfoi-pArn-JKpU5eWZU": 7,
+            "iRLpi0FTbl0M2xgZuCMxNXst_YLL4Hn2DqQwL8u2Uys": 7,
+            "9LBalFIwg_a3KxPER2bm59X5h0CKFSsDOolU8Lo_hl8": 7,
+            "GAHUT6MJ6c-XHQg5c223PRkYW93xtfmavLg-J28dqF4": 7,
+            "Vd7_K-FiNrXH_pYl7nT_nY5fLe0kkLlUYyZQoPeIhds": 7,
+            "KAwfZIDuPhF-Hp6UbNeL8il6eelCNiaXuI86OD56MZE": 7,
+            "6UNxuDer5j8a3DvEwFPJp2KxkEe-rpWtALSY3Qxectw": 7,
+            "PV7uDzFzVDwNeJ-aEoQ827cRaKIXmRQ-HsBlZ8kvWd8": 7,
+            "I80giVIj5nfzF4DnS_s3WCERcaaescOEjMIXT7qryEI": 7,
+            "vj0d31WrF843sfRH1AnjsPNR0A0uAuSBkikL1e9YlZc": 7,
+            "pkfP5BHukZtl6JPvr-hipCRsFLUvG-7FWQjqf5Klw6o": 7,
+            "xA6s1DnMwWoNXQZy8rEb6IQ6lfBP1WFx5zARuIgBOf8": 7,
+            "vl1np1fJ4XjSei2kZzMCxIqguJWxKeoDNIp90e1SszY": 7,
+            "NDX5xbYXa-sNZ88vuGDBjVFeTrPq8XEiOkMRCsutIXA": 7,
+            "hksNtuWwGevcro_9jKiCh6_bII_Uj7_zb88Z0eTtKB8": 7,
+            "0pUEZfwzMZ2_e5NL7HdEtrCpTAr-YSseE2NYuskKEqg": 7,
+            "-je3T3r6_70-WytZjkvjEtyUxSjPTHnU_m7zZqk2U_k": 7,
+            "dA2QDsob5ux3Kgy7X-4uKuQIMvYApbK6bVXwn2QNwkM": 7,
+            "UyZRxzhkLoRdFZZuosNbz95lO3O46XucekhdQB4kGmc": 7,
+            "sZkT3WpFmqWrHYpjvov2QpzA3vkliNzF4uOX_hIkFWU": 7,
+            "RJcEk3JvhUAu28IpX3Z6w3TkPkBxJl49RzBXkwrU8Mo": 7,
+            "AzLk25h4pftRiP95Z75J4X93Od7jSVE0i-ZWTr52WT8": 7,
+            "0qynVB6M4_nhRDJi_drgMgfxv6J01tM5VFyhDR4x040": 7,
+            "Gi0TE4gOZYA7WHicqHjFyNBHDdlSHy17qHUoN2T47VM": 7,
+            "1CW_jFo7A7TH_ZfEVow2_T3FjAU6nE0oBHI-ta0E9MQ": 7,
+            "OBz8vI_lueJq1dSO9hbQfap82n0Evra017EJ0i1ra3U": 7,
+            "Q8C5GMkT1C5hIeOYSCwk5KImorUXjLp1H6KWDr25Xow": 7,
+            "oKApZxnZXXB-vSXjlePNGeqRadYKRGuVNIuXHF0Z_ts": 7,
+            "x8hwRcl8Qv-lWxyCwrgprSKpwOtIjP_AiNdKXHnP-1Y": 7,
+            "5rqC_Ae1EcOOQ78ykcY84KYFz7sXIOGJVe304O0c3Yc": 7,
+            "uCIPz8c2mOB0TDLGHhQd_E9uWooVPePG-ZBWbFhNVXs": 7,
+            "JDAAXSnZjdiR7UR2hCstjxTKLaPL9tvA0VyZcNvwWas": 7,
+            "sON3jvxBEhlEdK8Y2ehMKcQwALo2b_ylGclTr7O5OMY": 7,
+            "_-9TDSVSwC40JXnmn3bk7Ygr0vRdlhACKgqo7siJx2A": 7,
+            "qZcd6X49o8zIKBV7S3gT0KA9bvXuk-JpfQAKGm-hmx8": 7,
+            "PJS-kIJYdSkML2kmxJl6PSp9gqU8_xZJWHZawxQOTsw": 7,
+            "1kaCZ5pHikemzIylX1oLLrzRdw4EXA9jdNbUPu1GsTs": 7,
+            "WZG35e6v84_xRCOKl9EDQq7PYLWsxtxe-X4c0LeQXoo": 7,
+            "4w7Oib5Z9ta0BvpJW2AZUK0J1TkVcGObyoxzPjFrdQc": 7,
+            "O4dNGKwe0cpdjTXlBegNZbbxeFzo91cbvFiJryw5BwY": 7,
+            "OsrHVoEQot03wQfSzxHmMhZMwtYbanUZx5cjtdJcfk0": 7,
+            "nzQssOhnwdj0GFEt2UCMFNZxETFpJs0SQLj3p_bOBQw": 8,
+            "hAOczjhrB8GTEagzia0VE2Pz9FJxs50N8jQsVM7pjx4": 7,
+            "yC1UySCPo0E_Mn-PSb4oOFZ4xsGNUd3YHebdnLFQV5g": 7,
+            "Inga5Fz-Jf9wP8mh8xSvb2DpeXaIhxbegFPQYzpBr3o": 7,
+            "k0yTc6j2dpvInkPbCchosKgSTjweC50zyY7W6yvOYLA": 7,
+            "BF8jC5WhdTH10KdLiOlsq_cTjxvMQQLWcdXJMXBxi2Q": 7,
+            "IFAKgVcQr2LySQVngSQzig4ii3AwiQvS48XtWM6AR30": 7,
+            "ObVcRY6ttzmdk4Y0P4JtpJan0HaJYD_D6zrMy93D4cM": 7,
+            "Lq-U5Or1pYKDenO7YbCsTqij6mFBOMIwUmg1_Gm1Gfs": 7,
+            "fb_HPpfc3eLgMpsiekLDJm_km6daniJFZU22WI9Y2sU": 7,
+            "-BerQ7D8cBtuepEVUCsxGzDJ5FfGVjMBW0oTDZGA5pM": 8,
+            "0QnaVABq-MDxwQXSmBZkQOdGbowf-Y7iM9DcM7rJ5tU": 7,
+            "3t6twl4UVyfgErBEETYRJvVo5CyusykDX2tXIOrEEIk": 7,
+            "mgd407tgCXvhFZybEWZS_9onHKhQvuxop3jGAxT2M44": 7,
+            "bTBwY92EQypcGYljSTIplg_k1dkNmLdVSfyr9EWxRzM": 7,
+            "IB0ujCEOdMmDfth1qlbdkkReiqLj3xf6Y74YegN3G4I": 7,
+            "Fc7xwPOroAfEPPnTKzJvbnlodc0TD8MoHiwm3KQjN2k": 7,
+            "TA_AjyQuejKb64P1RjW9LpY434UMSeLgZR7hZeGT02A": 7,
+            "JonQfcxe4LUozLpyxWj283tRObePzxeHEholF6Q_IWM": 7,
+            "w69ZxocCsRPGQEu6G2YrIJXC5SWAK9XIHyLF1-rcEFw": 7,
+            "TQYOJigowfyp9hQR7plQkWvUSlGcXUdOXEZ-UzmDamI": 7,
+            "pfosim6KzTDwzK34OoscceCTP50FZsLvn7WzTyBhq4E": 7,
+            "tjrntCq7GrrnYwp7HraTeJSJ0lT3f1ZETb2_fjalTgY": 7,
+            "eenOP7xhYJEfSYI42PFYT4OZEOfLrCVGrWaSNB0BOVA": 7,
+            "rQ03lvHzD8xiM5Ry6VmhnA870MECRQdu9eRLn0ZLu6A": 7,
+            "Wx8sr4Hyy_fxtrmYX3BoXf5t0LjR69X2oz9dpFNqi5o": 7,
+            "aEFG_mITqv5VtZaytPd73bTdMPoXP7LTFbQJgQnxlz0": 7,
+            "0p4Otf4NsT-hCUkfqZ2mY5JpNQSr1ArkiHKQopdJVOw": 7,
+            "VkSIo7yXZf9KrohEt_XkMk92RJVKqieiD-cap232ON4": 7,
+            "NI9OY-Rzj4TjS5s4W-DFyRoY2Vz4884OhSYdjFDl1uY": 7,
+            "2E3mq8y4gicRFXaAkcHuIvD-4vER2YrwFUgdLGDKxXM": 7,
+            "IBIaFENxRe7oS_Tzq_dLblNRtcHKkrF1FkbcRYOmDjc": 7,
+            "ptFf82Otkid_tTWLEap2Za2nSM0QE9tv2RfPiKdbc6I": 1,
+            "7Rn3lNq6PCVwbsmG4Sm__qFxWh5pLaMY_3cTks4-HjU": 6
+          },
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 681214,
+          "rewardPerAttention": 0.8051529790660226
+        },
+        {
+          "dailyTrafficBlock": 681214,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 681939,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 681939,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 682791,
+          "rewardPerAttention": null
+        },
+        {
+          "dailyTrafficBlock": 682791,
+          "logsSummary": {},
+          "distributer": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+          "distributionBlock": 683614,
+          "rewardPerAttention": null
+        }
+      ],
       "dailyTrafficLog": [
         {
-          "block": 654353,
-          "proposedLogs": [],
+          "block": 649198,
+          "proposedLogs": [
+            {
+              "TLTxId": "W-l-wLYu7A2Z459AJdPnV2KwKCc7-djr2TP94DrmBrg",
+              "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 0,
+              "blockHeight": 649202,
+              "won": true
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 655826,
+          "proposedLogs": [
+            {
+              "TLTxId": "uvaBvrBCNouXfc3LaOMVBwhDywod2-9KAIwxmXyQ4Bk",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 1,
+              "blockHeight": 655830,
+              "won": true
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 655878,
+          "proposedLogs": [
+            {
+              "TLTxId": "eYCRHNNzycapgMsbtsovGcpRAL7umkRvb5n3xwL9YDY",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 2,
+              "blockHeight": 655884,
+              "won": true
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 656601,
+          "proposedLogs": [
+            {
+              "TLTxId": "4E5hVY8Oq1TdYR3vU26dYNQA9ue-HNLiaDqnbYICTlI",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 3,
+              "blockHeight": 656608,
+              "won": true
+            },
+            {
+              "TLTxId": "sFH0oSQxppayvjtwTS8MgUs1F54dAqoXw2R398e7NGo",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 4,
+              "blockHeight": 656627,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 657324,
+          "proposedLogs": [
+            {
+              "TLTxId": "y4MRhEi9bNmXdR9rW3h04ompxKseu_JrAMNR93L1PzA",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 5,
+              "blockHeight": 657340,
+              "won": true
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 658047,
+          "proposedLogs": [
+            {
+              "TLTxId": "4qyU-ekgDJ4OqWqImMnrn1fZtqbksKs6mH4PI50Ml5o",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 6,
+              "blockHeight": 658115,
+              "won": true
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 658770,
+          "proposedLogs": [
+            {
+              "TLTxId": "HXFCqtoOEm5jnvaUHyK9b3vx3slVFZmQOMPAQswuXQM",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 7,
+              "blockHeight": 658809,
+              "won": true
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 659494,
+          "proposedLogs": [
+            {
+              "TLTxId": "_ebwfFK9d4yyGaLkk44DSn8b-1mA0RDiu67i225GkHk",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 8,
+              "blockHeight": 659499,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 660246,
+          "proposedLogs": [
+            {
+              "TLTxId": "dhC_zNAmBEcr227grX_0bBUVazxWzOgKgs4KO893DTI",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 9,
+              "blockHeight": 660255,
+              "won": true
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 661075,
+          "proposedLogs": [
+            {
+              "TLTxId": "ohHZOEdj3s6GzMdespM_Wgsk_uhCn_U1IhLXdIn8rvk",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 10,
+              "blockHeight": 661080,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 661876,
+          "proposedLogs": [
+            {
+              "TLTxId": "HQ6dWL9GLXXQcjpTNY6Tjmx6q0hGtXdgQC2kHVMZ0uI",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 11,
+              "blockHeight": 661879,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 662599,
+          "proposedLogs": [
+            {
+              "TLTxId": "CdlTInW69o457CyRR80oYq3wom_jfAc6-y4WZ6_n8wE",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 12,
+              "blockHeight": 662648,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 663322,
+          "proposedLogs": [
+            {
+              "TLTxId": "c3362QiAX68zrUYywqBE8Y5duJNQjQLPlvKe_Kb9PNA",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 13,
+              "blockHeight": 663337,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 664101,
+          "proposedLogs": [
+            {
+              "TLTxId": "YfPdSN-wKfLJkbyFVPw7i9wguEymSiTnHSYrEtgst-w",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 14,
+              "blockHeight": 664126,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 664830,
+          "proposedLogs": [
+            {
+              "TLTxId": "TtaRJVrGm9j_aykP6rGXfOn__WqSw8-A7nXV24Bed08",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 15,
+              "blockHeight": 664840,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 665908,
+          "proposedLogs": [
+            {
+              "TLTxId": "ML2mmvGO2-gu02_W87Llfog3hJxrqwYBqj5Z5ws03FE",
+              "owner": "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 16,
+              "blockHeight": 665936,
+              "won": false
+            }
+          ],
           "isRanked": false,
+          "isDistributed": true
+        },
+        {
+          "block": 666638,
+          "proposedLogs": [
+            {
+              "TLTxId": "v1ZkQRDmSggMzrtJcyQmsqp6Xmr9gJC2bhVGo8naQXw",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 17,
+              "blockHeight": 666758,
+              "won": false
+            }
+          ],
+          "isRanked": false,
+          "isDistributed": true
+        },
+        {
+          "block": 667557,
+          "proposedLogs": [
+            {
+              "TLTxId": "FAC9hwwfizZmh1lxWL4uSupGHkx1dBozF4aQDy9u25A",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 18,
+              "blockHeight": 667568,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 668728,
+          "proposedLogs": [
+            {
+              "TLTxId": "Fklrwf4IJo_fg_CboP_jr5y3IRjfzKZDkq4yvDI5OXc",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 19,
+              "blockHeight": 668731,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 669481,
+          "proposedLogs": [
+            {
+              "TLTxId": "Ntbvy7mccoaMsej3JW_8z8IzGpqN3a4llyXnPNAXtpQ",
+              "owner": "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 20,
+              "blockHeight": 669525,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 670617,
+          "proposedLogs": [
+            {
+              "TLTxId": "5Y4UOvNNKiycJrXTTTBbXNKgaz-ozEWySbnaLsmg_fg",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 21,
+              "blockHeight": 670621,
+              "won": false
+            }
+          ],
+          "isRanked": false,
+          "isDistributed": true
+        },
+        {
+          "block": 671421,
+          "proposedLogs": [
+            {
+              "TLTxId": "5tXxs_2i79LkXXu8wLyCIp8wapJrSbf_xNmS8P1rStU",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 22,
+              "blockHeight": 671431,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 672178,
+          "proposedLogs": [
+            {
+              "TLTxId": "ZqMj3mFJHUH1L0aT8jXu4AZAf5BL9cIpqdC6hhU-aJg",
+              "owner": "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 23,
+              "blockHeight": 672183,
+              "won": false
+            }
+          ],
+          "isRanked": false,
+          "isDistributed": true
+        },
+        {
+          "block": 674060,
+          "proposedLogs": [
+            {
+              "TLTxId": "VbXIMaTTdkY4WZaWyQlU82BC_IZEDkL8RAADdhIHBMg",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 24,
+              "blockHeight": 674118,
+              "won": false
+            }
+          ],
+          "isRanked": true,
+          "isDistributed": true
+        },
+        {
+          "block": 674784,
+          "proposedLogs": [
+            {
+              "TLTxId": "QM_2pt5jpWnoblnXzRBEPNyo_oNMAmXJmEzHD-L486A",
+              "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
+              "gateWayId": "https://arweave.dev/logs/",
+              "voteId": 25,
+              "blockHeight": 674791,
+              "won": true
+            }
+          ],
+          "isRanked": true,
           "isDistributed": false
         }
       ]

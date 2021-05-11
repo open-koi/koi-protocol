@@ -12,7 +12,7 @@ const arweave = Arweave.init({
 
 const wallet = JSON.parse(
   fs.readFileSync(
-    "/Users/makdasebhatu/Documents/my-wallet/Arweave/keywallet.json"
+    "/Users/makdasebhatu/Documents/my-wallet/Arweave/keywallet-b.json"
   )
 );
 const src = fs.readFileSync("dist/Koi.js");
@@ -22,11 +22,9 @@ const state = fs.readFileSync("dist/Koi.json");
 //const currentState = smartweave.readContract(arweave,currentContractId);
 
 async function Deploy() {
-  //const testWeave = await TestWeave.init(arweave);
   const id = await smartweave.createContract(arweave, wallet, src, state);
   console.log("Deployed Contract with ID", id);
   fs.writeFileSync("dist/Transaction.json", JSON.stringify({ id }));
-  //await testWeave.mine();
 }
 
 (async () => await Deploy())();

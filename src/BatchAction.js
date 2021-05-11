@@ -48,23 +48,16 @@ export async function BatchAction(state, action) {
       voteObj.vote.voteId === voteId &&
       !vote.voted.includes(voteObj.senderAddress)
     ) {
-      if (voteObj.vote.userVote == true) {
+      if (voteObj.vote.userVote === "true") {
         vote.yays += 1;
 
         vote.voted.push(voteObj.senderAddress);
       }
-      if (voteObj.vote.userVote == false) {
+      if (voteObj.vote.userVote === "false") {
         vote.nays += 1;
         vote.voted.push(voteObj.senderAddress);
       }
     }
-
-    //const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(element);
-    // const rawSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(voteObj.signature);
-    // const isVoteValid = await SmartWeave.arweave.crypto.verify(voteObj.owner, voteBuffer, rawSignature);
-    // if (isVoteValid) {
-
-    // }
   });
   if (!(caller in vote.bundlers)) {
     vote.bundlers[bundlerAddress] = [];

@@ -1,9 +1,9 @@
-export function RegisterData(state, action) {
+export async function RegisterBatchData(state, action) {
   const registeredRecords = state.registeredRecord;
   const input = action.input;
   const caller = action.caller;
   const balances = state.balances;
-  const txId = input.txId;
+  const txIds = input.txIds;
   const ownerWallet = input.owner;
   // check is txid is valid
   if (!txId) {
@@ -19,11 +19,15 @@ export function RegisterData(state, action) {
     );
   } else {
     if (ownerWallet) {
-      registeredRecords[txId] = ownerWallet;
-      balances[caller] -= 1;
+      for (let txId of txIds) {
+        registeredRecords[txId] = ownerWallet;
+        balances[caller] -= 1;
+      }
     } else {
-      registeredRecords[txId] = caller;
-      balances[caller] -= 1;
+      for (let txId of txIds) {
+        registeredRecords[txId] = caller;
+        balances[caller] -= 1;
+      }
     }
   }
 
