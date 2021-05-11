@@ -1,10 +1,10 @@
 {
   "ticker": "KOI",
   "name": "Koi",
-  "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+  "owner": "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk",
   "treasury": "0A00000000000000000000000000000000000000",
   "balances": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 1325.0164277807587,
+    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 25,
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 1599.7755485742189,
     "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 697.3226115607715,
     "sQTWslyCdKF6oeQ7xXUYUV1bluP0_5-483FXH_RVZKU": 1604.385854532351,
@@ -50,7 +50,7 @@
     "HXbx6YnLV7RtdWBp0K-vR_bbAcyoiN9TRIDVC2Lj64U": 84.0384832353816,
     "_mIXnHjMQvco0tPpdVDuHVvFyicrALbI8aaHRPLNGjY": 149.02199042021812,
     "owOn0_y5yiaLE2E2VafPAwYyzBDJtm54KGvYAYownKc": 5,
-    "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk": 0,
+    "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk": 5,
     "zRvtEbzH2uwXNCYmyDl7PXXiKr3XOjbCok6eGEKLfoU": 5,
     "DWEwF4O9FtDYKsTof6ghC9uHymU31y06xbvsfW5ZJFg": 5,
     "1dOEejObA36nLvi2tp53rJM3oJkKY5eC_u_bvmpnmd4": 5,
@@ -130,9 +130,9 @@
     "rOLyEn4gloViiygoIkZMXLdj7gSLq5OFSyifBz0DlYY": 5
   },
   "stakes": {
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA": 10000,
+    "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk": 1000,
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc": 10000,
-    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 10389,
+    "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo": 1000,
     "zFGpdtH0tpXAvG7PDMhq-ExCR_w7c4PYuwmoRZKmMpA": 49
   },
   "stakeReleaseBlock": {
@@ -142,7 +142,7 @@
   "gateways": {},
   "validBundlers": [
     "WL32qc-jsTxCe8m8RRQfS3b3MacsTQySDmJklvtkGFc",
-    "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+    "fWjYZQ2SAP7OPTv6_OiI2AtKilORFQ0MdjbmDJ2biHk",
     "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"
   ],
   "votes": [
