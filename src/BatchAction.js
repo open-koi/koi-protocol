@@ -31,7 +31,7 @@ export async function BatchAction(state, action) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
   if (!(caller in stakes)) {
-    throw new ContractError("caller hasnt staked");
+    throw new ContractError("caller hasn't staked");
   }
 
   const batch = await SmartWeave.unsafeClient.transactions.getData(batchTxId, {

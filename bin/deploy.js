@@ -6,7 +6,7 @@ const arweave = Arweave.init({
   host: "arweave.net",
   port: 443,
   protocol: "https",
-  timeout: 20000,
+  timeout: 80000,
   logging: false,
 });
 

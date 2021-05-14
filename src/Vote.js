@@ -11,9 +11,6 @@ export function Vote(state, action) {
       'Invalid value for "user vote". Must be true or false'
     );
   }
-  if (!(caller in stakes)) {
-    throw new ContractError("caller hasnt staked");
-  }
 
   if (!Number.isInteger(voteId)) {
     throw new ContractError(
