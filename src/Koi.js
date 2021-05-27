@@ -16,18 +16,12 @@ import { DeregisterData } from "./DeregisterData.js";
 
 export async function handle(state, action) {
   switch (action.input.function) {
-    case "transfer":
-      return Transfer(state, action);
     case "account":
       return Account(state, action);
-    case "stake":
-      return Stake(state, action);
     case "gateway":
       return Gateway(state, action);
     case "withdraw":
       return Withdraw(state, action);
-    case "mint":
-      return Mint(state, action);
     case "vote":
       return Vote(state, action);
     case "batchAction":

@@ -206,12 +206,14 @@ function Vote(state, action) {
 }
 
 function RegisterData(state, action) {
-  const registeredRecords = state.registeredRecord;
+  // const registeredRecords = state.registeredRecord;
+  const koiData = state.koiData;
   const input = action.input;
   const caller = action.caller;
   const balances = state.balances;
   const txId = input.txId;
-  const ownerWallet = input.owner;
+  const typeOfData = input.typeOfData;
+  const bounty = input.bounty;
   // check is txid is valid
   if (!txId) {
     throw new ContractError("No txid specified");
@@ -220,18 +222,18 @@ function RegisterData(state, action) {
     throw new ContractError("you need min 1 KOI to register data");
   }
 
-  if (txId in registeredRecords) {
-    throw new ContractError(
-      `Transaction/content has been registered already under ${registeredRecords[txId]} wallet`
-    );
-  } else {
-    if (ownerWallet) {
-      registeredRecords[txId] = ownerWallet;
-      balances[caller] -= 1;
-    } else {
-      registeredRecords[txId] = caller;
-      balances[caller] -= 1;
-    }
+  if (typeOfData == "nft") {
+    koiData.push({ type: typeOfData, txId: txId, owner: caller });
+    balances[caller] -= 1;
+  }
+  if (typeOfData == "task") {
+    koiData.push({
+      type: typeOfData,
+      txId: txId,
+      owner: caller,
+      bounty: bounty,
+    });
+    balance[caller] -= 1;
   }
 
   // burn 1 koi per registeration
