@@ -50,6 +50,8 @@ export function SubmitTrafficLog(state, action) {
 
   if (!trafficLogs.partcipatesRate[caller]) {
     trafficLogs.partcipatesRate[caller] = 0;
+  } else {
+    trafficLogs.partcipatesRate[caller]++;
   }
 
   return { state };
