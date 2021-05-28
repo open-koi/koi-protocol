@@ -2,14 +2,13 @@ export async function RegisterBatchData(state, action) {
   const registeredRecords = state.registeredRecord;
   const input = action.input;
   const caller = action.caller;
-  const balances = state.balances;
   const txIds = input.txIds;
   const ownerWallet = input.owner;
   // check is txid is valid
   if (!txIds) {
     throw new ContractError("No txids specified");
   }
-  const MAIN_CONTRACT = "ljy4rdr6vKS6-jLgduBz_wlcad4GuKPEuhrRVaUd8tg";
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );

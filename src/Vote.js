@@ -1,4 +1,4 @@
-export function Vote(state, action) {
+export async function Vote(state, action) {
   const input = action.input;
   const caller = action.caller;
   const votes = state.votes;
@@ -22,7 +22,7 @@ export function Vote(state, action) {
     throw new ContractError("vote passed");
   }
   const voted = vote.voted;
-  const MAIN_CONTRACT = "ljy4rdr6vKS6-jLgduBz_wlcad4GuKPEuhrRVaUd8tg";
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );

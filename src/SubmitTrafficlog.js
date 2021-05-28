@@ -1,4 +1,4 @@
-export function SubmitTrafficLog(state, action) {
+export async function SubmitTrafficLog(state, action) {
   const trafficLogs = state.trafficLogs;
   const partcipatesRate = trafficLogs.partcipatesRate;
   const caller = action.caller;
@@ -13,7 +13,7 @@ export function SubmitTrafficLog(state, action) {
     throw new ContractError("No gateWayUrl specified");
   }
   const voted = vote.voted;
-  const MAIN_CONTRACT = "ljy4rdr6vKS6-jLgduBz_wlcad4GuKPEuhrRVaUd8tg";
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );

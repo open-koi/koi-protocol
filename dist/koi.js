@@ -2,48 +2,6 @@
 
 
 
-function Transfer(state, action) {
-    const balances = state.balances;
-    const input = action.input;
-    const caller = action.caller;
-    const target = input.target;
-    const qty = input.qty;
-    if (!Number.isInteger(qty)) {
-        throw new ContractError('Invalid value for "qty". Must be an integer');
-    }
-    if (!target) {
-        throw new ContractError('No target specified');
-    }
-    if (qty <= 0 || caller === target) {
-        throw new ContractError('Invalid token transfer');
-    }
-    if (balances[caller] < qty) {
-        throw new ContractError(`Caller balance not high enough to send ${qty} token(s)!`);
-    }
-    balances[caller] -= qty;
-    if (target in balances) {
-        balances[target] += qty;
-    } else {
-        balances[target] = qty;
-    }
-
-    return { state }
-}
-
-function Account(state, action) {
-    const balances = state.balances;
-    const stakes = state.stakes;
-    const gateways = state.gateways;
-    const input = action.input;
-    const target = input.target;
-    const ticker = state.ticker;
-    const balance = balances[target] ? balances[target] : 0;
-    const stake = stakes[target] ? stakes[target] : 0;
-    const gateway = gateways[target] ? gateways[target] : '';
-
-    return { result: { target, ticker, balance, stake, gateway } }
-}
-
 function Gateway(state, action) {
     const gateways = state.gateways;
     const input = action.input;
@@ -76,94 +34,7 @@ function Gateway(state, action) {
     return { state }
 }
 
-function Stake(state, action) {
-    const balances = state.balances;
-    const stakes = state.stakes;
-    const input = action.input;
-    const caller = action.caller;
-    const qty = input.qty;
-    if (!Number.isInteger(qty)) {
-        throw new ContractError('Invalid value for "qty". Must be an integer');
-    }
-    if (qty <= 0) {
-        throw new ContractError('Invalid stake amount');
-    }
-    if (balances[caller] < qty) {
-        throw new ContractError('Balance is too low to stake that amount of tokens');
-    }
-    balances[caller] -= qty;
-    // stake for 14 days which 10080 blocks
-    state.stakeReleaseBlock[caller] = SmartWeave.block.height + 10080;
-    if (stakes[caller]) {
-        stakes[caller] += qty;
-    } else {
-        stakes[caller] = qty;
-    }
-
-    return { state }
-}
-
-function Withdraw(state, action) {
-    const balances = state.balances;
-    const stakes = state.stakes;
-    const stakeReleaseBlock = state.stakeReleaseBlock;
-    const input = action.input;
-    const caller = action.caller;
-    const qty = input.qty;
-    if (!Number.isInteger(qty)) {
-        throw new ContractError('Invalid value for "qty". Must be an integer');
-    }
-    if (qty <= 0) {
-        throw new ContractError('Invalid stake withdrawal amount');
-    }
-    if (stakes[caller] < qty) {
-        throw new ContractError('Stake balance is too low to withdraw that amount of tokens');
-    }
-
-    if (stakeReleaseBlock[caller] < SmartWeave.block.height) {
-        throw new ContractError('Stake is not ready to be released');
-    }
-    stakes[caller] -= qty;
-    balances[caller] += qty;
-
-
-    return { state }
-}
-
-function Mint(state, action) {
-    const owner = state.owner;
-    const balances = state.balances;
-    const input = action.input;
-    const caller = action.caller;
-
-    const target = input.target;
-    const qty = input.qty;
-
-    if (!Number.isInteger(qty)) {
-        throw new ContractError('Invalid value for "qty". Must be an integer');
-    }
-
-    if (!target) {
-        throw new ContractError('No target specified');
-    }
-
-    if (owner !== caller) {
-        throw new ContractError('Only the owner can mint new tokens');
-    }
-
-    
-
-    if (balances[target]) {
-        balances[target] += qty;
-    } else {
-        balances[target] = qty;
-    }
-
-    return { state }
-}
-
-function Vote(state, action) {
-  const stakes = state.stakes;
+async function Vote(state, action) {
   const input = action.input;
   const caller = action.caller;
   const votes = state.votes;
@@ -187,8 +58,13 @@ function Vote(state, action) {
     throw new ContractError("vote passed");
   }
   const voted = vote.voted;
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const stakes = tokenContractState.stakes;
   if (stakes[caller] < vote.stakeAmount) {
-    throw new ContractError("staked amount is less than 500");
+    throw new ContractError("staked amount is less than than required");
   }
   if (voted.includes(caller)) {
     throw new ContractError("caller has alreday voted in this evet");
@@ -205,38 +81,39 @@ function Vote(state, action) {
   return { state };
 }
 
-function RegisterData(state, action) {
-  // const registeredRecords = state.registeredRecord;
-  const koiData = state.koiData;
+async function RegisterData(state, action) {
+  const registeredRecords = state.registeredRecord;
   const input = action.input;
   const caller = action.caller;
-  const balances = state.balances;
+
   const txId = input.txId;
-  const typeOfData = input.typeOfData;
-  const bounty = input.bounty;
+  const ownerWallet = input.owner;
   // check is txid is valid
   if (!txId) {
     throw new ContractError("No txid specified");
   }
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const balances = tokenContractState.balances;
   if (!(caller in balances) || balances[caller] < 1) {
     throw new ContractError("you need min 1 KOI to register data");
   }
 
-  if (typeOfData == "nft") {
-    koiData.push({ type: typeOfData, txId: txId, owner: caller });
-    balances[caller] -= 1;
+  if (txId in registeredRecords) {
+    throw new ContractError(
+      `Transaction/content has been registered already under ${registeredRecords[txId]} wallet`
+    );
+  } else {
+    if (ownerWallet) {
+      registeredRecords[txId] = ownerWallet;
+      //balances[caller] -= 1;
+    } else {
+      registeredRecords[txId] = caller;
+      //balances[caller] -= 1;
+    }
   }
-  if (typeOfData == "task") {
-    koiData.push({
-      type: typeOfData,
-      txId: txId,
-      owner: caller,
-      bounty: bounty,
-    });
-    balance[caller] -= 1;
-  }
-
-  // burn 1 koi per registeration
 
   return { state };
 }
@@ -311,9 +188,9 @@ async function BatchAction(state, action) {
   return { state };
 }
 
-function SubmitTrafficLog(state, action) {
-  const trafficLogs = state.stateUpdate.trafficLogs;
-  const balances = state.balances;
+async function SubmitTrafficLog(state, action) {
+  const trafficLogs = state.trafficLogs;
+  const partcipatesRate = trafficLogs.partcipatesRate;
   const caller = action.caller;
   const input = action.input;
   const batchTxId = input.batchTxId;
@@ -325,13 +202,17 @@ function SubmitTrafficLog(state, action) {
   if (!gateWayUrl) {
     throw new ContractError("No gateWayUrl specified");
   }
-
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const balances = tokenContractState.balances;
   if (!(caller in balances) || balances[caller] < 1) {
     throw new ContractError("you need min 1 KOI to propose gateway");
   }
-  if (SmartWeave.block.height > trafficLogs.close - 420) {
-    throw new ContractError("proposing is closed. wait for another round");
-  }
+  // if (SmartWeave.block.height > trafficLogs.close - 420) {
+  //   throw new ContractError("proposing is closed. wait for another round");
+  // }
 
   const vote = {
     id: state.votes.length,
@@ -359,26 +240,25 @@ function SubmitTrafficLog(state, action) {
     trafficLogs.dailyTrafficLog[trafficLogs.dailyTrafficLog.length - 1];
   currentDailyTrafficlogs.proposedLogs.push(proposedLog);
   state.votes.push(vote);
-  balances[caller] -= 1;
-
-  if (!trafficLogs.partcipatesRate[caller]) {
-    trafficLogs.partcipatesRate[caller] = 0;
+  // balances[caller] -= 1;
+  if (!(caller in partcipatesRate)) {
+    partcipatesRate[caller] = 0;
   } else {
-    trafficLogs.partcipatesRate[caller]++;
+    partcipatesRate[caller]++;
   }
 
   return { state };
 }
 
 function RankProposal(state, action) {
-  const trafficLogs = state.stateUpdate.trafficLogs;
+  const trafficLogs = state.trafficLogs;
   const votes = state.votes;
-  if (
-    SmartWeave.block.height > trafficLogs.close ||
-    SmartWeave.block.height < trafficLogs.close - 75
-  ) {
-    throw new ContractError("Ranking time finished or not Ranking time");
-  }
+  // if (
+  //   SmartWeave.block.height > trafficLogs.close ||
+  //   SmartWeave.block.height < trafficLogs.close - 75
+  // ) {
+  //   throw new ContractError("Ranking time finished or not Ranking time");
+  // }
 
   const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
     (trafficlog) => trafficlog.block === trafficLogs.open
@@ -444,16 +324,17 @@ async function ProposeSlash(state, action) {
   const payload = reciept.vote;
   const vote = payload.vote;
   const votes = state.votes;
-  const stakes = state.stakes;
-  const balances = state.balances;
-  const trafficLogs = state.stateUpdate.trafficLogs;
+  const blackList = state.blackList;
+  state.stakes;
+  state.balances;
+  state.stateUpdate.trafficLogs;
 
-  if (
-    SmartWeave.block.height > trafficLogs.close - 75 ||
-    SmartWeave.block.height < trafficLogs.close - 150
-  ) {
-    throw new ContractError("Slash time not reached or passed");
-  }
+  // if (
+  //   SmartWeave.block.height > trafficLogs.close - 75 ||
+  //   SmartWeave.block.height < trafficLogs.close - 150
+  // ) {
+  //   throw new ContractError("Slash time not reached or passed");
+  // }
   if (!reciept) {
     throw new ContractError("No reciept specified");
   }
@@ -502,25 +383,20 @@ async function ProposeSlash(state, action) {
   const bundlerAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(
     reciept.owner
   );
-  const bundlerStake = stakes[bundlerAddress];
-  const treasuryAddress = state.treasury;
-  stakes[bundlerAddress] = 0;
-  balances[treasuryAddress] += bundlerStake;
+  blackList.push(bundlerAddress);
 
   return { state };
 }
 
 async function DistributeRewards(state, action) {
-  const stakes = state.stakes;
-  const trafficLogs = state.stateUpdate.trafficLogs;
+  const trafficLogs = state.trafficLogs;
   const validBundlers = state.validBundlers;
   const registeredRecord = state.registeredRecord;
-  const balances = state.balances;
   const caller = action.caller;
 
-  if (SmartWeave.block.height < trafficLogs.close) {
-    throw new ContractError("voting process is ongoing");
-  }
+  // if (SmartWeave.block.height < trafficLogs.close) {
+  //   throw new ContractError("voting process is ongoing");
+  // }
 
   const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
     (trafficlog) => trafficlog.block === trafficLogs.open
@@ -531,7 +407,11 @@ async function DistributeRewards(state, action) {
   if (!validBundlers.includes(caller)) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
-
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const stakes = tokenContractState.stakes;
   if (!(caller in stakes)) {
     throw new ContractError("caller hasnt staked");
   }
@@ -560,13 +440,6 @@ async function DistributeRewards(state, action) {
 
   const rewardPerAttention = 1000 / totalDataRe;
 
-  for (const log in logSummary) {
-    if (registeredRecord[log] in balances) {
-      balances[registeredRecord[log]] += logSummary[log] * rewardPerAttention;
-    } else {
-      balances[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
-    }
-  }
   const distributionReport = {
     dailyTrafficBlock: trafficLogs.open,
     logsSummary: logSummary,
@@ -596,32 +469,39 @@ async function RegisterBatchData(state, action) {
   const registeredRecords = state.registeredRecord;
   const input = action.input;
   const caller = action.caller;
-  const balances = state.balances;
   const txIds = input.txIds;
   const ownerWallet = input.owner;
   // check is txid is valid
-  if (!txId) {
-    throw new ContractError("No txid specified");
+  if (!txIds) {
+    throw new ContractError("No txids specified");
   }
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const balances = tokenContractState.balances;
   if (!(caller in balances) || balances[caller] < 1) {
     throw new ContractError("you need min 1 KOI to register data");
   }
-
-  if (txId in registeredRecords) {
-    throw new ContractError(
-      `Transaction/content has been registered already under ${registeredRecords[txId]} wallet`
-    );
-  } else {
-    if (ownerWallet) {
-      for (let txId of txIds) {
-        registeredRecords[txId] = ownerWallet;
-        balances[caller] -= 1;
-      }
+  let notRegisteredTxIds = [];
+  for (let txId of txIds) {
+    if (!(txId in registeredRecords)) {
+      notRegisteredTxIds.push(txId);
     } else {
-      for (let txId of txIds) {
-        registeredRecords[txId] = caller;
-        balances[caller] -= 1;
-      }
+      throw new ContractError(
+        `Transaction/content has been registered already under ${registeredRecords[txId]} wallet`
+      );
+    }
+  }
+  if (ownerWallet) {
+    for (let txId of notRegisteredTxIds) {
+      registeredRecords[txId] = ownerWallet;
+      balances[caller] -= 1;
+    }
+  } else {
+    for (let txId of notRegisteredTxIds) {
+      registeredRecords[txId] = caller;
+      balances[caller] -= 1;
     }
   }
 
@@ -653,18 +533,8 @@ async function DeregisterData(state, action) {
 
 async function handle(state, action) {
   switch (action.input.function) {
-    case "transfer":
-      return Transfer(state, action);
-    case "account":
-      return Account(state, action);
-    case "stake":
-      return Stake(state, action);
     case "gateway":
       return Gateway(state, action);
-    case "withdraw":
-      return Withdraw(state, action);
-    case "mint":
-      return Mint(state, action);
     case "vote":
       return Vote(state, action);
     case "batchAction":

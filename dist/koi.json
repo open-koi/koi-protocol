@@ -20,13 +20,13 @@
   ],
   "votes": [],
   "trafficLogs": {
-    "open": 692663,
-    "close": 693383,
+    "open": 695765,
+    "close": 69620,
     "partcipatesRate": {},
     "rewardReport": [],
     "dailyTrafficLog": [
       {
-        "block": 693801,
+        "block": 695765,
         "proposedLogs": [],
         "isRanked": false,
         "isDistributed": false

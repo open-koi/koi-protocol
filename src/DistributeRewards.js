@@ -17,7 +17,7 @@ export async function DistributeRewards(state, action) {
   if (!validBundlers.includes(caller)) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
-  const MAIN_CONTRACT = "ljy4rdr6vKS6-jLgduBz_wlcad4GuKPEuhrRVaUd8tg";
+  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
