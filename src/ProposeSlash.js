@@ -3,6 +3,7 @@ export async function ProposeSlash(state, action) {
   const payload = reciept.vote;
   const vote = payload.vote;
   const votes = state.votes;
+  const blackList = state.blackList;
   const stakes = state.stakes;
   const balances = state.balances;
   const trafficLogs = state.stateUpdate.trafficLogs;
@@ -61,10 +62,7 @@ export async function ProposeSlash(state, action) {
   const bundlerAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(
     reciept.owner
   );
-  const bundlerStake = stakes[bundlerAddress];
-  const treasuryAddress = state.treasury;
-  stakes[bundlerAddress] = 0;
-  balances[treasuryAddress] += bundlerStake;
+  blackList.push(bundlerAddress);
 
   return { state };
 }

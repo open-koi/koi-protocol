@@ -1,12 +1,12 @@
 export function RankProposal(state, action) {
-  const trafficLogs = state.stateUpdate.trafficLogs;
+  const trafficLogs = state.trafficLogs;
   const votes = state.votes;
-  if (
-    SmartWeave.block.height > trafficLogs.close ||
-    SmartWeave.block.height < trafficLogs.close - 75
-  ) {
-    throw new ContractError("Ranking time finished or not Ranking time");
-  }
+  // if (
+  //   SmartWeave.block.height > trafficLogs.close ||
+  //   SmartWeave.block.height < trafficLogs.close - 75
+  // ) {
+  //   throw new ContractError("Ranking time finished or not Ranking time");
+  // }
 
   const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
     (trafficlog) => trafficlog.block === trafficLogs.open

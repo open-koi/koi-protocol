@@ -1,14 +1,12 @@
 export async function DistributeRewards(state, action) {
-  const stakes = state.stakes;
-  const trafficLogs = state.stateUpdate.trafficLogs;
+  const trafficLogs = state.trafficLogs;
   const validBundlers = state.validBundlers;
   const registeredRecord = state.registeredRecord;
-  const balances = state.balances;
   const caller = action.caller;
 
-  if (SmartWeave.block.height < trafficLogs.close) {
-    throw new ContractError("voting process is ongoing");
-  }
+  // if (SmartWeave.block.height < trafficLogs.close) {
+  //   throw new ContractError("voting process is ongoing");
+  // }
 
   const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
     (trafficlog) => trafficlog.block === trafficLogs.open
@@ -19,7 +17,11 @@ export async function DistributeRewards(state, action) {
   if (!validBundlers.includes(caller)) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
-
+  const MAIN_CONTRACT = "ljy4rdr6vKS6-jLgduBz_wlcad4GuKPEuhrRVaUd8tg";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const stakes = tokenContractState.stakes;
   if (!(caller in stakes)) {
     throw new ContractError("caller hasnt staked");
   }
@@ -48,13 +50,6 @@ export async function DistributeRewards(state, action) {
 
   const rewardPerAttention = 1000 / totalDataRe;
 
-  for (const log in logSummary) {
-    if (registeredRecord[log] in balances) {
-      balances[registeredRecord[log]] += logSummary[log] * rewardPerAttention;
-    } else {
-      balances[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
-    }
-  }
   const distributionReport = {
     dailyTrafficBlock: trafficLogs.open,
     logsSummary: logSummary,

@@ -1,5 +1,4 @@
 export function Vote(state, action) {
-  const stakes = state.stakes;
   const input = action.input;
   const caller = action.caller;
   const votes = state.votes;
@@ -23,8 +22,13 @@ export function Vote(state, action) {
     throw new ContractError("vote passed");
   }
   const voted = vote.voted;
+  const MAIN_CONTRACT = "ljy4rdr6vKS6-jLgduBz_wlcad4GuKPEuhrRVaUd8tg";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const stakes = tokenContractState.stakes;
   if (stakes[caller] < vote.stakeAmount) {
-    throw new ContractError("staked amount is less than 500");
+    throw new ContractError("staked amount is less than than required");
   }
   if (voted.includes(caller)) {
     throw new ContractError("caller has alreday voted in this evet");
