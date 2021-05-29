@@ -132,6 +132,7 @@ function Mint(state, action) {
 
 function RegisterTask(state, action) {
   const balances = state.balances;
+  const caller = action.caller;
   const input = action.input;
   const taskId = input.taskId;
   const taskName = input.taskname;
@@ -155,7 +156,8 @@ function RegisterTask(state, action) {
 }
 
 function DeregisterTask(state, action) {
-  state.KOI_TASKS = state.KOI_TASKS.filter(
+  state.KOI_TASKS;
+  state.KOI_TASKS.filter(
     (e) => e.TaskId != action.input.taskId
   );
   return state;

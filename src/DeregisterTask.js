@@ -1,6 +1,8 @@
 export function DeregisterTask(state, action) {
-  state.KOI_TASKS = state.KOI_TASKS.filter(
+  const KOI_TASKS = state.KOI_TASKS;
+  const newtasks = state.KOI_TASKS.filter(
     (e) => e.TaskId != action.input.taskId
   );
-  return state;
+  KOI_TASKS = newtasks;
+  return { state };
 }

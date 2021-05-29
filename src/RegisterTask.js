@@ -1,5 +1,6 @@
 export function RegisterTask(state, action) {
   const balances = state.balances;
+  const caller = action.caller;
   const input = action.input;
   const taskId = input.taskId;
   const taskName = input.taskname;
