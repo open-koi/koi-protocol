@@ -156,11 +156,10 @@ function RegisterTask(state, action) {
 }
 
 function DeregisterTask(state, action) {
-  state.KOI_TASKS;
-  state.KOI_TASKS.filter(
+  state.KOI_TASKS = state.KOI_TASKS.filter(
     (e) => e.TaskId != action.input.taskId
   );
-  return state;
+  return { state };
 }
 
 async function handle(state, action) {
