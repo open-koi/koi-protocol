@@ -38,7 +38,34 @@ export async function BatchAction(state, action) {
     decode: true,
     string: true,
   });
-
+  const line = batch.split("\r\n");
+  line.forEach(async (element) => {
+    var voteObj = JSON.parse(element);
+    const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(element);
+    const rawSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(
+      voteObj.signature
+    );
+    const isVoteValid = await SmartWeave.arweave.crypto.verify(
+      voteObj.owner,
+      voteBuffer,
+      rawSignature
+    );
+    if (isVoteValid) {
+      if (
+        voteObj.vote.voteId === voteId &&
+        !vote.voted.includes(voteObj.senderAddress)
+      ) {
+        if (voteObj.vote.userVote === "true") {
+          vote["yays"] += 1;
+          voters.push(voteObj.senderAddress);
+        }
+        if (voteObj.vote.userVote === "false") {
+          vote["nays"] += 1;
+          voters.push(voteObj.senderAddress);
+        }
+      }
+    }
+  });
   const elements = JSON.parse(batch);
 
   elements.forEach((element) => {
