@@ -38,21 +38,24 @@ export async function BatchAction(state, action) {
     decode: true,
     string: true,
   });
-  const line = batch.split("\r\n");
-  line.forEach(async (element) => {
-    var voteObj = JSON.parse(element);
-    const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(element);
+  const batchInArray = batch.split();
+  const voteObj = JSON.parse(batchInArray);
+  voteObj.forEach(async (item) => {
+    const dataInString = JSON.stringify(item.vote);
+    const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(
+      dataInString
+    );
     const rawSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(
-      voteObj.signature
+      item.signature
     );
     const isVoteValid = await SmartWeave.arweave.crypto.verify(
-      voteObj.owner,
+      item.owner,
       voteBuffer,
       rawSignature
     );
     if (isVoteValid) {
       if (
-        voteObj.vote.voteId === voteId &&
+        item.vote.voteId === voteId &&
         !vote.voted.includes(voteObj.senderAddress)
       ) {
         if (voteObj.vote.userVote === "true") {
@@ -63,26 +66,6 @@ export async function BatchAction(state, action) {
           vote["nays"] += 1;
           voters.push(voteObj.senderAddress);
         }
-      }
-    }
-  });
-  const elements = JSON.parse(batch);
-
-  elements.forEach((element) => {
-    var voteObj = element;
-
-    if (
-      voteObj.vote.voteId === voteId &&
-      !vote.voted.includes(voteObj.senderAddress)
-    ) {
-      if (voteObj.vote.userVote === "true") {
-        vote.yays += 1;
-
-        vote.voted.push(voteObj.senderAddress);
-      }
-      if (voteObj.vote.userVote === "false") {
-        vote.nays += 1;
-        vote.voted.push(voteObj.senderAddress);
       }
     }
   });
