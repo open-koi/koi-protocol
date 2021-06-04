@@ -1,21 +1,18 @@
 export function RankProposal(state, action) {
-  const trafficLogs = state.stateUpdate.trafficLogs;
+  const trafficLogs = state.trafficLogs;
   const votes = state.votes;
-  // between this 100 blcoks proposal should be ranked
-
-  if (
-    trafficLogs.close - 100 > SmartWeave.block.height &&
-    SmartWeave.block.height < trafficLogs.close
-  ) {
-    throw new ContractError(
-      "to early for propose slash or proposing time is passes"
-    );
-  }
+  // if (
+  //   SmartWeave.block.height > trafficLogs.close ||
+  //   SmartWeave.block.height < trafficLogs.close - 75
+  // ) {
+  //   throw new ContractError("Ranking time finished or not Ranking time");
+  // }
 
   const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
     (trafficlog) => trafficlog.block === trafficLogs.open
   );
-  if (currentTrafficLogs.isRanked === false) {
+
+  if (currentTrafficLogs.isRanked === true) {
     throw new ContractError("it has already been ranked");
   }
   const proposedLog = currentTrafficLogs.proposedLogs;
@@ -26,6 +23,7 @@ export function RankProposal(state, action) {
       if (prpVote.yays > prpVote.nays) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
+        prpVote.status = "passive";
       }
     } else {
       const currentSelectedPrp = proposedGateWays[prp.gateWayId];
@@ -36,6 +34,7 @@ export function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
+        prpVote.status = "passive";
       }
 
       const prpVotePassPer = prpVote.yays - prpVote.nays;
@@ -47,6 +46,7 @@ export function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
+        prpVote.status = "passive";
       }
 
       if (
@@ -57,6 +57,7 @@ export function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
+        prpVote.status = "passive";
       }
     }
   });
