@@ -1,6 +1,6 @@
-const fs = require("fs");
 const smartweave = require("smartweave");
 const Arweave = require("arweave");
+const fs = require("fs");
 require("dotenv").config();
 const arweave = Arweave.init({
   host: "arweave.net",
@@ -11,8 +11,9 @@ const arweave = Arweave.init({
 });
 
 const wallet = JSON.parse(fs.readFileSync(process.env.WALLET_LOCATION));
-const src = fs.readFileSync("dist/Koi.js");
-const state = fs.readFileSync("dist/Koi.json");
+const src = fs.readFileSync("dist/koi_attention.js");
+const state = fs.readFileSync("dist/koi_attention.json");
+
 //or from current state
 //const currentContractId = "contract id comes here";
 //const currentState = smartweave.readContract(arweave,currentContractId);

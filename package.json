@@ -5,8 +5,10 @@
   "license": "MIT",
   "scripts": {
     "deploy": "npm run build && node bin/deploy.js",
+    "deploy_attention": "npm run build_attention && node bin/attention.js",
     "test": "npx mocha test --timeout 10000",
-    "build": "rollup --config ./rollup.config.js && node bin/format.js"
+    "build": "rollup --config ./rollup.config.js && node bin/format.js",
+    "build_attention": "rollup --config ./rollup.config.js && node bin/format-attention.js"
   },
   "dependencies": {
     "arweave": "^1.9.1",

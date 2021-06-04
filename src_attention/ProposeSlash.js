@@ -3,16 +3,17 @@ export async function ProposeSlash(state, action) {
   const payload = reciept.vote;
   const vote = payload.vote;
   const votes = state.votes;
+  const blackList = state.blackList;
   const stakes = state.stakes;
   const balances = state.balances;
+  const trafficLogs = state.stateUpdate.trafficLogs;
 
-  if (
-    trafficLogs.close - 200 > SmartWeave.block.height &&
-    SmartWeave.block.height < trafficLogs.close - 100
-  ) {
-    throw new ContractError("voting is ongoing or it is already ranked");
-  }
-
+  // if (
+  //   SmartWeave.block.height > trafficLogs.close - 75 ||
+  //   SmartWeave.block.height < trafficLogs.close - 150
+  // ) {
+  //   throw new ContractError("Slash time not reached or passed");
+  // }
   if (!reciept) {
     throw new ContractError("No reciept specified");
   }
@@ -61,10 +62,7 @@ export async function ProposeSlash(state, action) {
   const bundlerAddress = await SmartWeave.unsafeClient.wallets.ownerToAddress(
     reciept.owner
   );
-  const bundlerStake = stakes[bundlerAddress];
-  const treasuryAddress = state.treasury;
-  stakes[bundlerAddress] = 0;
-  balances[treasuryAddress] += bundlerStake;
+  blackList.push(bundlerAddress);
 
   return { state };
 }
