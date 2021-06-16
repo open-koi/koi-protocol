@@ -187,11 +187,11 @@ async function BatchAction(state, action) {
       ) {
         if (item.vote.userVote === "true") {
           vote["yays"] += 1;
-          voters.push(voteObj.senderAddress);
+          vote.voted.push(item.senderAddress);
         }
         if (item.vote.userVote === "false") {
           vote["nays"] += 1;
-          voters.push(voteObj.senderAddress);
+          vote.voted.push(item.senderAddress);
         }
       }
     }
@@ -407,7 +407,7 @@ async function ProposeSlash(state, action) {
 async function Distribution(state, action) {
   const task = state.task;
   const validBundlers = state.validBundlers;
-  const registeredRecord = state.registeredRecord;
+  const registerRecords = state.registerRecords;
   const caller = action.caller;
 
   // if (SmartWeave.block.height < trafficLogs.close) {
@@ -415,7 +415,7 @@ async function Distribution(state, action) {
   // }
 
   const currentTask = task.dailyPayload.find(
-    (task) => task.block === task.open
+    (payLoad) => payLoad.block === task.open
   );
   if (currentTask.isDistributed === true) {
     throw new ContractError("Reward is distributed");
@@ -445,7 +445,7 @@ async function Distribution(state, action) {
       logs.forEach((element) => {
         let contentId = element.url.substring(1);
 
-        if (contentId in registeredRecord) {
+        if (contentId in registerRecords) {
           totalDataRe += element.addresses.length;
 
           logSummary[contentId] = element.addresses.length;
@@ -457,11 +457,11 @@ async function Distribution(state, action) {
   const rewardPerAttention = 1000 / totalDataRe;
 
   let distribution = {};
-  for (let log in logsSummary) {
-    distribution[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
+  for (let log in logSummary) {
+    distribution[registerRecords[log]] = logSummary[log] * rewardPerAttention;
   }
   const distributionReport = {
-    dailyTrafficBlock: trafficLogs.open,
+    dailyTrafficBlock: task.open,
     logsSummary: logSummary,
     distribution: distribution,
     distributer: caller,
@@ -469,19 +469,19 @@ async function Distribution(state, action) {
     rewardPerAttention: rewardPerAttention,
   };
 
-  trafficLogs.rewardReport.push(distributionReport);
+  task.rewardReport.push(distributionReport);
 
   currentTrafficLogs.isDistributed = true;
-  trafficLogs.open = SmartWeave.block.height;
-  trafficLogs.close = SmartWeave.block.height + 720;
+  task.open = SmartWeave.block.height;
+  task.close = SmartWeave.block.height + 720;
 
   const newDialyTL = {
-    block: trafficLogs.open,
+    block: task.open,
     payload: [],
     isRanked: false,
     isDistributed: false,
   };
-  trafficLogs.dailyTrafficLog.push(newDialyTL);
+  task.dailyTrafficLog.push(newDialyTL);
 
   return { state };
 }

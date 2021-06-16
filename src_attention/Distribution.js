@@ -1,7 +1,7 @@
 export async function Distribution(state, action) {
   const task = state.task;
   const validBundlers = state.validBundlers;
-  const registeredRecord = state.registeredRecord;
+  const registerRecords = state.registerRecords;
   const caller = action.caller;
 
   // if (SmartWeave.block.height < trafficLogs.close) {
@@ -9,7 +9,7 @@ export async function Distribution(state, action) {
   // }
 
   const currentTask = task.dailyPayload.find(
-    (task) => task.block === task.open
+    (payLoad) => payLoad.block === task.open
   );
   if (currentTask.isDistributed === true) {
     throw new ContractError("Reward is distributed");
@@ -39,7 +39,7 @@ export async function Distribution(state, action) {
       logs.forEach((element) => {
         let contentId = element.url.substring(1);
 
-        if (contentId in registeredRecord) {
+        if (contentId in registerRecords) {
           totalDataRe += element.addresses.length;
 
           logSummary[contentId] = element.addresses.length;
@@ -51,11 +51,11 @@ export async function Distribution(state, action) {
   const rewardPerAttention = 1000 / totalDataRe;
 
   let distribution = {};
-  for (let log in logsSummary) {
-    distribution[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
+  for (let log in logSummary) {
+    distribution[registerRecords[log]] = logSummary[log] * rewardPerAttention;
   }
   const distributionReport = {
-    dailyTrafficBlock: trafficLogs.open,
+    dailyTrafficBlock: task.open,
     logsSummary: logSummary,
     distribution: distribution,
     distributer: caller,
@@ -70,12 +70,12 @@ export async function Distribution(state, action) {
   task.close = SmartWeave.block.height + 720;
 
   const newDialyTL = {
-    block: trafficLogs.open,
+    block: task.open,
     payload: [],
     isRanked: false,
     isDistributed: false,
   };
-  task.dailyTrafficLog.push(newDialyTL);
+  task.dailyPayload.push(newDialyTL);
 
   return { state };
 }

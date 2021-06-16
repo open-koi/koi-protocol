@@ -41,7 +41,7 @@
     "dailyPayload": [
       {
         "block": 695765,
-        "payload": [
+        "payloads": [
           {
             "TLTxId": "W-l-wLYu7A2Z459AJdPnV2KwKCc7-djr2TP94DrmBrg",
             "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
