@@ -1,6 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
+
 
 function Gateway(state, action) {
   const gateways = state.gateways;
@@ -60,7 +60,7 @@ async function Vote(state, action) {
     throw new ContractError("vote passed");
   }
   const voted = vote.voted;
-  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
@@ -94,7 +94,7 @@ async function RegisterData(state, action) {
   if (!txId) {
     throw new ContractError("No txid specified");
   }
-  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
@@ -121,7 +121,6 @@ async function RegisterData(state, action) {
 }
 
 async function BatchAction(state, action) {
-  const stakes = state.stakes;
   const input = action.input;
   const caller = action.caller;
   const votes = state.votes;
@@ -149,9 +148,15 @@ async function BatchAction(state, action) {
   if (!typeof batchTxId === "string") {
     throw new ContractError("batchTxId should be string");
   }
+
   if (!validBundlers.includes(action.caller)) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const stakes = tokenContractState.stakes;
   if (!(caller in stakes)) {
     throw new ContractError("caller hasn't staked");
   }
@@ -180,11 +185,11 @@ async function BatchAction(state, action) {
         item.vote.voteId === voteId &&
         !vote.voted.includes(voteObj.senderAddress)
       ) {
-        if (voteObj.vote.userVote === "true") {
+        if (item.vote.userVote === "true") {
           vote["yays"] += 1;
           voters.push(voteObj.senderAddress);
         }
-        if (voteObj.vote.userVote === "false") {
+        if (item.vote.userVote === "false") {
           vote["nays"] += 1;
           voters.push(voteObj.senderAddress);
         }
@@ -200,9 +205,9 @@ async function BatchAction(state, action) {
   return { state };
 }
 
-async function SubmitTrafficLog(state, action) {
-  const trafficLogs = state.trafficLogs;
-  const partcipatesRate = trafficLogs.partcipatesRate;
+async function SubmitPayload(state, action) {
+  const payload = state.payload;
+  const partcipatesRate = payload.partcipatesRate;
   const caller = action.caller;
   const input = action.input;
   const batchTxId = input.batchTxId;
@@ -214,7 +219,7 @@ async function SubmitTrafficLog(state, action) {
   if (!gateWayUrl) {
     throw new ContractError("No gateWayUrl specified");
   }
-  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
@@ -222,7 +227,7 @@ async function SubmitTrafficLog(state, action) {
   if (!(caller in balances) || balances[caller] < 1) {
     throw new ContractError("you need min 1 KOI to propose gateway");
   }
-  // if (SmartWeave.block.height > trafficLogs.close - 420) {
+  // if (SmartWeave.block.height > task.close - 420) {
   //   throw new ContractError("proposing is closed. wait for another round");
   // }
 
@@ -252,7 +257,6 @@ async function SubmitTrafficLog(state, action) {
     trafficLogs.dailyTrafficLog[trafficLogs.dailyTrafficLog.length - 1];
   currentDailyTrafficlogs.proposedLogs.push(proposedLog);
   state.votes.push(vote);
-  // balances[caller] -= 1;
   if (!(caller in partcipatesRate)) {
     partcipatesRate[caller] = 0;
   } else {
@@ -263,31 +267,31 @@ async function SubmitTrafficLog(state, action) {
 }
 
 function RankProposal(state, action) {
-  const trafficLogs = state.trafficLogs;
+  const task = state.task;
   const votes = state.votes;
   // if (
-  //   SmartWeave.block.height > trafficLogs.close ||
-  //   SmartWeave.block.height < trafficLogs.close - 75
+  //   SmartWeave.block.height > task.close ||
+  //   SmartWeave.block.height < task.close - 75
   // ) {
   //   throw new ContractError("Ranking time finished or not Ranking time");
   // }
 
-  const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
-    (trafficlog) => trafficlog.block === trafficLogs.open
+  const currentTask = task.dailyPayload.find(
+    (task) => task.block === task.open
   );
 
-  if (currentTrafficLogs.isRanked === true) {
+  if (currentTask.isRanked === true) {
     throw new ContractError("it has already been ranked");
   }
-  const proposedLog = currentTrafficLogs.proposedLogs;
+  const payloads = currentTask.payloads;
   const proposedGateWays = {};
-  proposedLog.forEach((prp) => {
+  payloads.forEach((prp) => {
     const prpVote = votes[prp.voteId];
     if (!proposedGateWays[prp.gateWayId]) {
       if (prpVote.yays > prpVote.nays) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
-        prpVote.status = "passive";
+        prpVote.status = "passed";
       }
     } else {
       const currentSelectedPrp = proposedGateWays[prp.gateWayId];
@@ -298,7 +302,8 @@ function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
-        prpVote.status = "passive";
+        prpVote.status = "passed";
+        currentSelectedPrp.status = "passed";
       }
 
       const prpVotePassPer = prpVote.yays - prpVote.nays;
@@ -310,7 +315,8 @@ function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
-        prpVote.status = "passive";
+        prpVote.status = "passed";
+        currentSelectedPrp.status = "passed";
       }
 
       if (
@@ -321,7 +327,8 @@ function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
-        prpVote.status = "passive";
+        prpVote.status = "passed";
+        currentSelectedPrp.status = "passed";
       }
     }
   });
@@ -337,9 +344,6 @@ async function ProposeSlash(state, action) {
   const vote = payload.vote;
   const votes = state.votes;
   const blackList = state.blackList;
-  const stakes = state.stakes;
-  const balances = state.balances;
-  const trafficLogs = state.stateUpdate.trafficLogs;
 
   // if (
   //   SmartWeave.block.height > trafficLogs.close - 75 ||
@@ -400,8 +404,8 @@ async function ProposeSlash(state, action) {
   return { state };
 }
 
-async function DistributeRewards(state, action) {
-  const trafficLogs = state.trafficLogs;
+async function Distribution(state, action) {
+  const task = state.task;
   const validBundlers = state.validBundlers;
   const registeredRecord = state.registeredRecord;
   const caller = action.caller;
@@ -410,16 +414,16 @@ async function DistributeRewards(state, action) {
   //   throw new ContractError("voting process is ongoing");
   // }
 
-  const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
-    (trafficlog) => trafficlog.block === trafficLogs.open
+  const currentTask = task.dailyPayload.find(
+    (task) => task.block === task.open
   );
-  if (currentTrafficLogs.isDistributed === true) {
+  if (currentTask.isDistributed === true) {
     throw new ContractError("Reward is distributed");
   }
   if (!validBundlers.includes(caller)) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
-  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
@@ -430,11 +434,11 @@ async function DistributeRewards(state, action) {
 
   let logSummary = {};
   let totalDataRe = 0;
-  const proposedLogs = currentTrafficLogs.proposedLogs;
-  for (var i = 0; i < proposedLogs.length; i++) {
-    if (proposedLogs[i].won === true) {
+  const payloads = currentTask.payloads;
+  for (var i = 0; i < payloads.length; i++) {
+    if (payloads[i].won === true) {
       const batch = await SmartWeave.unsafeClient.transactions.getData(
-        proposedLogs[i].TLTxId,
+        payloads[i].TLTxId,
         { decode: true, string: true }
       );
       const logs = JSON.parse(batch);
@@ -452,9 +456,14 @@ async function DistributeRewards(state, action) {
 
   const rewardPerAttention = 1000 / totalDataRe;
 
+  let distribution = {};
+  for (let log in logsSummary) {
+    distribution[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
+  }
   const distributionReport = {
     dailyTrafficBlock: trafficLogs.open,
     logsSummary: logSummary,
+    distribution: distribution,
     distributer: caller,
     distributionBlock: SmartWeave.block.height,
     rewardPerAttention: rewardPerAttention,
@@ -468,7 +477,7 @@ async function DistributeRewards(state, action) {
 
   const newDialyTL = {
     block: trafficLogs.open,
-    proposedLogs: [],
+    payload: [],
     isRanked: false,
     isDistributed: false,
   };
@@ -487,7 +496,7 @@ async function RegisterBatchData(state, action) {
   if (!txIds) {
     throw new ContractError("No txids specified");
   }
-  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const MAIN_CONTRACT = "j6fu4HX4zylBaaI1yqLumC2eLn4HBLZhOZOUwYCVeMs";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
@@ -522,7 +531,7 @@ async function RegisterBatchData(state, action) {
   return { state };
 }
 
-async function DeregisterData(state, action) {
+function DeregisterData(state, action) {
   const registeredRecords = state.registeredRecord;
   const input = action.input;
   const caller = action.caller;
@@ -543,20 +552,40 @@ async function DeregisterData(state, action) {
   return { state };
 }
 
+async function RegisterBundler(state, action) {
+  const validBundlers = state.validBundlers;
+  const caller = action.caller;
+  if (validBundlers.includes(caller)) {
+    throw new ContractError(`${caller} is already registered`);
+  }
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const stakes = tokenContractState.stakes;
+  if (!(caller in stakes) || balances[stakes] < 1000) {
+    throw new Contract(
+      "You should stake minimum 1000 koi to register as valid bundler"
+    );
+  }
+  validBundlers.push(caller);
+  return { state };
+}
+
 async function handle(state, action) {
   switch (action.input.function) {
     case "gateway":
       return Gateway(state, action);
     case "vote":
-      return Vote(state, action);
+      return await Vote(state, action);
     case "batchAction":
       return await BatchAction(state, action);
-    case "submitTrafficLog":
-      return SubmitTrafficLog(state, action);
+    case "submitPayload":
+      return await SubmitPayload(state, action);
     case "rankProposal":
       return RankProposal(state);
-    case "distributeRewards":
-      return await DistributeRewards(state, action);
+    case "distribution":
+      return await Distribution(state, action);
     case "registerData":
       return RegisterData(state, action);
     case "proposeSlash":
@@ -565,9 +594,11 @@ async function handle(state, action) {
       return RegisterBatchData(state, action);
     case "deregisterData":
       return DeregisterData(state, action);
+    case "registerBundler":
+      return await RegisterBundler(state, action);
     default:
       throw new ContractError(`Invalid function: "${action.input.function}"`);
   }
 }
 
-exports.handle = handle;
+

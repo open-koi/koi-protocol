@@ -1,4 +1,4 @@
-export async function DeregisterData(state, action) {
+export function DeregisterData(state, action) {
   const registeredRecords = state.registeredRecord;
   const input = action.input;
   const caller = action.caller;

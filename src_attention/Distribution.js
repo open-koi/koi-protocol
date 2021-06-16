@@ -1,5 +1,5 @@
-export async function DistributeRewards(state, action) {
-  const trafficLogs = state.trafficLogs;
+export async function Distribution(state, action) {
+  const task = state.task;
   const validBundlers = state.validBundlers;
   const registeredRecord = state.registeredRecord;
   const caller = action.caller;
@@ -8,16 +8,16 @@ export async function DistributeRewards(state, action) {
   //   throw new ContractError("voting process is ongoing");
   // }
 
-  const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
-    (trafficlog) => trafficlog.block === trafficLogs.open
+  const currentTask = task.dailyPayload.find(
+    (task) => task.block === task.open
   );
-  if (currentTrafficLogs.isDistributed === true) {
+  if (currentTask.isDistributed === true) {
     throw new ContractError("Reward is distributed");
   }
   if (!validBundlers.includes(caller)) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
-  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
@@ -28,11 +28,11 @@ export async function DistributeRewards(state, action) {
 
   let logSummary = {};
   let totalDataRe = 0;
-  const proposedLogs = currentTrafficLogs.proposedLogs;
-  for (var i = 0; i < proposedLogs.length; i++) {
-    if (proposedLogs[i].won === true) {
+  const payloads = currentTask.payloads;
+  for (var i = 0; i < payloads.length; i++) {
+    if (payloads[i].won === true) {
       const batch = await SmartWeave.unsafeClient.transactions.getData(
-        proposedLogs[i].TLTxId,
+        payloads[i].TLTxId,
         { decode: true, string: true }
       );
       const logs = JSON.parse(batch);
@@ -50,27 +50,32 @@ export async function DistributeRewards(state, action) {
 
   const rewardPerAttention = 1000 / totalDataRe;
 
+  let distribution = {};
+  for (let log in logsSummary) {
+    distribution[registeredRecord[log]] = logSummary[log] * rewardPerAttention;
+  }
   const distributionReport = {
     dailyTrafficBlock: trafficLogs.open,
     logsSummary: logSummary,
+    distribution: distribution,
     distributer: caller,
     distributionBlock: SmartWeave.block.height,
     rewardPerAttention: rewardPerAttention,
   };
 
-  trafficLogs.rewardReport.push(distributionReport);
+  task.rewardReport.push(distributionReport);
 
   currentTrafficLogs.isDistributed = true;
-  trafficLogs.open = SmartWeave.block.height;
-  trafficLogs.close = SmartWeave.block.height + 720;
+  task.open = SmartWeave.block.height;
+  task.close = SmartWeave.block.height + 720;
 
   const newDialyTL = {
     block: trafficLogs.open,
-    proposedLogs: [],
+    payload: [],
     isRanked: false,
     isDistributed: false,
   };
-  trafficLogs.dailyTrafficLog.push(newDialyTL);
+  task.dailyTrafficLog.push(newDialyTL);
 
   return { state };
 }

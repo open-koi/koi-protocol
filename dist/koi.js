@@ -165,6 +165,32 @@ function DeregisterTask(state, action) {
   return { state };
 }
 
+async function DistributeRewards(state, action) {
+  const balances = state.balances;
+  const koi_Tasks = state.KOI_TASKS;
+  const input = action.input;
+  const taskId = input.taskId;
+
+  const task = koi_Tasks.filter((task) => task.TaskId == taskId);
+  const TASK_CONTRACT = task.TaskTxId;
+  const contractState = await SmartWeave.contracts.readContractState(
+    TASK_CONTRACT
+  );
+  const rewardReport = contractState.rewardReport;
+  const length = rewardReport.length;
+  const lastDistributionIndex = length - 2;
+  const distributionRewardReport =
+    contractState.rewardReport[lastDistributionIndex];
+  for (let address in distributionRewardReport) {
+    if (address in balances) {
+      balances[address] += distributionRewardReport[address];
+    } else {
+      balances[address] = distributionRewardReport[address];
+    }
+  }
+  return { state };
+}
+
 async function handle(state, action) {
   switch (action.input.function) {
     case "transfer":
@@ -181,6 +207,8 @@ async function handle(state, action) {
       return RegisterTask(state, action);
     case "deregisterTask":
       return DeregisterTask(state, action);
+    case "distributeReward":
+      return await DistributeRewards(state, action);
     default:
       throw new ContractError(`Invalid function: "${action.input.function}"`);
   }

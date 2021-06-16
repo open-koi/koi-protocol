@@ -3,27 +3,28 @@ import { Gateway } from "./Gateway";
 import { Vote } from "./Vote";
 import { RegisterData } from "./RegisterData";
 import { BatchAction } from "./BatchAction";
-import { SubmitTrafficLog } from "./SubmitTrafficlog.js";
+import { SubmitPayload } from "./SubmitTrafficlog.js";
 import { RankProposal } from "./RankProposal.js";
 import { ProposeSlash } from "./ProposeSlash.js";
-import { DistributeRewards } from "./DistributeRewards.js";
+import { Distribution } from "./Distribution.js";
 import { RegisterBatchData } from "./RegisterBatchData.js";
 import { DeregisterData } from "./DeregisterData.js";
+import { RegisterBundler } from "./RegisterBundler";
 
 export async function handle(state, action) {
   switch (action.input.function) {
     case "gateway":
       return Gateway(state, action);
     case "vote":
-      return Vote(state, action);
+      return await Vote(state, action);
     case "batchAction":
       return await BatchAction(state, action);
-    case "submitTrafficLog":
-      return SubmitTrafficLog(state, action);
+    case "submitPayload":
+      return await SubmitPayload(state, action);
     case "rankProposal":
       return RankProposal(state, action);
-    case "distributeRewards":
-      return await DistributeRewards(state, action);
+    case "distribution":
+      return await Distribution(state, action);
     case "registerData":
       return RegisterData(state, action);
     case "proposeSlash":
@@ -32,6 +33,8 @@ export async function handle(state, action) {
       return RegisterBatchData(state, action);
     case "deregisterData":
       return DeregisterData(state, action);
+    case "registerBundler":
+      return await RegisterBundler(state, action);
     default:
       throw new ContractError(`Invalid function: "${action.input.function}"`);
   }
