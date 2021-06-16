@@ -4,9 +4,6 @@ export async function ProposeSlash(state, action) {
   const vote = payload.vote;
   const votes = state.votes;
   const blackList = state.blackList;
-  const stakes = state.stakes;
-  const balances = state.balances;
-  const trafficLogs = state.stateUpdate.trafficLogs;
 
   // if (
   //   SmartWeave.block.height > trafficLogs.close - 75 ||

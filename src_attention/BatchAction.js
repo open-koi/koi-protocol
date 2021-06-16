@@ -1,5 +1,4 @@
 export async function BatchAction(state, action) {
-  const stakes = state.stakes;
   const input = action.input;
   const caller = action.caller;
   const votes = state.votes;
@@ -27,9 +26,15 @@ export async function BatchAction(state, action) {
   if (!typeof batchTxId === "string") {
     throw new ContractError("batchTxId should be string");
   }
+
   if (!validBundlers.includes(action.caller)) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
+  const tokenContractState = await SmartWeave.contracts.readContractState(
+    MAIN_CONTRACT
+  );
+  const stakes = tokenContractState.stakes;
   if (!(caller in stakes)) {
     throw new ContractError("caller hasn't staked");
   }
@@ -58,13 +63,13 @@ export async function BatchAction(state, action) {
         item.vote.voteId === voteId &&
         !vote.voted.includes(voteObj.senderAddress)
       ) {
-        if (voteObj.vote.userVote === "true") {
+        if (item.vote.userVote === "true") {
           vote["yays"] += 1;
-          voters.push(voteObj.senderAddress);
+          vote.voted.push(item.senderAddress);
         }
-        if (voteObj.vote.userVote === "false") {
+        if (item.vote.userVote === "false") {
           vote["nays"] += 1;
-          voters.push(voteObj.senderAddress);
+          vote.voted.push(item.senderAddress);
         }
       }
     }

@@ -1,4 +1,5 @@
 {
+  "ticker": "ATR",
   "name": "AttentionReward",
   "owner": "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo",
   "registerRecords": {
@@ -18,17 +19,39 @@
     "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
     "D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"
   ],
-  "votes": [],
-  "trafficLogs": {
+  "votes": [
+    {
+      "id": 0,
+      "type": "trafficLogs",
+      "status": "passive",
+      "voted": ["D3lK6_xXvBUXMUyA2RJz3soqmLlztkv-gVpEP5AlVUo"],
+      "stakeAmount": 2,
+      "yays": 1,
+      "nays": 0,
+      "bundlers": {},
+      "start": 655083,
+      "end": 656226
+    }
+  ],
+  "task": {
     "open": 695765,
     "close": 69620,
     "partcipatesRate": {},
     "rewardReport": [],
-    "dailyTrafficLog": [
+    "dailyPayload": [
       {
         "block": 695765,
-        "proposedLogs": [],
-        "isRanked": false,
+        "payloads": [
+          {
+            "TLTxId": "W-l-wLYu7A2Z459AJdPnV2KwKCc7-djr2TP94DrmBrg",
+            "owner": "FeSD9TV8aB0GK0yby8A40KEX1N-3wrJQTDbRW4uUiEA",
+            "gateWayId": "https://arweave.dev/logs/",
+            "voteId": 0,
+            "blockHeight": 649202,
+            "won": true
+          }
+        ],
+        "isRanked": true,
         "isDistributed": false
       }
     ]

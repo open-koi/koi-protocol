@@ -8,7 +8,7 @@ export async function RegisterBatchData(state, action) {
   if (!txIds) {
     throw new ContractError("No txids specified");
   }
-  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const MAIN_CONTRACT = "j6fu4HX4zylBaaI1yqLumC2eLn4HBLZhOZOUwYCVeMs";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );

@@ -5,6 +5,7 @@ import { Withdraw } from "./Withdraw";
 import { Mint } from "./Mint";
 import { RegisterTask } from "./RegisterTask";
 import { DeregisterTask } from "./DeregisterTask";
+import { DistributeRewards } from "./DistributeReward";
 
 export async function handle(state, action) {
   switch (action.input.function) {
@@ -22,6 +23,8 @@ export async function handle(state, action) {
       return RegisterTask(state, action);
     case "deregisterTask":
       return DeregisterTask(state, action);
+    case "distributeReward":
+      return await DistributeRewards(state, action);
     default:
       throw new ContractError(`Invalid function: "${action.input.function}"`);
   }

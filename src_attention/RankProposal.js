@@ -1,29 +1,29 @@
 export function RankProposal(state, action) {
-  const trafficLogs = state.trafficLogs;
+  const task = state.task;
   const votes = state.votes;
   // if (
-  //   SmartWeave.block.height > trafficLogs.close ||
-  //   SmartWeave.block.height < trafficLogs.close - 75
+  //   SmartWeave.block.height > task.close ||
+  //   SmartWeave.block.height < task.close - 75
   // ) {
   //   throw new ContractError("Ranking time finished or not Ranking time");
   // }
 
-  const currentTrafficLogs = trafficLogs.dailyTrafficLog.find(
-    (trafficlog) => trafficlog.block === trafficLogs.open
+  const currentTask = task.dailyPayload.find(
+    (task) => task.block === task.open
   );
 
-  if (currentTrafficLogs.isRanked === true) {
+  if (currentTask.isRanked === true) {
     throw new ContractError("it has already been ranked");
   }
-  const proposedLog = currentTrafficLogs.proposedLogs;
+  const payloads = currentTask.payloads;
   const proposedGateWays = {};
-  proposedLog.forEach((prp) => {
+  payloads.forEach((prp) => {
     const prpVote = votes[prp.voteId];
     if (!proposedGateWays[prp.gateWayId]) {
       if (prpVote.yays > prpVote.nays) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
-        prpVote.status = "passive";
+        prpVote.status = "passed";
       }
     } else {
       const currentSelectedPrp = proposedGateWays[prp.gateWayId];
@@ -34,7 +34,8 @@ export function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
-        prpVote.status = "passive";
+        prpVote.status = "passed";
+        currentSelectedPrp.status = "passed";
       }
 
       const prpVotePassPer = prpVote.yays - prpVote.nays;
@@ -46,7 +47,8 @@ export function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
-        prpVote.status = "passive";
+        prpVote.status = "passed";
+        currentSelectedPrp.status = "passed";
       }
 
       if (
@@ -57,7 +59,8 @@ export function RankProposal(state, action) {
         proposedGateWays[prp.gateWayId] = prp;
         prp.won = true;
         currentSelectedPrp.won = false;
-        prpVote.status = "passive";
+        prpVote.status = "passed";
+        currentSelectedPrp.status = "passed";
       }
     }
   });

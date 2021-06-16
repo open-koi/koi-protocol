@@ -1,6 +1,6 @@
-export async function SubmitTrafficLog(state, action) {
-  const trafficLogs = state.trafficLogs;
-  const partcipatesRate = trafficLogs.partcipatesRate;
+export async function SubmitPayload(state, action) {
+  const payload = state.payload;
+  const partcipatesRate = payload.partcipatesRate;
   const caller = action.caller;
   const input = action.input;
   const batchTxId = input.batchTxId;
@@ -13,7 +13,7 @@ export async function SubmitTrafficLog(state, action) {
     throw new ContractError("No gateWayUrl specified");
   }
   const voted = vote.voted;
-  const MAIN_CONTRACT = "Bq6dib6GLqe-rFspNXqmIbZspMNchdPAjTPKV6-vwNE";
+  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
@@ -21,7 +21,7 @@ export async function SubmitTrafficLog(state, action) {
   if (!(caller in balances) || balances[caller] < 1) {
     throw new ContractError("you need min 1 KOI to propose gateway");
   }
-  // if (SmartWeave.block.height > trafficLogs.close - 420) {
+  // if (SmartWeave.block.height > task.close - 420) {
   //   throw new ContractError("proposing is closed. wait for another round");
   // }
 
@@ -51,7 +51,6 @@ export async function SubmitTrafficLog(state, action) {
     trafficLogs.dailyTrafficLog[trafficLogs.dailyTrafficLog.length - 1];
   currentDailyTrafficlogs.proposedLogs.push(proposedLog);
   state.votes.push(vote);
-  // balances[caller] -= 1;
   if (!(caller in partcipatesRate)) {
     partcipatesRate[caller] = 0;
   } else {
