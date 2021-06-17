@@ -5,7 +5,6 @@ export async function BatchAction(state, action) {
   const validBundlers = state.validBundlers;
   const batchTxId = input.batchFile;
   const voteId = input.voteId;
-  const bundlerAddress = input.bundlerAddress;
   const vote = votes[voteId];
 
   if (!batchTxId) {
@@ -44,41 +43,41 @@ export async function BatchAction(state, action) {
     string: true,
   });
   const batchInArray = batch.split();
-  const voteObj = JSON.parse(batchInArray);
-  voteObj.forEach(async (item) => {
-    const dataInString = JSON.stringify(item.vote);
+  const voteArray = JSON.parse(batchInArray);
+  for (let voteObj of voteArray) {
+    const dataInString = JSON.stringify(voteObj.vote);
     const voteBuffer = await SmartWeave.arweave.utils.stringToBuffer(
       dataInString
     );
     const rawSignature = await SmartWeave.arweave.utils.b64UrlToBuffer(
-      item.signature
+      voteObj.signature
     );
     const isVoteValid = await SmartWeave.arweave.crypto.verify(
-      item.owner,
+      voteObj.owner,
       voteBuffer,
       rawSignature
     );
     if (isVoteValid) {
       if (
-        item.vote.voteId === voteId &&
+        voteObj.vote.voteId === voteId &&
         !vote.voted.includes(voteObj.senderAddress)
       ) {
-        if (item.vote.userVote === "true") {
+        if (voteObj.vote.userVote === "true") {
           vote["yays"] += 1;
-          vote.voted.push(item.senderAddress);
+          vote.voted.push(voteObj.senderAddress);
         }
-        if (item.vote.userVote === "false") {
+        if (voteObj.vote.userVote === "false") {
           vote["nays"] += 1;
-          vote.voted.push(item.senderAddress);
+          vote.voted.push(voteObj.senderAddress);
         }
       }
     }
-  });
+  }
   if (!(caller in vote.bundlers)) {
-    vote.bundlers[bundlerAddress] = [];
+    vote.bundlers[caller] = [];
   }
 
-  vote.bundlers[bundlerAddress].push(batchTxId);
+  vote.bundlers[caller].push(batchTxId);
 
   return { state };
 }

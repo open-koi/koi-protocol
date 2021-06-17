@@ -71,7 +71,7 @@ export async function Distribution(state, action) {
 
   const newDialyTL = {
     block: task.open,
-    payload: [],
+    payloads: [],
     isRanked: false,
     isDistributed: false,
   };

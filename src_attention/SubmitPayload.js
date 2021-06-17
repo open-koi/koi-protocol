@@ -1,18 +1,17 @@
 export async function SubmitPayload(state, action) {
-  const payload = state.payload;
-  const partcipatesRate = payload.partcipatesRate;
+  const task = state.task;
   const caller = action.caller;
   const input = action.input;
   const batchTxId = input.batchTxId;
   const gateWayUrl = input.gateWayUrl;
   const stakeAmount = input.stakeAmount;
+  const type = input.type;
   if (!batchTxId) {
     throw new ContractError("No batchTxId specified");
   }
   if (!gateWayUrl) {
     throw new ContractError("No gateWayUrl specified");
   }
-  const voted = vote.voted;
   const MAIN_CONTRACT = "KEOnz_i-YWTb1Heomm_QWDgZTbqc0Nb9IBXUskySVp8";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
@@ -27,7 +26,7 @@ export async function SubmitPayload(state, action) {
 
   const vote = {
     id: state.votes.length,
-    type: "trafficLogs",
+    type: type,
     status: "active",
     voted: [],
     stakeAmount: stakeAmount,
@@ -35,10 +34,10 @@ export async function SubmitPayload(state, action) {
     nays: 0,
     bundlers: {},
     start: SmartWeave.block.height,
-    end: trafficLogs.close,
+    end: task.close,
   };
 
-  const proposedLog = {
+  const payload = {
     TLTxId: batchTxId,
     owner: caller,
     gateWayId: gateWayUrl,
@@ -47,15 +46,9 @@ export async function SubmitPayload(state, action) {
     won: false,
   };
 
-  const currentDailyTrafficlogs =
-    trafficLogs.dailyTrafficLog[trafficLogs.dailyTrafficLog.length - 1];
-  currentDailyTrafficlogs.proposedLogs.push(proposedLog);
+  const currentTask = task.dailyPayload[task.dailyPayload.length - 1];
+  currentTask.payloads.push(payload);
   state.votes.push(vote);
-  if (!(caller in partcipatesRate)) {
-    partcipatesRate[caller] = 0;
-  } else {
-    partcipatesRate[caller]++;
-  }
 
   return { state };
 }
