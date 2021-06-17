@@ -17,7 +17,7 @@ export async function Distribution(state, action) {
   if (!validBundlers.includes(caller)) {
     throw new ContractError("Only selected bundlers can write batch actions.");
   }
-  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
+  const MAIN_CONTRACT = "KEOnz_i-YWTb1Heomm_QWDgZTbqc0Nb9IBXUskySVp8";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
@@ -65,13 +65,13 @@ export async function Distribution(state, action) {
 
   task.rewardReport.push(distributionReport);
 
-  currentTrafficLogs.isDistributed = true;
+  currentTask.isDistributed = true;
   task.open = SmartWeave.block.height;
   task.close = SmartWeave.block.height + 720;
 
   const newDialyTL = {
     block: task.open,
-    payload: [],
+    payloads: [],
     isRanked: false,
     isDistributed: false,
   };

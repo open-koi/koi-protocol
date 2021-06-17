@@ -1,6 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
+
 
 function Transfer(state, action) {
   const balances = state.balances;
@@ -171,21 +171,29 @@ async function DistributeRewards(state, action) {
   const input = action.input;
   const taskId = input.taskId;
 
-  const task = koi_Tasks.filter((task) => task.TaskId == taskId);
-  const TASK_CONTRACT = task.TaskTxId;
+  const task = koi_Tasks.filter((task) => task.TaskId === taskId);
+  const TASK_CONTRACT = task[0].TaskTxId;
   const contractState = await SmartWeave.contracts.readContractState(
     TASK_CONTRACT
   );
-  const rewardReport = contractState.rewardReport;
+  const rewardReport = contractState.task.rewardReport;
+  const dailyPayload = contractState.task.dailyPayload;
   const length = rewardReport.length;
-  const lastDistributionIndex = length - 2;
-  const distributionRewardReport =
-    contractState.rewardReport[lastDistributionIndex];
-  for (let address in distributionRewardReport) {
+  const lastDistributionIndex = length - 1;
+  const distributionRewardReport = rewardReport[lastDistributionIndex];
+  const distribution = distributionRewardReport.distribution;
+  const currentPayload = dailyPayload[lastDistributionIndex];
+
+  currentPayload.payloads.map((payload) => {
+    console.log(payload);
+    const address = payload.owner;
+    balances[address] -= 1;
+  });
+  for (let address in distribution) {
     if (address in balances) {
-      balances[address] += distributionRewardReport[address];
+      balances[address] += distribution[address];
     } else {
-      balances[address] = distributionRewardReport[address];
+      balances[address] = distribution[address];
     }
   }
   return { state };
@@ -207,11 +215,11 @@ async function handle(state, action) {
       return RegisterTask(state, action);
     case "deregisterTask":
       return DeregisterTask(state, action);
-    case "distributeReward":
+    case "distributeRewards":
       return await DistributeRewards(state, action);
     default:
       throw new ContractError(`Invalid function: "${action.input.function}"`);
   }
 }
 
-exports.handle = handle;
+
