@@ -1,6 +1,6 @@
 'use strict';
 
-
+Object.defineProperty(exports, '__esModule', { value: true });
 
 function Gateway(state, action) {
   const gateways = state.gateways;
@@ -471,7 +471,7 @@ async function Distribution(state, action) {
 
   task.rewardReport.push(distributionReport);
 
-  currentTrafficLogs.isDistributed = true;
+  currentTask.isDistributed = true;
   task.open = SmartWeave.block.height;
   task.close = SmartWeave.block.height + 720;
 
@@ -481,7 +481,7 @@ async function Distribution(state, action) {
     isRanked: false,
     isDistributed: false,
   };
-  task.dailyTrafficLog.push(newDialyTL);
+  task.dailyPayload.push(newDialyTL);
 
   return { state };
 }
@@ -601,4 +601,4 @@ async function handle(state, action) {
   }
 }
 
-
+exports.handle = handle;

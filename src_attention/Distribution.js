@@ -65,7 +65,7 @@ export async function Distribution(state, action) {
 
   task.rewardReport.push(distributionReport);
 
-  currentTrafficLogs.isDistributed = true;
+  currentTask.isDistributed = true;
   task.open = SmartWeave.block.height;
   task.close = SmartWeave.block.height + 720;
 

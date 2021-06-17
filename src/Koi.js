@@ -23,7 +23,7 @@ export async function handle(state, action) {
       return RegisterTask(state, action);
     case "deregisterTask":
       return DeregisterTask(state, action);
-    case "distributeReward":
+    case "distributeRewards":
       return await DistributeRewards(state, action);
     default:
       throw new ContractError(`Invalid function: "${action.input.function}"`);
