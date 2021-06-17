@@ -3,7 +3,7 @@ import { Gateway } from "./Gateway";
 import { Vote } from "./Vote";
 import { RegisterData } from "./RegisterData";
 import { BatchAction } from "./BatchAction";
-import { SubmitPayload } from "./SubmitTrafficlog.js";
+import { SubmitPayload } from "./SubmitPayload.js";
 import { RankProposal } from "./RankProposal.js";
 import { ProposeSlash } from "./ProposeSlash.js";
 import { Distribution } from "./Distribution.js";

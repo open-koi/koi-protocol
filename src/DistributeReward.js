@@ -5,7 +5,7 @@ export async function DistributeRewards(state, action) {
   const taskId = input.taskId;
 
   const task = koi_Tasks.filter((task) => task.TaskId === taskId);
-  const TASK_CONTRACT = task.TaskTxId;
+  const TASK_CONTRACT = task[0].TaskTxId;
   const contractState = await SmartWeave.contracts.readContractState(
     TASK_CONTRACT
   );

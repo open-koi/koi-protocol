@@ -4,7 +4,7 @@ export async function RegisterBundler(state, action) {
   if (validBundlers.includes(caller)) {
     throw new ContractError(`${caller} is already registered`);
   }
-  const MAIN_CONTRACT = "_4VN9iv9A5TZYVS-2nWCYqmYVoTe9YZ9o-yK1ca_djs";
+  const MAIN_CONTRACT = "KEOnz_i-YWTb1Heomm_QWDgZTbqc0Nb9IBXUskySVp8";
   const tokenContractState = await SmartWeave.contracts.readContractState(
     MAIN_CONTRACT
   );
